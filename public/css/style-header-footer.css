@@ -1,0 +1,72 @@
+/* ---------- HEADER ---------- */
+.header-grupo{
+    background-color: rgb(244, 164, 96);
+}
+
+.secciones-grupo label.lbl-seccion{
+    background: rgb(241, 176, 119);
+    border-radius: 50px;
+    display: inline-block;
+    color: rgb(133, 84, 20);
+    text-decoration: none;
+    padding: 10px 30px;
+    font-size: 17px;
+    font-weight: bold;
+    -webkit-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+#moda-opciones-crear-publicacion  label.lbl-seccion-crear{
+    background: rgba(241, 176, 119,0.5);
+    border-radius: 50px;
+    display: inline-block;
+    color: rgb(133, 84, 20);
+    text-decoration: none;
+    padding: 10px 30px;
+    font-size: 17px;
+    font-weight: bold;
+    -webkit-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.secciones-grupo label.lbl-seccion:hover{
+    background: rgb(133, 84, 20);
+    border-radius: 50px;
+    color: #fff;
+}
+
+div#header_adoptapp .fas{
+    background: rgb(241, 176, 119);
+    border-radius: 17px;
+    font-size: 20px;
+    padding: 10px;
+    color: rgb(133, 84, 20);
+}
+
+div#header_adoptapp label .fas:hover{
+    background: rgb(133, 84, 20);
+    border-radius: 17px;
+    color: #fff;
+    cursor: pointer;
+}
+
+div#header_adoptapp label.dropdown-item{
+    cursor: pointer;
+}
+
+div#header_adoptapp .dropdown-menu-lg-end{
+    background-color: #fcedd8;
+}
+.secciones-grupo label.seccion-active{
+    background: rgb(133, 84, 20);
+    border-radius: 50px;
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
