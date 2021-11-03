@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Model/mascota.php';
+include_once 'Clases/mascota.php';
 include_once 'Libs/user.php';
 
 class postulacionesModel extends Model{

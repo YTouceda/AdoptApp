@@ -4,7 +4,7 @@ include_once 'db.php';
 
 class User extends DB{
 
-    private $id_sesion;
+    private $id_usuario;
     private $permiso_sesion;
     private $NOMBRE_USUARIO;
     private $NUM_CONTACTO_USUARIO;
@@ -29,7 +29,7 @@ class User extends DB{
         $query->execute(['id' => $id]);
 
         foreach ($query as $currentUser) {
-            $this->id_sesion = $currentUser['ID_USUARIO'];
+            $this->id_usuario = $currentUser['ID_USUARIO'];
             $this->permiso_sesion = $currentUser['ID_PERMISO'];
         }
 
@@ -47,7 +47,7 @@ class User extends DB{
     }
 
     public function getId(){
-        return $this->id_sesion;
+        return $this->id_usuario;
     }
     public function getPermisos(){
         return $this->permiso_sesion;

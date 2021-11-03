@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Model/mascota.php';
+include_once 'Clases/mascota.php';
 
 class perdidosModel extends Model{
     public function __construct(){

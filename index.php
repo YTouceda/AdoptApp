@@ -6,7 +6,7 @@ require_once 'Libs/view.php';
 require_once 'Libs/model.php';
 require_once 'Libs/app.php';
 
-require_once 'config/config.php';
+require_once 'Config/config.php';
 
 $app = new App();
 

@@ -1,6 +1,6 @@
 <?php
 
-include_once 'model/mascota.php';
+include_once 'Clases/mascota.php';
 
 class abrir_publicacionModel extends Model{
 
