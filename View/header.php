@@ -8,14 +8,14 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
-        <script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/header.js" defer></script>
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/header.js" defer></script>
         <title>AdoptApp - header</title>
     </head>
     <body class="body-adoptapp">
         <div id="header_adoptapp" class="header-adoptapp row header-grupo">
             <div id="cont-logo" class="col-12 col-md-6 col-xxl-3">
                 <div id="header-logo" class="text-center logo-grupo p-2 m-0">
-                    <a href="<?php echo constant('URL'); ?>adopciones"><img src="<?php echo constant('URL'); ?>public/media/Logo.png" id="header_logo" class="h-50 w-75" alt=""></a>
+                    <a href="<?php echo constant('URL'); ?>adopciones"><img src="<?php echo constant('URL'); ?>Public/media/Logo.png" id="header_logo" class="h-50 w-75" alt=""></a>
                 </div>
             </div>
             <div id="header-sec" class="col-12 col-sm-6 d-none d-xxl-block">

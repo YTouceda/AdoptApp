@@ -10,11 +10,11 @@ $postulaciones = $this->postulaciones;
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>public/css/style-header-footer.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>public/css/style-modal.css">
-        <script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/mis_publicaciones.js" defer></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>public/css/ppropia.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>public/css/style.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style-header-footer.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style-modal.css">
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/mis_publicaciones.js" defer></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/ppropia.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style.css">
         <title>AdoptApp - Mi Publicacion</title>
     </head>
   <body class="body-adoptapp">
@@ -32,7 +32,7 @@ $postulaciones = $this->postulaciones;
           <div class="card mb-3" id="container-publicacion">
             <div class="row g-0">
               <div class="col-md-4">
-                <img src="<?php echo constant('URL')."public/public_media/".$this->mascota->fotos_mascota;?>" class="img-fluid rounded-start my-4">
+                <img src="<?php echo constant('URL')."Public/public_media/".$this->mascota->fotos_mascota;?>" class="img-fluid rounded-start my-4">
               </div>
               <div class="col-md-8">
                 <div class="card-body">

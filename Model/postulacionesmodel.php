@@ -1,7 +1,7 @@
 <?php
 
 include_once 'Model/mascota.php';
-include_once 'libs/user.php';
+include_once 'Libs/user.php';
 
 class postulacionesModel extends Model{
     public function __construct(){

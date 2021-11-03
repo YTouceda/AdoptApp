@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="public/css/style.css">
-        <link rel="stylesheet" type="text/css" href="public/css/style-header-footer.css">
+        <link rel="stylesheet" type="text/css" href="Public/css/style.css">
+        <link rel="stylesheet" type="text/css" href="Public/css/style-header-footer.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="public/js/ubicacion.js" defer></script>
-        <script type="text/javascript" src="public/js/script.js" defer></script>
+        <script type="text/javascript" src="Public/js/ubicacion.js" defer></script>
+        <script type="text/javascript" src="Public/js/script.js" defer></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <title>AdoptApp - Perdidos</title>
     </head>
@@ -232,7 +232,7 @@
                                 <div class="col-12 col-md-4">
                                     <div class="card m-2 card_publicaciones">
                                         <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?mascota=<?php echo $mascota->id_mascota?>">
-                                            <img src="<?php echo constant('URL')."public/public_media/".$mascota->fotos_mascota;?>" class="card-img-top" alt="...">
+                                            <img src="<?php echo constant('URL')."Public/public_media/".$mascota->fotos_mascota;?>" class="card-img-top" alt="...">
                                             <div class="card-body">
                                                 <h4><?php echo $mascota->nombre_mascota?></h4>
                                                 <p max class="card-text">
@@ -297,7 +297,7 @@
                                     <div class="col-12 col-md-4">
                                         <div class="card m-2 card_publicaciones">
                                             <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?mascota=<?php echo $mascota->id_mascota?>">
-                                                <img src="<?php echo constant('URL')."public/public_media/".$mascota->fotos_mascota; ?>" class="card-img-top" alt="...">
+                                                <img src="<?php echo constant('URL')."Public/public_media/".$mascota->fotos_mascota; ?>" class="card-img-top" alt="...">
                                                 <div class="card-body ">
                                                     <h4><?php echo $mascota->nombre_mascota?></h4>
                                                     <p max class="card-text">

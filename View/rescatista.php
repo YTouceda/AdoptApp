@@ -11,13 +11,13 @@ if("user" == "rescatista"){
         <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script type="text/javascript" src="../public/js/script.js" defer></script>
-        <script src="../public/js/modalimg.js"></script>
-        <script src="../public/js/functionsimg.js"></script>
-        <script src="../public/js/scriptsimg.js"></script>
-        <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
-        <link rel="stylesheet" type="text/css" href="../public/css/style-perfil.css">
-        <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+        <script type="text/javascript" src="../Public/js/script.js" defer></script>
+        <script src="../Public/js/modalimg.js"></script>
+        <script src="../Public/js/functionsimg.js"></script>
+        <script src="../Public/js/scriptsimg.js"></script>
+        <link rel="stylesheet" type="text/css" href="../Public/css/estilo.css">
+        <link rel="stylesheet" type="text/css" href="../Public/css/style-perfil.css">
+        <link rel="stylesheet" type="text/css" href="../Public/css/style.css">
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <title>AdoptApp - Perfil</title>
     </head>
@@ -67,13 +67,13 @@ if("user" == "rescatista"){
         <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script type="text/javascript" src="../public/js/script.js" defer></script>
-        <script src="../public/js/modalimg.js"></script>
-        <script src="../public/js/functionsimg.js"></script>
-        <script src="../public/js/scriptsimg.js"></script>
-        <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
-        <link rel="stylesheet" type="text/css" href="../public/css/style-perfil.css">
-        <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+        <script type="text/javascript" src="../Public/js/script.js" defer></script>
+        <script src="../Public/js/modalimg.js"></script>
+        <script src="../Public/js/functionsimg.js"></script>
+        <script src="../Public/js/scriptsimg.js"></script>
+        <link rel="stylesheet" type="text/css" href="../Public/css/estilo.css">
+        <link rel="stylesheet" type="text/css" href="../Public/css/style-perfil.css">
+        <link rel="stylesheet" type="text/css" href="../Public/css/style.css">
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <title>AdoptApp - Perfil</title>
     </head>

@@ -22,7 +22,7 @@ class Crear_Publicacion extends Controller{
             $file = $_FILES['foto'];
             $name = $file['name'];
             $ruta_provisional = $file['tmp_name'];
-            $carpeta ="public/public_media/";
+            $carpeta ="Public/public_media/";
             $src = $carpeta.$name;
             move_uploaded_file($ruta_provisional, $src);
             $dataTime = date("Y-m-d H:i:s");

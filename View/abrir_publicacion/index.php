@@ -6,11 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo constant ('URL'); ?>public/css/style.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo constant ('URL'); ?>public/css/style-abrirPublicacion.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo constant ('URL'); ?>Public/css/style.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo constant ('URL'); ?>Public/css/style-abrirPublicacion.css">
         <script type="text/javascript" src="script/abrirpub.js" defer></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>public/css/style.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>public/css/style-header-footer.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style-header-footer.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
     </head>
@@ -31,13 +31,13 @@
 
                           ?>
                 <div class="text-center h-100 w-100">
-                  <img src="<?php echo constant('URL')."public/public_media/".$this->mascota->fotos_mascota;?>" class="card-imagen img-fluid rounded-start  h-100 w-75 p-5">
+                  <img src="<?php echo constant('URL')."Public/public_media/".$this->mascota->fotos_mascota;?>" class="card-imagen img-fluid rounded-start  h-100 w-75 p-5">
                 </div>
                 <div class="row">
-                    <!-- <div class="img-chiq col col-3"><img src="public/img/logoOld.png"class="img-fluid" > </div>
-                    <div class="img-chiq col col-3"><img src="public/img/logoOld.png"class="img-fluid" > </div>
-                    <div class="img-chiq col col-3"><img src="public/img/logoOld.png"class="img-fluid" > </div>
-                    <div class="img-chiq col col-3"><img src="public/img/logoOld.png"class="img-fluid" > </div> -->
+                    <!-- <div class="img-chiq col col-3"><img src="Public/img/logoOld.png"class="img-fluid" > </div>
+                    <div class="img-chiq col col-3"><img src="Public/img/logoOld.png"class="img-fluid" > </div>
+                    <div class="img-chiq col col-3"><img src="Public/img/logoOld.png"class="img-fluid" > </div>
+                    <div class="img-chiq col col-3"><img src="Public/img/logoOld.png"class="img-fluid" > </div> -->
                 </div>
                 </div>
                 

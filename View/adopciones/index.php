@@ -7,10 +7,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/ubicacion.js" defer></script>
-        <script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/header.js" defer></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>public/css/style.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>public/css/style-header-footer.css">
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/ubicacion.js" defer></script>
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/header.js" defer></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style-header-footer.css">
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <title>AdoptApp - Adopciones</title>
     </head>
@@ -214,7 +214,7 @@
                                 <div class="col-sm-12 col-md-6 m-md-0 p-md-3 col-lg-6 col-xl-4 px-2">
                                     <div class="card m-2 card_publicaciones">
                                         <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?mascota=<?php echo $mascota->id_mascota?>">
-                                            <img src="<?php echo constant('URL')."public/public_media/".$mascota->fotos_mascota;?>" class="text-center card-img-top card-imagen">
+                                            <img src="<?php echo constant('URL')."Public/public_media/".$mascota->fotos_mascota;?>" class="text-center card-img-top card-imagen">
                                             <div class="card-body">
                                                 <h4><?php echo $mascota->nombre_mascota?></h4>
                                                 <p class="card-text">
