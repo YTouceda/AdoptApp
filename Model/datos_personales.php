@@ -1,6 +1,6 @@
 <?php 
 
-class datos_personales{
+class Datos_Personales{
 
     public $id_usuario;
     public $nombre_usuario;
