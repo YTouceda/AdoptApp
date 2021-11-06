@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Model/mascota.php';
+include_once 'Clases/mascota.php';
 
 class mi_publicacionModel extends Model{
     public function __construct(){
@@ -10,7 +10,7 @@ class mi_publicacionModel extends Model{
     public function get($ID_MASCOTA){
         $items = [];
         try {
-            $query = $this->db->connect()->prepare("SELECT * FROM adoptapp.v_mascota WHERE ID_MASCOTA = :ID_MASCOTA");
+            $query = $this->db->connect()->prepare("SELECT * FROM V_MASCOTA WHERE ID_MASCOTA = :ID_MASCOTA");
             $query->execute(['ID_MASCOTA' => $ID_MASCOTA]);
             $row = $query->fetch();
             $item = new Mascota();
@@ -36,11 +36,11 @@ class mi_publicacionModel extends Model{
     public function getPostulaciones($ID_MASCOTA){
         $items = [];
         try {
-            $query = $this->db->connect()->prepare("SELECT * FROM adoptapp.postulaciones WHERE ID_MASCOTA = :ID_MASCOTA");
+            $query = $this->db->connect()->prepare("SELECT * FROM POSTULACIONES WHERE ID_MASCOTA = :ID_MASCOTA");
             $query->execute(['ID_MASCOTA' => $ID_MASCOTA]);
             while($row = $query->fetch()){
-                $user= new user();
-                $user->setUser($row['ID_USUARIO_POSTULADO']);
+                $user= new Usuario();
+                $user->setUsuario($row['ID_USUARIO_POSTULADO']);
                 $item=[
                     'POSTULACION' => $row['ID_POSTULACION'],
                     'MASCOTA' => $row['ID_MASCOTA'],
@@ -55,7 +55,7 @@ class mi_publicacionModel extends Model{
     }
 
     public function insertNuevaAdopcion($ID_POSTULACION){
-        $query = $this->db->connect()->prepare("INSERT INTO `adoptapp`.`adopcion`(`ID_POSTULACION`)VALUES(:ID_POSTULACION);");
+        $query = $this->db->connect()->prepare("INSERT INTO ADOPCION(`ID_POSTULACION`)VALUES(:ID_POSTULACION);");
         if($query->execute(['ID_POSTULACION' => $ID_POSTULACION])){
             return true;
         }else{

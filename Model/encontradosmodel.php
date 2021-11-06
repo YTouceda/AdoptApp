@@ -1,9 +1,8 @@
 <?php
 
 include_once 'Clases/publicacion.php';
-include_once 'Clases/mascota.php';
 
-class adopcionesModel extends Model{
+class encontradosModel extends Model{
     public function __construct(){
         parent::__construct();
     }
@@ -11,17 +10,17 @@ class adopcionesModel extends Model{
     public function get($num_pagina){
         $items = [];
         try {
-            $estadoPublicacion = "En Adopción";
+            $estado = 'Encontrado';
             $cantidad_publicaciones = 6;
             $pagina = $num_pagina;
-            $query = $this->db->connect()->prepare("SELECT  ID_PUBLICACION , ID_USUARIO , NOMBRE_MASCOTA , DESCRIPCION_MASCOTA , FOTO_MASCOTA , NUM_CONTACTO_PUBLICACION , FECHA_ALTA_PUBLICACION , SEXO_MASCOTA , EDAD_MASCOTA , TAMANIO_MASCOTA , ESTADO_PUBLICACION , LOCALIDAD , PROVINCIA , TIPO_ESPECIE_MASCOTA  FROM  V_PUBLICACION  WHERE ESTADO_PUBLICACION = :ESTADO_PUBLICACION;");
-            $query->bindParam(':ESTADO_PUBLICACION', $estadoPublicacion);
+            $query = $this->db->connect()->prepare("SELECT  ID_PUBLICACION , ID_USUARIO , NOMBRE_MASCOTA , DESCRIPCION_MASCOTA , FOTO_MASCOTA , NUM_CONTACTO_PUBLICACION , FECHA_ALTA_PUBLICACION , SEXO_MASCOTA , EDAD_MASCOTA , TAMANIO_MASCOTA , ESTADO_PUBLICACION , LOCALIDAD , PROVINCIA , TIPO_ESPECIE_MASCOTA  FROM  V_PUBLICACION  WHERE ESTADO_PUBLICACION = :ESTADO_PUBLICACION");
+            $query->bindParam(':ESTADO_PUBLICACION', $estado);
             $query->execute();
             $num_filas = $query->rowCount();
             $total_paginas = ceil($num_filas/$cantidad_publicaciones);
             $desde = ($pagina - 1)*$cantidad_publicaciones;
-            $query = $this->db->connect()->prepare("SELECT  ID_PUBLICACION , ID_USUARIO , NOMBRE_MASCOTA , DESCRIPCION_MASCOTA , FOTO_MASCOTA , NUM_CONTACTO_PUBLICACION , FECHA_ALTA_PUBLICACION , SEXO_MASCOTA , EDAD_MASCOTA , TAMANIO_MASCOTA , ESTADO_PUBLICACION , LOCALIDAD , PROVINCIA , TIPO_ESPECIE_MASCOTA  FROM  V_PUBLICACION  WHERE ESTADO_PUBLICACION = :ESTADO_PUBLICACION LIMIT :DESDE,:HASTA;");
-            $query->bindParam(':ESTADO_PUBLICACION', $estadoPublicacion);
+            $query = $this->db->connect()->prepare("SELECT  ID_PUBLICACION , ID_USUARIO , NOMBRE_MASCOTA , DESCRIPCION_MASCOTA , FOTO_MASCOTA , NUM_CONTACTO_PUBLICACION , FECHA_ALTA_PUBLICACION , SEXO_MASCOTA , EDAD_MASCOTA , TAMANIO_MASCOTA , ESTADO_PUBLICACION , LOCALIDAD , PROVINCIA , TIPO_ESPECIE_MASCOTA  FROM  V_PUBLICACION  WHERE ESTADO_PUBLICACION = :ESTADO_PUBLICACION LIMIT :DESDE,:HASTA");
+            $query->bindParam(':ESTADO_PUBLICACION', $estado);
             $query->bindParam(':DESDE', $desde);
             $query->bindParam(':HASTA', $cantidad_publicaciones);
             $query->execute();

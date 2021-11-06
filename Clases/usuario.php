@@ -33,7 +33,10 @@ class Usuario extends Controller{
     public function getFoto(){
         return $this->datos_personales->foto_perfil;
     }
-    
+
+    public function setId($id){
+        $this->id_usuario = $id;
+    }
     public function setPermisos($permiso){
         $this->id_permiso = $permiso;
     }

@@ -1,6 +1,6 @@
 <?php
 
-include_once 'model/mascota.php';
+include_once 'Clases/mascota.php';
 
 class abrir_publicacionModel extends Model{
 
@@ -14,7 +14,7 @@ class abrir_publicacionModel extends Model{
     public function getDatos($ID_MASCOTA){
         $items = [];
         try {
-            $query = $this->db->connect()->prepare("SELECT * FROM adoptapp.v_mascota WHERE ID_MASCOTA = :ID_MASCOTA");
+            $query = $this->db->connect()->prepare("SELECT * FROM V_MASCOTA WHERE ID_MASCOTA = :ID_MASCOTA");
             $query->execute(['ID_MASCOTA' => $ID_MASCOTA]);
             $row = $query->fetch();
             $item = new Mascota();

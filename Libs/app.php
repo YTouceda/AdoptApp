@@ -16,7 +16,7 @@ class App{
             $controller = new Adopciones();
             $controller->loadModel('adopciones');
             $controller->Render();
-            return false;
+            return;
         }
 
         // var_dump($url);

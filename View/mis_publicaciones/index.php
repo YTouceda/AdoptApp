@@ -58,7 +58,7 @@ if(isset($_SESSION['id'])){
                                     $mascota = $row;
                             ?>
                                     <div class="card mb-3 card_mis_publicaciones">
-                                        <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>mi_publicacion/?mascota=<?php echo $mascota->id_mascota?>">
+                                        <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>mi_publicacion/?publicacion=<?php echo $mascota->id_mascota?>">
                                             <div class="g-0 row row-cols-1 row-cols-sm-2 g-xs-3">
                                                 <div class="col-md-2">
                                                     <img src="<?php echo constant('URL')."Public/public_media/".$mascota->fotos_mascota;?>" class="img-fluid rounded-start card-imagen-mp h-100 w-100" alt="...">

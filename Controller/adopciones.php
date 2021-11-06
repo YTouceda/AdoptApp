@@ -3,7 +3,7 @@
 Class Adopciones extends Controller{
     function __construct(){
         parent::__construct();
-        $this->view->mascotas = [];
+        $this->view->publicacion = [];
 
     }
 
@@ -14,8 +14,8 @@ Class Adopciones extends Controller{
             $pagina = $_GET['pagina'];
         }
         $datos = $this->model->get($pagina);
-        if($datos['items']){
-            $this->view->mascotas = $datos['items'];
+        if(!empty($datos['items'])){
+            $this->view->publicacion = $datos['items'];
             $this->view->total_paginas = $datos['total'];
             $this->view->pagina = $pagina;
             $this->view->render('adopciones/index');

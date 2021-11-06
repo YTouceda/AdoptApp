@@ -30,10 +30,10 @@ function onlogin(){
         
         if(response.authResponse){
             FB.api('/me?fields=email,name,picture',(response) =>{
-                $('#email').val(response.email);
-                $('#nombre').val(response.name);
-                $('#id').val(response.id);
-                $('#foto').val(response.picture.data.url);
+                $('#login_email').val(response.email);
+                $('#login_nombre').val(response.name);
+                $('#login_id').val(response.id);
+                $('#login_foto').val(response.picture.data.url);
                 $('#btn_iniciar_container').submit();
             })
         }

@@ -209,137 +209,71 @@
                     <div class="nav-PE">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a class="text-decoration-none" href="<?php echo '?seccion=perdidos';?>"><button class="nav-link nav-style<?php if($this->seccion == 'perdidos'){echo ' active';}?>" id="perdidos-tab" data-bs-toggle="tab" data-bs-target="#perdidos" type="button" role="tab" aria-controls="perdidos" aria-selected="true">Perdidos</button></a>
+                                <a class="text-decoration-none" href="<?php echo constant('URL').'perdidos?seccion=perdidos';?>"><button class="nav-link nav-style<?php if($this->seccion == 'perdidos'){echo ' active';}?>" id="perdidos-tab" data-bs-toggle="tab" data-bs-target="#perdidos" type="button" role="tab" aria-controls="perdidos" aria-selected="true">Perdidos</button></a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="text-decoration-none" href="<?php echo '?seccion=encontrados';?>"><button class="nav-link nav-style<?php if($this->seccion == 'encontrados'){echo ' active';}?>" id="encontrados-tab" data-bs-toggle="tab" data-bs-target="#encontrados" type="button" role="tab" aria-controls="encontrados" aria-selected="false">Encontrados</button></a>
+                                <a class="text-decoration-none" href="<?php echo constant('URL').'encontrados?seccion=encontrados';?>"><button class="nav-link nav-style<?php if($this->seccion == 'encontrados'){echo ' active';}?>" id="encontrados-tab" data-bs-toggle="tab" data-bs-target="#encontrados" type="button" role="tab" aria-controls="encontrados" aria-selected="false">Encontrados</button></a>
                             </li>
                         </ul>
                     </div>
                     <?php 
                     if($this->seccion == 'perdidos'){
                     ?>
-                    <div id="perdidos" class="publicaciones">
-                        <div class="tab-pane" role="tabpanel" aria-labelledby="perdidos-tab">
-                            <div class="row">
-                            <?php
-                        if(!empty($this->mascotas)){
-                            foreach($this->mascotas as $row){
-                                $mascota = new Mascota();
-                                $mascota = $row;
-                                if($mascota->estado_mascota == 1){
-                        ?>
-                                <div class="col-12 col-md-4">
-                                    <div class="card m-2 card_publicaciones">
-                                        <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?mascota=<?php echo $mascota->id_mascota?>">
-                                            <img src="<?php echo constant('URL')."Public/public_media/".$mascota->fotos_mascota;?>" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h4><?php echo $mascota->nombre_mascota?></h4>
-                                                <p max class="card-text">
-                                                    <?php 
-                                                    for( $i = 0; $i <= 70 ; $i++){
-                                                        echo $mascota->descripcion_mascota[$i];
-                                                    }?>...
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                        <?php
-                                }
-                            }
-                        ?>
-                        </div>
-                            <div id="nav-paginas" class="m-2">
-                                <nav aria-label="Page navigation example">
-                                    <ul id="navegacion-entre-paginas" class="pagination justify-content-center">
-                                        <li class="page-item<?php if($this->pagina == 1){echo ' disabled';}?>">
-                                        <a class="page-link" href="<?php echo '?seccion=perdidos&pagina='.($this->pagina-1);?>">Anterior</a>
-                                        </li>
-                                        <?php
-                                        for($i = 1 ; $i <= $this->total_paginas ; $i++){
-                                        ?>
-                                        <li class="page-item"><a class="page-link" href="<?php echo '?seccion=perdidos&pagina='.$i?>"><?php echo $i?></a></li>
-                                        <?php
-                                        }
-                                        ?>
-                                        <li class="page-item<?php if($this->pagina == $this->total_paginas){echo ' disabled';}?>">
-                                        <a class="page-link" href="<?php echo '?seccion=perdidos&pagina='.($this->pagina+1);?>">Siguiente</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        <?php
-                        }else{
-                        ?>
-                            <div class="text-center">
-                                <img src="<?php echo constant('URL'); ?>public\media\pagina_inexistente.png" class="w-50 ps-4" alt="">
-                                <h2>Ups no se encontraron publicaciones.</h2>
-                            </div>
-                        <?php
-                        }
-                        ?>
-                    </div>
-                    <?php
-                    }
-                    if($this->seccion == 'encontrados'){
-                    ?>
-                        <div id="encontrados" class="publicaciones">
-                            <div class="tab-pane" role="tabpanel" aria-labelledby="encontrados-tab">
+                        <div id="perdidos" class="publicaciones">
+                            <div class="tab-pane" role="tabpanel" aria-labelledby="perdidos-tab">
                                 <div class="row">
-                            <?php
-                            if(!empty($this->mascotas)){
-                                foreach($this->mascotas as $row){
-                                    $mascota = new Mascota();
-                                    $mascota = $row;
-                                    if($mascota->estado_mascota == 2){
-                            ?>
-                                    <div class="col-12 col-md-4">
+                                <?php
+                                    if(!empty($this->publicacion)){
+                                        foreach($this->publicacion as $row){
+                                            $mascota = new Mascota();
+                                            $mascota = $row->getMascota();
+                                ?>
+                                    <div class="col-sm-12 col-md-6 m-md-0 p-md-3 col-lg-6 col-xl-4 px-2">
                                         <div class="card m-2 card_publicaciones">
-                                            <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?mascota=<?php echo $mascota->id_mascota?>">
-                                                <img src="<?php echo constant('URL')."Public/public_media/".$mascota->fotos_mascota; ?>" class="card-img-top" alt="...">
-                                                <div class="card-body ">
-                                                    <h4><?php echo $mascota->nombre_mascota?></h4>
+                                            <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?publicacion=<?php echo $row->getId_publicacion()?>">
+                                                <img src="<?php echo constant('URL')."Public/public_media/".$mascota->getFotos_mascota(); ?>" class="text-center card-img-top card-imagen" alt="...">
+                                                <div class="card-body">
+                                                    <h4><?php echo $mascota->getNombre_mascota();?></h4>
                                                     <p max class="card-text">
                                                         <?php 
                                                         for( $i = 0; $i <= 70 ; $i++){
-                                                            echo $mascota->descripcion_mascota[$i];
+                                                            if($i < strlen($mascota->getDescripcion_mascota()))
+                                                            echo $mascota->getDescripcion_mascota()[$i];
                                                         }?>...
                                                     </p>
                                                 </div>
                                             </a>
                                         </div>
                                     </div>
-                            <?php
-                                    }
+                                <?php
                                 }
-                            ?>
+                                ?>
                             </div>
-                                <div id="nav-paginas" class="m-2">
-                                    <nav aria-label="Page navigation example">
-                                        <ul id="navegacion-entre-paginas" class="pagination justify-content-center">
-                                            <li class="page-item<?php if($this->pagina == 1){echo ' disabled';}?>">
-                                            <a class="page-link" href="<?php echo '?seccion=encontrados&pagina='.($this->pagina-1);?>">Anterior</a>
-                                            </li>
-                                            <?php
-                                            for($i = 1 ; $i <= $this->total_paginas ; $i++){
-                                            ?>
-                                            <li class="page-item"><a class="page-link" href="<?php echo '?seccion=encontrados&pagina='.$i?>"><?php echo $i?></a></li>
-                                            <?php
-                                            }
-                                            ?>
-                                            <li class="page-item<?php if($this->pagina == $this->total_paginas){echo ' disabled';}?>">
-                                            <a class="page-link" href="<?php echo '?seccion=encontrados&pagina='.($this->pagina+1);?>">Siguiente</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
+                            <div id="nav-paginas" class="m-2">
+                                <nav aria-label="Page navigation example">
+                                    <ul id="navegacion-entre-paginas" class="pagination justify-content-center">
+                                        <li class="page-item<?php if($this->pagina == 1){echo ' disabled';}?>">
+                                        <a class="page-link" href="<?php echo '?pagina='.($this->pagina-1);?>">Anterior</a>
+                                        </li>
+                                        <?php
+                                        for($i = 1 ; $i <= $this->total_paginas ; $i++){
+                                        ?>
+                                        <li class="page-item"><a class="page-link" href="<?php echo '?pagina='.$i?>"><?php echo $i?></a></li>
+                                        <?php
+                                        }
+                                        ?>
+                                        <li class="page-item<?php if($this->pagina == $this->total_paginas){echo ' disabled';}?>">
+                                        <a class="page-link" href="<?php echo '?pagina='.($this->pagina+1);?>">Siguiente</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
                             <?php
                             }else{
                             ?>
                                 <div class="text-center">
+                                    <h2 class="mt-3">Ups, no se encontraron publicaciones!</h2>
                                     <img src="<?php echo constant('URL'); ?>public\media\pagina_inexistente.png" class="w-50 ps-4" alt="">
-                                    <h2>Ups no se encontraron publicaciones.</h2>
                                 </div>
                             <?php
                             }

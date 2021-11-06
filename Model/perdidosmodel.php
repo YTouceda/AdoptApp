@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Model/mascota.php';
+include_once 'Clases/publicacion.php';
 
 class perdidosModel extends Model{
     public function __construct(){
@@ -10,30 +10,38 @@ class perdidosModel extends Model{
     public function get($num_pagina){
         $items = [];
         try {
+            $estado = 'Perdido';
             $cantidad_publicaciones = 6;
             $pagina = $num_pagina;
-            $query = $this->db->connect()->prepare("SELECT*FROM adoptapp.mascota WHERE ID_ESTADO_MASCOTA = :ID_ESTADO_MASCOTA1 OR ID_ESTADO_MASCOTA = :ID_ESTADO_MASCOTA2;");
-            $query->execute(['ID_ESTADO_MASCOTA1' => 1, 'ID_ESTADO_MASCOTA2' => 2]);
+            $query = $this->db->connect()->prepare("SELECT  ID_PUBLICACION , ID_USUARIO , NOMBRE_MASCOTA , DESCRIPCION_MASCOTA , FOTO_MASCOTA , NUM_CONTACTO_PUBLICACION , FECHA_ALTA_PUBLICACION , SEXO_MASCOTA , EDAD_MASCOTA , TAMANIO_MASCOTA , ESTADO_PUBLICACION , LOCALIDAD , PROVINCIA , TIPO_ESPECIE_MASCOTA  FROM  V_PUBLICACION  WHERE ESTADO_PUBLICACION = :ESTADO_PUBLICACION");
+            $query->bindParam(':ESTADO_PUBLICACION', $estado);
+            $query->execute();
             $num_filas = $query->rowCount();
             $total_paginas = ceil($num_filas/$cantidad_publicaciones);
             $desde = ($pagina - 1)*$cantidad_publicaciones;
-            $query = $this->db->connect()->prepare("SELECT*FROM adoptapp.mascota WHERE ID_ESTADO_MASCOTA = :ID_ESTADO_MASCOTA1 OR ID_ESTADO_MASCOTA = :ID_ESTADO_MASCOTA2 LIMIT :DESDE,:HASTA");
-            $query->execute(['ID_ESTADO_MASCOTA1' => 1, 'ID_ESTADO_MASCOTA2' => 2,'DESDE' => $desde,'HASTA' => $cantidad_publicaciones]);
+            $query = $this->db->connect()->prepare("SELECT  ID_PUBLICACION , ID_USUARIO , NOMBRE_MASCOTA , DESCRIPCION_MASCOTA , FOTO_MASCOTA , NUM_CONTACTO_PUBLICACION , FECHA_ALTA_PUBLICACION , SEXO_MASCOTA , EDAD_MASCOTA , TAMANIO_MASCOTA , ESTADO_PUBLICACION , LOCALIDAD , PROVINCIA , TIPO_ESPECIE_MASCOTA  FROM  V_PUBLICACION  WHERE ESTADO_PUBLICACION = :ESTADO_PUBLICACION LIMIT :DESDE,:HASTA");
+            $query->bindParam(':ESTADO_PUBLICACION', $estado);
+            $query->bindParam(':DESDE', $desde);
+            $query->bindParam(':HASTA', $cantidad_publicaciones);
+            $query->execute();
             while($row = $query->fetch()){
-                $item = new Mascota();
-                $item->id_mascota = $row['ID_MASCOTA'];
-                $item->id_usuario = $row['ID_USUARIO'];
-                $item->nombre_mascota = $row['NOMBRE_MASCOTA'];
-                $item->sexo_mascota = $row['ID_SEXO_MASCOTA'];
-                $item->edad_mascota = $row['ID_EDAD_MASCOTA'];
-                $item->tamanio_mascota = $row['ID_TAMANIO_MASCOTA'];
-                $item->descripcion_mascota = $row['DESCRIPCION_MASCOTA'];
-                $item->estado_mascota = $row['ID_ESTADO_MASCOTA'];
-                $item->ubicacion_mascota = $row['ID_LOCALIDAD'];
-                $item->tipo_mascota = $row['ID_TIPO_MASCOTA'];
-                $item->fotos_mascota = $row['FOTO_MASCOTA'];
-                $item->num_contacto_mascota = $row['NUM_CONTACTO_MASCOTA'];
-
+                $item = new Publicacion();
+                $mascota= new Mascota();
+                $item->setId_publicacion($row['ID_PUBLICACION']);
+                $item->setId_usuario($row['ID_USUARIO']);
+                $item->setEstado($row['ESTADO_PUBLICACION']);
+                $item->setNum_contacto_publicacion($row['NUM_CONTACTO_PUBLICACION']);
+                $item->setFecha_alta_publicacion($row['FECHA_ALTA_PUBLICACION']);
+                $mascota->setSexo_mascota($row['SEXO_MASCOTA']);
+                $mascota->setEdad_mascota($row['EDAD_MASCOTA']);
+                $mascota->setTamanio_mascota($row['TAMANIO_MASCOTA']);
+                $item->setLocalidad($row['LOCALIDAD']);
+                $item->setProvincia($row['PROVINCIA']);
+                $mascota->setEspecie_mascota($row['TIPO_ESPECIE_MASCOTA']);
+                $mascota->setNombre_mascota($row['NOMBRE_MASCOTA']);
+                $mascota->setDescripcion_mascota($row['DESCRIPCION_MASCOTA']);
+                $mascota->setFotos_mascota($row['FOTO_MASCOTA']);
+                $item->setMascota($mascota);
                 array_push($items,$item);
             }
             $datos = ['items' => $items, 'total' => $total_paginas];
