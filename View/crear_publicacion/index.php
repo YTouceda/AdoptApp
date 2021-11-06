@@ -57,7 +57,7 @@
                         <div id="errorEstado" class="invalid-feedback">Debe elegir un estado válido.</div>
                    
                         <div>
-                        <select class="form-select select-cp" aria-label="Mascota" id="select-tipo" name="tipo"> 
+                        <select class="form-select select-cp" aria-label="Mascota" id="select-tipo" name="especie"> 
                             <option selected disabled>Elija el tipo de mascota</option>
                             <option value="0">Perro</option>
                             <option value="1">Gato</option>
