@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Model/mascota.php';
+include_once 'Clases/publicacion.php';
 
 class adopcionesModel extends Model{
     public function __construct(){
@@ -20,20 +20,21 @@ class adopcionesModel extends Model{
             $query = $this->db->connect()->prepare("SELECT*FROM adoptapp.mascota WHERE ID_ESTADO_MASCOTA = :ID_ESTADO_MASCOTA LIMIT :DESDE,:HASTA");
             $query->execute(['ID_ESTADO_MASCOTA' => 0,'DESDE' => $desde,'HASTA' => $cantidad_publicaciones]);
             while($row = $query->fetch()){
-                $item = new Mascota();
-                $item->id_mascota = $row['ID_MASCOTA'];
+                $item = new Publicacion();
+                $item->id_publicacion = $row['ID_PUBLICACION'];
                 $item->id_usuario = $row['ID_USUARIO'];
-                $item->nombre_mascota = $row['NOMBRE_MASCOTA'];
-                $item->sexo_mascota = $row['ID_SEXO_MASCOTA'];
-                $item->edad_mascota = $row['ID_EDAD_MASCOTA'];
-                $item->tamanio_mascota = $row['ID_TAMANIO_MASCOTA'];
-                $item->descripcion_mascota = $row['DESCRIPCION_MASCOTA'];
-                $item->estado_mascota = $row['ID_ESTADO_MASCOTA'];
-                $item->ubicacion_mascota = $row['ID_LOCALIDAD'];
-                $item->tipo_mascota = $row['ID_TIPO_MASCOTA'];
-                $item->fotos_mascota = $row['FOTO_MASCOTA'];
-                $item->num_contacto_mascota = $row['NUM_CONTACTO_MASCOTA'];
-                $item->fecha_publicado = $row['FECHA_PUBLICADO'];
+                $item->estado = $row['ESTADO_PUBLICACION'];
+                $item->num_contacto_mascota = $row['NUM_CONTACTO_PUBLICACION'];
+                $item->fecha_alta_publicacion = $row['FECHA_ALTA_PUBLICACION'];
+                $item->mascota->sexo_mascota = $row['SEXO_MASCOTA'];
+                $item->mascota->edad_mascota = $row['EDAD_MASCOTA'];
+                $item->mascota->tamanio_mascota = $row['TAMANIO_MASCOTA'];
+                $item->localidad = $row['LOCALIDAD'];
+                $item->provincia = $row['PROVINCIA'];
+                $item->mascota->especie_mascota = $row['TIPO_ESPECIE_MASCOTA'];
+                $item->mascota->nombre_mascota = $row['NOMBRE_MASCOTA'];
+                $item->mascota->descripcion_mascota = $row['DESCRIPCION_MASCOTA'];
+                $item->mascota->fotos_mascota = $row['FOTO_MASCOTA'];
                 array_push($items,$item);
             }
             $datos = ['items' => $items, 'total' => $total_paginas];

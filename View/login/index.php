@@ -1,6 +1,3 @@
-<?php
-if(isset($_SESSION['id'])){
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,54 +23,55 @@ if(isset($_SESSION['id'])){
         <main class="main container">
             <div class="cuerpo mx-1 mx-lg-5 px-0 px-lg-5 py-5">
                 <div class="col-12 px-0 px-lg-5 py-5">
-                    <form id="form_editar" class="mx-1 mx-lg-5 px-0 px-lg-5 needs-validation" novalidate action="<?php echo constant('URL'); ?>editar_perfil/Guardar_cambios" method="POST" enctype="multipart/form-data">
+                    <form id="form_editar" class="mx-1 mx-lg-5 px-0 px-lg-5 needs-validation" novalidate action="<?php echo constant('URL'); ?>login/Guardar_datos" method="POST" enctype="multipart/form-data">
                         <div class="text-center mx-1 mx-lg-5 px-0 px-lg-5">
                             <div id="foto_container" class="col-12">
                                 <div class="row">
                                     <label for="foto" class="col-form-label">Foto de perfil:</label><br>
                                 </div>
-                                <img type="image" class="d-inline-block col-form-control h-50 w-25" src="<?php echo $this->user->getFoto()?>" name="Foto" id="Foto">
+                                <input type="hidden" name="foto" id="foto" value="<?php echo $this->usuario->getFoto()?>">
+                                <input type="image" class="d-inline-block col-form-control h-50 w-25" src="<?php echo $this->usuario->getFoto()?>" name="Foto" id="Foto">
                             </div>
                             <?php
                             if("mvp" == "producto"){
                             ?>
-                            <div class="col-12 pb-2">
-                                <input type="file" id="add_new_photo" class="form-control input_perfil add_photo" name="images_nueva">
-                                <div id="errorImagen" class="invalid-feedback pt-2">
-                                    Imagen inválida.
+                                <div class="col-12 pb-2">
+                                    <input type="file" id="add_new_photo" class="form-control input_perfil add_photo" name="images_nueva">
+                                    <div id="errorImagen" class="invalid-feedback pt-2">
+                                        Imagen inválida.
+                                    </div>
                                 </div>
-                            </div>
                             <?php
                             }
                             ?>
                         </div>
                         <div>
-                            <input type="hidden" name="Id" id="Id" value="<?php echo $this->user->getId()?>" require>
+                            <input type="hidden" name="Id" id="Id" value="<?php echo $this->usuario->getId()?>" require>
                         </div>
                         <div class="mx-1 mx-lg-5 px-0 px-lg-5">
                             <label for="nombre" class="form-label pt-2">Nombre de usuario:</label>
-                            <input id="Nombre" name="Nombre" type="text" class="form form-control col-12" value="<?php echo $this->user->getNombre();?>" require>
+                            <input id="Nombre" name="Nombre" type="text" class="form form-control col-12" value="<?php echo $this->usuario->getNombre();?>" require>
                             <div id="error_nombre" class="invalid-feedback">
                                 No ingresó el nombre de usuario.
                             </div>
                         </div>
                         <div class="mx-1 mx-lg-5 px-0 px-lg-5">
                             <label for="email" class="form-label pt-2">Email:</label>
-                            <input id="Email" name="Email" type="text" class="form form-control col-12" value="<?php echo $this->user->getEmail();?>" require>
+                            <input id="Email" name="Email" type="text" class="form form-control col-12" value="<?php echo $this->usuario->getEmail();?>" require>
                             <div id="error_email" class="invalid-feedback">
                                 Ingrese un email valido.
                             </div>
                         </div>
                         <div class="mx-1 mx-lg-5 px-0 px-lg-5">
                             <label for="numero" class="form-label pt-2">Telefono de contacto</label>
-                            <input id="Numero" name="Numero" type="text" class="form form-control col-12" value="<?php echo $this->user->getNumero();?>" require>
+                            <input id="Numero" name="Numero" type="text" class="form form-control col-12" value="<?php echo $this->usuario->getNumero();?>" require>
                             <div id="error_numero" class="invalid-feedback">
                                 No ingresó un numero de contacto válido.
                             </div>
                         </div>
                         <div class="col-12 text-center pt-5">
-                            <a href="<?php echo constant('URL'); ?>perfil"><button id="btn_cancelar" type="button" class="btn btn-danger mx-1 mx-lg-2">Cancelar cambios</button></a>
-                            <button id="btn_guardar" type="submit" class="btn btn-success mx-1 mx-lg-2">Guardar cambios</button>
+                            <a href="<?php echo constant('URL'); ?>"><button id="btn_cancelar" type="button" class="btn btn-danger mx-1 mx-lg-2">Cancelar</button></a>
+                            <button id="btn_guardar" type="submit" class="btn btn-success mx-1 mx-lg-2">Guardar Datos</button>
                         </div>
                     </form>
                 </div>
@@ -86,8 +84,3 @@ if(isset($_SESSION['id'])){
         </footer>
 	</body>
 </html>
-<?php
-}else{
-    header('Location:adopciones');
-}
-?>
