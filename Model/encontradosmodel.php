@@ -2,7 +2,7 @@
 
 include_once 'Clases/publicacion.php';
 
-class perdidosModel extends Model{
+class encontradosModel extends Model{
     public function __construct(){
         parent::__construct();
     }
@@ -10,7 +10,7 @@ class perdidosModel extends Model{
     public function get($num_pagina){
         $items = [];
         try {
-            $estado = 'Perdido';
+            $estado = 'Encontrado';
             $cantidad_publicaciones = 6;
             $pagina = $num_pagina;
             $query = $this->db->connect()->prepare("SELECT  ID_PUBLICACION , ID_USUARIO , NOMBRE_MASCOTA , DESCRIPCION_MASCOTA , FOTO_MASCOTA , NUM_CONTACTO_PUBLICACION , FECHA_ALTA_PUBLICACION , SEXO_MASCOTA , EDAD_MASCOTA , TAMANIO_MASCOTA , ESTADO_PUBLICACION , LOCALIDAD , PROVINCIA , TIPO_ESPECIE_MASCOTA  FROM  V_PUBLICACION  WHERE ESTADO_PUBLICACION = :ESTADO_PUBLICACION");

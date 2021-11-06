@@ -13,7 +13,7 @@ Class Header extends Controller{
             $this->usuario->setUsuario($this->userSession->getCurrentUsuario());
             header('Location:' . getenv('HTTP_REFERER'));
         }
-        }else{
+        else{
             header('Location:' . getenv('HTTP_REFERER'));
         }
     }

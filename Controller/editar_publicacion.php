@@ -96,7 +96,7 @@ Class editar_publicacion extends Controller{
     //         $mensaje = $this->model->insertFoto(['ID_USUARIO' => $ID_USUARIO , 'FOTO_USUARIO' => $FOTO_USUARIO]);
     //     }
     //     $this->view->mensaje = $mensaje;
-    //     header('Location: ../mi_publicacion?mascota='.$this->view->mascota->id_mascota);
+    //     header('Location: ../mi_publicacion?publicacion='.$this->view->mascota->id_mascota);
     // }
 
 }
