@@ -1,0 +1,45 @@
+body#body-postulantes{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+div.mi_publicacion{
+    margin: 0px auto;
+}
+
+#radio{
+    float:right;
+    
+}
+.list-group-item{
+    background-color: coral;
+}
+div.card.mb-3.container{
+    max-width: 1000px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+}
+/* ---------- FOOTER ---------- */
+
+#iniciarSesion::before{
+    display: none;
+}
+
+a i.fa-sign-in-alt:hover + #iniciarSesion::before{
+    display: block;
+}
+input.form-check-input{
+padding-top: 0px;
+margin-top: 70px;
+margin-right: 20px;
+margin-left: 20px;
+}
+input.form-check{
+padding-left: 0px;
+}
+div#container-publicacion{
+    margin: 20px 30px;
+    background-color: #FFDEAD;
+}
+
