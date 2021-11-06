@@ -3,7 +3,7 @@
 Class Adopciones extends Controller{
     function __construct(){
         parent::__construct();
-        $this->view->mascotas = [];
+        $this->view->publicacion = [];
 
     }
 

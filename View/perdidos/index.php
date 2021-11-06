@@ -219,67 +219,67 @@
                     <?php 
                     if($this->seccion == 'perdidos'){
                     ?>
-                    <div id="perdidos" class="publicaciones">
-                        <div class="tab-pane" role="tabpanel" aria-labelledby="perdidos-tab">
-                            <div class="row">
-                            <?php
-                        if(!empty($this->mascotas)){
-                            foreach($this->mascotas as $row){
-                                $mascota = new Mascota();
-                                $mascota = $row;
-                                if($mascota->estado_mascota == 1){
-                        ?>
-                                <div class="col-12 col-md-4">
-                                    <div class="card m-2 card_publicaciones">
-                                        <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?mascota=<?php echo $mascota->id_mascota?>">
-                                            <img src="<?php echo constant('URL')."Public/public_media/".$mascota->fotos_mascota;?>" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h4><?php echo $mascota->nombre_mascota?></h4>
-                                                <p max class="card-text">
-                                                    <?php 
-                                                    for( $i = 0; $i <= 70 ; $i++){
-                                                        echo $mascota->descripcion_mascota[$i];
-                                                    }?>...
-                                                </p>
-                                            </div>
-                                        </a>
+                        <div id="perdidos" class="publicaciones">
+                            <div class="tab-pane" role="tabpanel" aria-labelledby="perdidos-tab">
+                                <div class="row">
+                                <?php
+                            if(!empty($this->mascotas)){
+                                foreach($this->mascotas as $row){
+                                    $mascota = new Mascota();
+                                    $mascota = $row;
+                                    if($mascota->estado_mascota == 1){
+                            ?>
+                                    <div class="col-12 col-md-4">
+                                        <div class="card m-2 card_publicaciones">
+                                            <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?mascota=<?php echo $mascota->id_mascota?>">
+                                                <img src="<?php echo constant('URL')."Public/public_media/".$mascota->fotos_mascota;?>" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h4><?php echo $mascota->nombre_mascota?></h4>
+                                                    <p max class="card-text">
+                                                        <?php 
+                                                        for( $i = 0; $i <= 70 ; $i++){
+                                                            echo $mascota->descripcion_mascota[$i];
+                                                        }?>...
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                        <?php
+                            <?php
+                                    }
                                 }
+                            ?>
+                            </div>
+                                <div id="nav-paginas" class="m-2">
+                                    <nav aria-label="Page navigation example">
+                                        <ul id="navegacion-entre-paginas" class="pagination justify-content-center">
+                                            <li class="page-item<?php if($this->pagina == 1){echo ' disabled';}?>">
+                                            <a class="page-link" href="<?php echo '?seccion=perdidos&pagina='.($this->pagina-1);?>">Anterior</a>
+                                            </li>
+                                            <?php
+                                            for($i = 1 ; $i <= $this->total_paginas ; $i++){
+                                            ?>
+                                            <li class="page-item"><a class="page-link" href="<?php echo '?seccion=perdidos&pagina='.$i?>"><?php echo $i?></a></li>
+                                            <?php
+                                            }
+                                            ?>
+                                            <li class="page-item<?php if($this->pagina == $this->total_paginas){echo ' disabled';}?>">
+                                            <a class="page-link" href="<?php echo '?seccion=perdidos&pagina='.($this->pagina+1);?>">Siguiente</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            <?php
+                            }else{
+                            ?>
+                                <div class="text-center">
+                                    <h2 class="mt-5">Ups, no se encontraron publicaciones!</h2>
+                                    <img src="<?php echo constant('URL'); ?>public\media\pagina_inexistente.png" class="w-50 ps-4" alt="">
+                                </div>
+                            <?php
                             }
-                        ?>
+                            ?>
                         </div>
-                            <div id="nav-paginas" class="m-2">
-                                <nav aria-label="Page navigation example">
-                                    <ul id="navegacion-entre-paginas" class="pagination justify-content-center">
-                                        <li class="page-item<?php if($this->pagina == 1){echo ' disabled';}?>">
-                                        <a class="page-link" href="<?php echo '?seccion=perdidos&pagina='.($this->pagina-1);?>">Anterior</a>
-                                        </li>
-                                        <?php
-                                        for($i = 1 ; $i <= $this->total_paginas ; $i++){
-                                        ?>
-                                        <li class="page-item"><a class="page-link" href="<?php echo '?seccion=perdidos&pagina='.$i?>"><?php echo $i?></a></li>
-                                        <?php
-                                        }
-                                        ?>
-                                        <li class="page-item<?php if($this->pagina == $this->total_paginas){echo ' disabled';}?>">
-                                        <a class="page-link" href="<?php echo '?seccion=perdidos&pagina='.($this->pagina+1);?>">Siguiente</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        <?php
-                        }else{
-                        ?>
-                            <div class="text-center">
-                                <img src="<?php echo constant('URL'); ?>public\media\pagina_inexistente.png" class="w-50 ps-4" alt="">
-                                <h2>Ups no se encontraron publicaciones.</h2>
-                            </div>
-                        <?php
-                        }
-                        ?>
-                    </div>
                     <?php
                     }
                     if($this->seccion == 'encontrados'){
@@ -338,8 +338,8 @@
                             }else{
                             ?>
                                 <div class="text-center">
+                                    <h2 class="mt-5">Ups, no se encontraron publicaciones!</h2>
                                     <img src="<?php echo constant('URL'); ?>public\media\pagina_inexistente.png" class="w-50 ps-4" alt="">
-                                    <h2>Ups no se encontraron publicaciones.</h2>
                                 </div>
                             <?php
                             }

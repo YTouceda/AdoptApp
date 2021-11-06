@@ -206,21 +206,21 @@
                 <div id="publicaciones_adopcion" class="col-12 publicaciones">
                     <div class="row">
                         <?php
-                        if(!empty($this->mascotas)){
-                            foreach($this->mascotas as $row){
+                        if(!empty($this->publicacion)){
+                            foreach($this->publicacion as $row){
                                 $mascota = new Mascota();
-                                $mascota = $row;
+                                $mascota = $row->getMascota();
                         ?>
                                 <div class="col-sm-12 col-md-6 m-md-0 p-md-3 col-lg-6 col-xl-4 px-2">
                                     <div class="card m-2 card_publicaciones">
-                                        <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?mascota=<?php echo $mascota->id_mascota?>">
-                                            <img src="<?php echo constant('URL')."Public/public_media/".$mascota->fotos_mascota;?>" class="text-center card-img-top card-imagen">
+                                        <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?mascota=<?php echo $row->getId_publicacion()?>">
+                                            <img src="<?php echo constant('URL')."Public/public_media/".$mascota->getFotos_mascota();?>" class="text-center card-img-top card-imagen">
                                             <div class="card-body">
-                                                <h4><?php echo $mascota->nombre_mascota?></h4>
+                                                <h4><?php echo $mascota->getNombre_mascota()?></h4>
                                                 <p class="card-text">
                                                     <?php 
                                                     for( $i = 0; $i <= 70 ; $i++){
-                                                        echo $mascota->descripcion_mascota[$i];
+                                                        echo $mascota->getDescripcion_mascota()[$i];
                                                     }?>...
                                                 </p>
                                             </div>
@@ -254,8 +254,8 @@
                     }else{
                     ?>
                         <div class="text-center">
+                            <h2 class="mt-5">Ups, no se encontraron publicaciones!</h2>
                             <img src="<?php echo constant('URL'); ?>public\media\pagina_inexistente.png" class="w-50 ps-4" alt="">
-                            <h2>Ups no se encontraron publicaciones.</h2>
                         </div>
                     <?php
                     }

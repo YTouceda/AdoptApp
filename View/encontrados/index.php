@@ -268,8 +268,8 @@
                         }else{
                         ?>
                             <div class="text-center">
+                                <h2 class="mt-3">Ups, no se encontraron publicaciones!</h2>
                                 <img src="<?php echo constant('URL'); ?>public\media\pagina_inexistente.png" class="w-50 ps-4" alt="">
-                                <h2>Ups no se encontraron publicaciones.</h2>
                             </div>
                         <?php
                         }
