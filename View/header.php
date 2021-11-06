@@ -203,11 +203,12 @@
                 </div>
             </div>
         </div>
-        <form id="btn_iniciar_container" class="m-0" action="header/login" method="POST">
-            <input type="hidden" name="email" id="email">
-            <input type="hidden" name="nombre" id="nombre">
-            <input type="hidden" name="id" id="id">
-            <input type="hidden" name="foto" id="foto">
+        <form id="btn_iniciar_container" class="m-0" action="login" method="POST">
+            <input type="hidden" name="login_email" id="login_email">
+            <input type="hidden" name="login_nombre" id="login_nombre">
+            <input type="hidden" name="login_id" id="login_id">
+            <input type="hidden" name="login_foto" id="login_foto">
+            <input type="hidden" name="login_numero" id="login_numero">
         </form>
     </body>
 </html>

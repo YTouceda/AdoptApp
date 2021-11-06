@@ -38,7 +38,7 @@ $(document).ready(function () {
         localidades = ordenarLocalidades(localidades);
         $(localidades).each((index)=>{
             loc = localidades[index];
-            $option+= `<option data-l='${loc.id_localidad}' data-p='${loc.id_provincia}'> ${loc.nombre} </option>`;
+            $option+= `<option value='${loc.id_localidad}' id-p='${loc.id_provincia}'> ${loc.nombre} </option>`;
         })
         $("#localidades").html($option);
     }

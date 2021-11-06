@@ -4,7 +4,7 @@ class Crear_Publicacion extends Controller{
     function __construct(){
         parent::__construct();
         date_default_timezone_set('America/Argentina/Buenos_Aires');
-        $this->user=new user();
+        $this->user=new Usuario();
     }
 
     function render(){
@@ -15,7 +15,7 @@ class Crear_Publicacion extends Controller{
     function registrarMascota(){
         $this->view->render('crear_publicacion/index');
         if(isset($_SESSION['id'])){
-            $this->user->setUser($this->userSession->getCurrentUser());
+            $this->user->setUsuario($this->userSession->getCurrentUsuario());
         }
         $check = getimagesize($_FILES["foto"]["tmp_name"]);
         if($check !== false){

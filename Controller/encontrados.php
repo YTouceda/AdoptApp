@@ -18,7 +18,7 @@ Class Encontrados extends Controller{
             $pagina = $_GET['pagina'];
         }
         $datos = $this->model->get($pagina);
-        if($datos['items']){
+        if(!empty($datos['items'])){
             $this->view->mascotas = $datos['items'];
             $this->view->total_paginas = $datos['total'];
             $this->view->pagina = $pagina;

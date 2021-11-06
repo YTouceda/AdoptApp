@@ -4,13 +4,13 @@ Class Mis_publicaciones extends Controller{
     function __construct(){
         parent::__construct();
         $this->view->mascotas = [];
-        $this->view->user=new user();
+        $this->view->user=new Usuario();
 
     }
     
     function Render(){
         if(isset($_SESSION['id'])){
-            $this->view->user->setUser($this->userSession->getCurrentUser());
+            $this->view->user->setUsuario($this->userSession->getCurrentUsuario());
         }
         if(!isset($_GET['pagina'])){
             $pagina = 1;

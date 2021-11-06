@@ -1,14 +1,14 @@
 <?php
 
-include_once 'user.php';
+include_once 'Clases/usuario.php';
 include_once 'user_session.php';
 
 
 class Controller{
     
     function __construct(){
-        $this->userSession = new UserSession();
-        $this->user = new User();
+        $this->userSession = new UsuarioSession();
+        $this->usuario = new Usuario();
         $this->view = new View();
     }
     

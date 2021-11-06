@@ -4,7 +4,7 @@ Class editar_publicacion extends Controller{
 
     function __construct(){
         parent::__construct();
-        $this->view->user=new user();
+        $this->view->user=new Usuario();
         $this->view->mensaje = "";
         $this->view->mascota = [];
     }
