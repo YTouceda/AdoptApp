@@ -1,16 +1,16 @@
 <?php
 
-class UserSession{
+class UsuarioSession{
 
     public function __construct(){
         session_start();
     }
 
-    public function setCurrentUser($id){
+    public function setCurrentUsuario($id){
         $_SESSION['id'] = $id;
     }
 
-    public function getCurrentUser(){
+    public function getCurrentUsuario(){
         return $_SESSION['id'];
     }
 

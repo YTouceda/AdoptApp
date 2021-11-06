@@ -254,6 +254,7 @@
                     }else{
                     ?>
                         <div class="text-center">
+                            <img src="<?php echo constant('URL'); ?>public\media\pagina_inexistente.png" class="w-50 ps-4" alt="">
                             <h2>Ups no se encontraron publicaciones.</h2>
                         </div>
                     <?php
