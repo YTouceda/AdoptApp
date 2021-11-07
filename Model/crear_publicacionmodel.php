@@ -13,6 +13,7 @@ class crear_publicacionModel extends Model{
 
         try{
             
+
             $Mascota=$objPublicacion->getMascota();
             $query = $this->db->connect();
             $query->beginTransaction();            
@@ -39,18 +40,12 @@ class crear_publicacionModel extends Model{
             `ID_LOCALIDAD`,
             `FECHA_ALTA_PUBLICACION`,
             `NUM_CONTACTO_PUBLICACION`) VALUES (
-            ':id_estado',
-            ':id_usuario',
-            ':id_mascota',
-            ':id_localidad',
-            ':fecha_alta_publicacion',
-            ':num_contacto_publicacion')");
-            $query->bindParam(':id_estado', $objPublicacion->getEstado());
-            $query->bindParam(':id_usuario', $objPublicacion->getId_usuario());
-            $query->bindParam(':id_mascota', $objPublicacion->getId_mascota());
-            $query->bindParam(':id_localidad', $objPublicacion->getLocalidad());
-            $query->bindParam(':fecha_alta_publicacion', $objPublicacion->getFecha_alta_publicacion());
-            $query->bindParam(':num_contacto_publicacion', $objPublicacion->getNum_contacto_publicacion());
+            '".$objPublicacion->getEstado()."'
+            ,'".$objPublicacion->getId_usuario()."'
+            ,'".$query->lastInsertId()."'
+            ,'".$objPublicacion->getLocalidad()."'
+            ,'".$objPublicacion->getFecha_alta_publicacion()."'
+            ,'".$objPublicacion->getNum_contacto_publicacion()."')");
             $query->commit();
             return true;
 
@@ -61,7 +56,7 @@ class crear_publicacionModel extends Model{
             $query->rollback();
             echo "Error: " . $exc->getMessage();
             echo "<br>";
-            echo var_dump($objPublicacion->getId_usuario());
+            var_dump($Mascota->getId_mascota());
             return false;
 
         }       
