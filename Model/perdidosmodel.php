@@ -1,26 +1,24 @@
 <?php
 
 include_once 'Clases/publicacion.php';
+include_once 'Clases/mascota.php';
 
 class perdidosModel extends Model{
     public function __construct(){
         parent::__construct();
     }
 
-    public function get($num_pagina){
+    public function get($where , $num_pagina){
         $items = [];
         try {
-            $estado = 'Perdido';
             $cantidad_publicaciones = 6;
             $pagina = $num_pagina;
-            $query = $this->db->connect()->prepare("SELECT  ID_PUBLICACION , ID_USUARIO , NOMBRE_MASCOTA , DESCRIPCION_MASCOTA , FOTO_MASCOTA , NUM_CONTACTO_PUBLICACION , FECHA_ALTA_PUBLICACION , SEXO_MASCOTA , EDAD_MASCOTA , TAMANIO_MASCOTA , ESTADO_PUBLICACION , LOCALIDAD , PROVINCIA , TIPO_ESPECIE_MASCOTA  FROM  V_PUBLICACION  WHERE ESTADO_PUBLICACION = :ESTADO_PUBLICACION");
-            $query->bindParam(':ESTADO_PUBLICACION', $estado);
+            $query = $this->db->connect()->prepare("SELECT  ID_PUBLICACION, FECHA_BAJA_PUBLICACION, NOMBRE_MASCOTA, DESCRIPCION_MASCOTA, FOTO_MASCOTA, TIPO_ESPECIE_MASCOTA, SEXO_MASCOTA, EDAD_MASCOTA, TAMANIO_MASCOTA, ESTADO_PUBLICACION, ID_LOCALIDAD, LOCALIDAD, ID_PROVINCIA, PROVINCIA  FROM  V_MOSTRAR_PUBLICACION  ".$where);
             $query->execute();
             $num_filas = $query->rowCount();
             $total_paginas = ceil($num_filas/$cantidad_publicaciones);
             $desde = ($pagina - 1)*$cantidad_publicaciones;
-            $query = $this->db->connect()->prepare("SELECT  ID_PUBLICACION , ID_USUARIO , NOMBRE_MASCOTA , DESCRIPCION_MASCOTA , FOTO_MASCOTA , NUM_CONTACTO_PUBLICACION , FECHA_ALTA_PUBLICACION , SEXO_MASCOTA , EDAD_MASCOTA , TAMANIO_MASCOTA , ESTADO_PUBLICACION , LOCALIDAD , PROVINCIA , TIPO_ESPECIE_MASCOTA  FROM  V_PUBLICACION  WHERE ESTADO_PUBLICACION = :ESTADO_PUBLICACION LIMIT :DESDE,:HASTA");
-            $query->bindParam(':ESTADO_PUBLICACION', $estado);
+            $query = $this->db->connect()->prepare("SELECT  ID_PUBLICACION, FECHA_BAJA_PUBLICACION, NOMBRE_MASCOTA, DESCRIPCION_MASCOTA, FOTO_MASCOTA, TIPO_ESPECIE_MASCOTA, SEXO_MASCOTA, EDAD_MASCOTA, TAMANIO_MASCOTA, ESTADO_PUBLICACION, ID_LOCALIDAD, LOCALIDAD, ID_PROVINCIA, PROVINCIA  FROM  V_MOSTRAR_PUBLICACION ".$where." LIMIT :DESDE,:HASTA;");
             $query->bindParam(':DESDE', $desde);
             $query->bindParam(':HASTA', $cantidad_publicaciones);
             $query->execute();
@@ -28,15 +26,13 @@ class perdidosModel extends Model{
                 $item = new Publicacion();
                 $mascota= new Mascota();
                 $item->setId_publicacion($row['ID_PUBLICACION']);
-                $item->setId_usuario($row['ID_USUARIO']);
                 $item->setEstado($row['ESTADO_PUBLICACION']);
-                $item->setNum_contacto_publicacion($row['NUM_CONTACTO_PUBLICACION']);
-                $item->setFecha_alta_publicacion($row['FECHA_ALTA_PUBLICACION']);
+                $item->setFecha_baja_publicacion($row['FECHA_BAJA_PUBLICACION']);
                 $mascota->setSexo_mascota($row['SEXO_MASCOTA']);
                 $mascota->setEdad_mascota($row['EDAD_MASCOTA']);
                 $mascota->setTamanio_mascota($row['TAMANIO_MASCOTA']);
-                $item->setLocalidad($row['LOCALIDAD']);
-                $item->setProvincia($row['PROVINCIA']);
+                $item->setLocalidad($row['ID_PROVINCIA']);
+                $item->setProvincia($row['ID_LOCALIDAD']);
                 $mascota->setEspecie_mascota($row['TIPO_ESPECIE_MASCOTA']);
                 $mascota->setNombre_mascota($row['NOMBRE_MASCOTA']);
                 $mascota->setDescripcion_mascota($row['DESCRIPCION_MASCOTA']);

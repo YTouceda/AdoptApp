@@ -7,7 +7,6 @@ class Publicacion{
     private $estado;
     private $id_usuario;
     private $mascota;
-    private $estado_publicacion;
     private $fecha_alta_publicacion;
     private $fecha_baja_publicacion;
     private $num_contacto_publicacion;
@@ -29,9 +28,6 @@ class Publicacion{
     } 
     public function getMascota(){
         return $this->mascota;
-    } 
-    public function getEstado_publicacion(){
-        return $this->estado_publicacion;
     } 
     public function getFecha_alta_publicacion(){
         return $this->fecha_alta_publicacion;
@@ -60,9 +56,6 @@ class Publicacion{
     }
     public function setMascota($Mascota){
         $this->mascota = $Mascota;
-    }
-    public function setEstado_publicacion($Estado_publicacion){
-        $this->estado_publicacion = $Estado_publicacion;
     }
     public function setFecha_alta_publicacion($Fecha_alta_publicacion){
         $this->fecha_alta_publicacion = $Fecha_alta_publicacion;

@@ -21,115 +21,111 @@
         <main>
             <div class="container">
                 <div id="main-encontrados" class="row">
-                    <div id="formulario-filtros" class="form form-filtros">
-                        <form id="form-filtro" class="form formulario">
-                            <div class="row justify-content-md-center">
-                                <div class="col">
-                                    <label for="" class="col-form-label label-checkbox">Ubicación:</label>
-                                    <select name="" id="provincia" class="form form-control m-2">
-                                        <option disabled="true" selected="true" value="">Seleccionar una Provincia</option>
-                                        <option value="06">Buenos Aires</option>
-                                        <option value="10">Catamarca</option>
-                                        <option value="22">Chaco</option>
-                                        <option value="26">Chubut</option>
-                                        <option value="02">Ciudad Autónoma de Buenos Aires</option>
-                                        <option value="14">Cordoba</option>
-                                        <option value="18">Corrientes</option>
-                                        <option value="30">Entre Rios</option>
-                                        <option value="34">Formosa</option>
-                                        <option value="38">Jujuy</option>
-                                        <option value="42">La Pampa</option>
-                                        <option value="46">La Rioja</option>
-                                        <option value="50">Mendoza</option>
-                                        <option value="54">Misiones</option>
-                                        <option value="58">Neuquen</option>
-                                        <option value="62">Rio Negro</option>
-                                        <option value="66">Salta</option>
-                                        <option value="74">San Luis</option>
-                                        <option value="78">Santa Cruz</option>
-                                        <option value="82">Santa Fe</option>
-                                        <option value="86">Santiago Del Estero</option>
-                                        <option value="94">Tierra Del Fuego</option>
-                                    </select>
-                                    <select id="localidades" class="form form-control m-2">
-                                        <option disabled="true" selected="true" value="">Seleccionar una Localidad</option>
-                                    </select>
-                                    <input id="xlocalidad" type="hidden">
+                    <div id="formulario-filtros" class="col-12">
+                        <form id="form-filtro" class="form formulario row justify-content-md-center" action="encontrados" method="POST">
+                            <div class="col">
+                                <label class="col-form-label label-checkbox">Ubicación:</label>
+                                <select name="ID_PROVINCIA[]" id="provincia" class="form form-control m-2">
+                                    <option disabled="true" selected="true" value="">Seleccionar una Provincia</option>
+                                    <option value="02">Ciudad Autónoma de Buenos Aires</option>
+                                    <option value="06">Buenos Aires</option>
+                                    <option value="10">Catamarca</option>
+                                    <option value="14">Cordoba</option>
+                                    <option value="18">Corrientes</option>
+                                    <option value="22">Chaco</option>
+                                    <option value="26">Chubut</option>
+                                    <option value="30">Entre Rios</option>
+                                    <option value="34">Formosa</option>
+                                    <option value="38">Jujuy</option>
+                                    <option value="42">La Pampa</option>
+                                    <option value="46">La Rioja</option>
+                                    <option value="50">Mendoza</option>
+                                    <option value="54">Misiones</option>
+                                    <option value="58">Neuquen</option>
+                                    <option value="62">Rio Negro</option>
+                                    <option value="66">Salta</option>
+                                    <option value="74">San Luis</option>
+                                    <option value="78">Santa Cruz</option>
+                                    <option value="82">Santa Fe</option>
+                                    <option value="86">Santiago Del Estero</option>
+                                    <option value="94">Tierra Del Fuego</option>
+                                </select>
+                                <select name="ID_LOCALIDAD[]" id="localidades" class="form form-control m-2">
+                                    <option disabled="true" selected="true" value="">Seleccionar una Localidad</option>
+                                </select>
+                                <input id="xlocalidad" type="hidden">
+                            </div>
+                            <div class="col">
+                                <label for="tipo" class="col-form-label label-checkbox">Tipo de mascota:</label>
+                                <div name="tipo" class="form-check form-check-inline checkbox">
+                                    <input type="checkbox" id="perro" name="TIPO_ESPECIE_MASCOTA[]" value="Perro/a" class="form-check-input">
+                                    <label for="perro" class="form-check-label"><i class="fas fa-dog"></i>- Perro/a</label><br>
+                                    <input type="checkbox" id="gato" name="TIPO_ESPECIE_MASCOTA[]" value="Gato/a" class="form-check-input">
+                                    <label for="gato" class="form-check-label"><i class="fas fa-cat"></i>- Gato/a</label><br>
                                 </div>
-                                <div class="col">
-                                    <label for="tipo" class="col-form-label label-checkbox">Tipo de mascota:</label>
-                                    <div name="tipo" class="form-check form-check-inline checkbox">
-                                        <input type="checkbox" id="perro" name="tipo-mascota" value="Perro" class="form-check-input">
-                                        <label for="perro" class="form-check-label"><i class="fas fa-dog"></i>- Perro/a</label><br>
-                                        <input type="checkbox" id="gato" name="tipo-mascota" value="Gato" class="form-check-input">
-                                        <label for="gato" class="form-check-label"><i class="fas fa-cat"></i>- Gato/a</label><br>
-                                    </div>
+                            </div>
+                            <div class="col">
+                                <label for="tamanio" class="col-form-label label-checkbox">Tamaño de mascota:</label>
+                                <div id="tamanio" name="tamanio" class="form-check form-check-inline checkbox">
+                                    <input type="checkbox" id="chico" name="TAMANIO_MASCOTA[]" value="Chico" class="form-check-input">
+                                    <label for="chico" class="form-check-label">Chico/a</label><br>
+                                    <input type="checkbox" id="mediano" name="TAMANIO_MASCOTA[]" value="Mediano" class="form-check-input">
+                                    <label for="mediano" class="form-check-label">Mediano/a</label><br>
+                                    <input type="checkbox" id="grande" name="TAMANIO_MASCOTA[]" value="Grande" class="form-check-input">
+                                    <label for="grande" class="form-check-label">Grande</label>
                                 </div>
-                                <div class="col">
-                                    <label for="tamanio" class="col-form-label label-checkbox">Tamaño de mascota:</label>
-                                    <div id="tamanio" name="tamanio" class="form-check form-check-inline checkbox">
-                                        <input type="checkbox" id="chico" name="tamaño-mascota" value="Chico" class="form-check-input">
-                                        <label for="chico" class="form-check-label">Chico/a</label><br>
-                                        <input type="checkbox" id="mediano" name="tamaño-mascota" value="Mediano" class="form-check-input">
-                                        <label for="mediano" class="form-check-label">Mediano/a</label><br>
-                                        <input type="checkbox" id="grande" name="tamaño-mascota" value="Grande" class="form-check-input">
-                                        <label for="grande" class="form-check-label">Grande</label>
-                                    </div>
+                            </div>
+                            <div class="col">
+                                <label for="sexo" class="col-form-label label-checkbox">Sexo de la mascota:</label>
+                                <div name="sexo" class="form-check form-check-inline checkbox">
+                                    <input type="checkbox" id="hembra" name="SEXO_MASCOTA[]" value="Hembra" class="form-check-input">
+                                    <label for="hembra" class="form-check-label">Hembra</label><br>
+                                    <input type="checkbox" id="macho" name="SEXO_MASCOTA[]" value="Macho" class="form-check-input">
+                                    <label for="macho" class="form-check-label">Macho</label><br>
                                 </div>
-                                <div class="col">
-                                    <label for="sexo" class="col-form-label label-checkbox">Sexo de la mascota:</label>
-                                    <div name="sexo" class="form-check form-check-inline checkbox">
-                                        <input type="checkbox" id="hembra" name="sexo-mascota" value="Hembra" class="form-check-input">
-                                        <label for="hembra" class="form-check-label">Hembra</label><br>
-                                        <input type="checkbox" id="macho" name="sexo-mascota" value="Macho" class="form-check-input">
-                                        <label for="macho" class="form-check-label">Macho</label><br>
-                                    </div>
+                            </div>
+                            <div class="col">
+                                <label for="edad" class="col-form-label label-checkbox">Edad de mascota:</label>
+                                <div name="edad" class="form-check form-check-inline checkbox">
+                                    <input type="checkbox" id="cachorro" name="EDAD_MASCOTA[]" value="Cachorro/a" class="form-check-input">
+                                    <label for="cachorro" class="form-check-label">Cachorro/a</label><br>
+                                    <input type="checkbox" id="adulto" name="EDAD_MASCOTA[]" value="Adulto/a" class="form-check-input">
+                                    <label for="adulto" class="form-check-label">Adulto/a</label><br>
+                                    <input type="checkbox" id="anciano" name="EDAD_MASCOTA[]" value="Anciano/a" class="form-check-input">
+                                    <label for="anciano" class="form-check-label">Anciano/a</label>
                                 </div>
-                                <div class="col">
-                                    <label for="edad" class="col-form-label label-checkbox">Edad de mascota:</label>
-                                    <div name="edad" class="form-check form-check-inline checkbox">
-                                        <input type="checkbox" id="cachorro" name="edad-mascota" value="Cachorro" class="form-check-input">
-                                        <label for="cachorro" class="form-check-label">Cachorro/a</label><br>
-                                        <input type="checkbox" id="adulto" name="edad-mascota" value="Adulto" class="form-check-input">
-                                        <label for="adulto" class="form-check-label">Adulto/a</label><br>
-                                        <input type="checkbox" id="anciano" name="edad-mascota" value="Anciano" class="form-check-input">
-                                        <label for="anciano" class="form-check-label">Anciano/a</label>
-                                    </div>
-                                </div>
-                                <div class="col-1 position-relative">
-                                    <input type="button" id="boton" value="Filtrar" class="btn btn-success btn-filtrar position-absolute top-50 start-50 translate-middle">
-                                </div>
+                            </div>
+                            <div class="col col-1 position-relative">
+                                <input type="submit" id="boton" value="Filtrar" class="btn btn-success btn-filtrar position-absolute top-50 start-50 translate-middle">
                             </div>
                         </form>
                         <div id="seccion-btn-filtros-modal" class="col-sm-12">
-                            <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#modal_filtros">
                                 <i class="fas fa-sliders-h"></i>
                                     Filtros
                             </button>
-                                
-                                <!-- Modal -->
-                                <div class="modal fade modal-filtros modal-style" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade modal-style" id="modal_filtros" tabindex="-1" aria-labelledby="titulo_modal_filtro" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Filtros</h5>
+                                            <h5 class="modal-title" id="titulo_modal_filtro">Filtros</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <div id="formulario-filtros" class="form">
-                                                <form id="form-filtro-modal" class="form row g-3 formulario">
+                                            <div id="formulario-filtros-modal" class="form">
+                                                <form id="form-filtro-modal" class="form row g-3 formulario"  action="encontrados" method="POST">
                                                     <div class="row justify-content-md-center">
                                                         <div class="col col-12">
-                                                            <label for="" class="col-form-label label-checkbox">Ubicación:</label>
-                                                            <select name="" id="provincia_modal" class="form form-control m-2">
+                                                            <label class="col-form-label label-checkbox">Ubicación:</label>
+                                                            <select name="ID_PROVINCIA[]" id="provincia_modal" class="form form-control m-2">
                                                                 <option disabled="true" selected="true" value="">Seleccionar una Provincia</option>
+                                                                <option value="02">Ciudad Autónoma de Buenos Aires</option>
                                                                 <option value="06">Buenos Aires</option>
                                                                 <option value="10">Catamarca</option>
-                                                                <option value="22">Chaco</option>
-                                                                <option value="26">Chubut</option>
-                                                                <option value="02">Ciudad Autónoma de Buenos Aires</option>
                                                                 <option value="14">Cordoba</option>
                                                                 <option value="18">Corrientes</option>
+                                                                <option value="22">Chaco</option>
+                                                                <option value="26">Chubut</option>
                                                                 <option value="30">Entre Rios</option>
                                                                 <option value="34">Formosa</option>
                                                                 <option value="38">Jujuy</option>
@@ -146,7 +142,7 @@
                                                                 <option value="86">Santiago Del Estero</option>
                                                                 <option value="94">Tierra Del Fuego</option>
                                                             </select>
-                                                            <select id="localidades_modal" class="form form-control m-2">
+                                                            <select name="ID_LOCALIDAD[]" id="localidades_modal" class="form form-control m-2">
                                                                 <option disabled="true" selected="true" value="">Seleccionar una Localidad</option>
                                                             </select>
                                                             <input id="xlocalidad_modal" type="hidden">
@@ -154,52 +150,52 @@
                                                         <div class="col  col-12">
                                                             <label for="tipo" class="col-12 col-form-label label-checkbox">Tipo de mascota:</label>
                                                             <div name="tipo" class="form-check form-check-inline checkbox">
-                                                                <input type="checkbox" id="mdl-perro" name="tipo-mascota" value="Perro" class="form-check-input">
+                                                                <input type="checkbox" id="mdl-perro" name="TIPO_ESPECIE_MASCOTA[]" value="Perro/a" class="form-check-input">
                                                                 <label for="mdl-perro" class="form-check-label"><i class="fas fa-dog"></i>- Perro/a</label>
-                                                                <input type="checkbox" id="mdl-gato" name="tipo-mascota" value="Gato" class="form-check-input">
+                                                                <input type="checkbox" id="mdl-gato" name="TIPO_ESPECIE_MASCOTA[]" value="Gato/a" class="form-check-input">
                                                                 <label for="mdl-gato" class="form-check-label"><i class="fas fa-cat"></i>- Gato/a</label>
                                                             </div>
                                                         </div>
                                                         <div class="col  col-12">
                                                             <label for="tamanio" class="col-12 col-form-label label-checkbox">Tamaño de mascota:</label>
                                                             <div name="tamanio" class="form-check form-check-inline checkbox">
-                                                                <input type="checkbox" id="mdl-chico" name="tamaño-mascota" value="Chico" class="form-check-input">
+                                                                <input type="checkbox" id="mdl-chico" name="TAMANIO_MASCOTA[]" value="Chico" class="form-check-input">
                                                                 <label for="mdl-chico" class="form-check-label">Chico/a</label>
-                                                                <input type="checkbox" id="mdl-mediano" name="tamaño-mascota" value="Mediano" class="form-check-input">
+                                                                <input type="checkbox" id="mdl-mediano" name="TAMANIO_MASCOTA[]" value="Mediano" class="form-check-input">
                                                                 <label for="mdl-mediano" class="form-check-label">Mediano/a</label>
-                                                                <input type="checkbox" id="mdl-grande" name="tamaño-mascota" value="Grande" class="form-check-input">
+                                                                <input type="checkbox" id="mdl-grande" name="TAMANIO_MASCOTA[]" value="Grande" class="form-check-input">
                                                                 <label for="mdl-grande" class="form-check-label">Grande</label>
                                                             </div>
                                                         </div>
                                                         <div class="col  col-12">
                                                             <label for="sexo" class="col-12 col-form-label label-checkbox">Sexo de la mascota:</label>
                                                             <div name="sexo" class="form-check form-check-inline checkbox">
-                                                                <input type="checkbox" id="mdl-hembra" name="sexo-mascota" value="Hembra" class="form-check-input">
+                                                                <input type="checkbox" id="mdl-hembra" name="SEXO_MASCOTA[]" value="Hembra" class="form-check-input">
                                                                 <label for="mdl-hembra" class="form-check-label">Hembra</label>
-                                                                <input type="checkbox" id="mdl-macho" name="sexo-mascota" value="Macho" class="form-check-input">
+                                                                <input type="checkbox" id="mdl-macho" name="SEXO_MASCOTA[]" value="Macho" class="form-check-input">
                                                                 <label for="mdl-macho" class="form-check-label">Macho</label>
                                                             </div>
                                                         </div>
                                                         <div class="col  col-12">
                                                             <label for="edad" class="col-12 col-form-label label-checkbox">Edad de mascota:</label>
                                                             <div name="edad" class="form-check form-check-inline checkbox">
-                                                                <input type="checkbox" id="mdl-cachorro" name="edad-mascota" value="Cachorro" class="form-check-input">
+                                                                <input type="checkbox" id="mdl-cachorro" name="EDAD_MASCOTA[]" value="Cachorro/a" class="form-check-input">
                                                                 <label for="mdl-cachorro" class="form-check-label">Cachorro/a</label>
-                                                                <input type="checkbox" id="mdl-adulto" name="edad-mascota" value="Adulto" class="form-check-input">
+                                                                <input type="checkbox" id="mdl-adulto" name="EDAD_MASCOTA[]" value="Adulto/a" class="form-check-input">
                                                                 <label for="mdl-adulto" class="form-check-label">Adulto/a</label>
-                                                                <input type="checkbox" id="mdl-anciano" name="edad-mascota" value="Anciano" class="form-check-input">
+                                                                <input type="checkbox" id="mdl-anciano" name="EDAD_MASCOTA[]" value="Anciano/a" class="form-check-input">
                                                                 <label for="mdl-anciano" class="form-check-label">Anciano/a</label>
                                                             </div>
                                                         </div>
                                                         <div class="col col-12 position-relative">
                                                         </div>
                                                     </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" id="btn-cancelar-filtrar-modal" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                        <button type="submit" id="btn-filtrar-modal" class="btn btn-primary btn-filtrar">Filtrar</button>
+                                                    </div>
                                                 </form>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" id="btn-cancelar-filtrar-modal" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="button" id="btn-filtrar-modal" class="btn btn-primary btn-filtrar">Filtrar</button>
                                         </div>
                                     </div>
                                 </div>

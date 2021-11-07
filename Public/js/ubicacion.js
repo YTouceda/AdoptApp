@@ -11,7 +11,7 @@ $(document).ready(function () {
     $.ajax({
         //url: 'getLocalidades.php',
         url: 'Public/Otros/localidades.json',
-        type:  'get',
+        type:  'POST',
         beforeSend: function () {
                 //console.log("enviando");
         },

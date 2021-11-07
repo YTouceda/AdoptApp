@@ -39,7 +39,7 @@ $postulaciones = $this->postulaciones;
                   <h5 class="card-title"><?php echo $this->mascota->nombre_mascota;?></h5>
                   <p class="card-text"><?php echo $this->mascota->descripcion_mascota;?></p>
                   <p class="card-text"><small class="text-muted"><?php echo $this->mascota->fecha_publicado;?></small></p>
-                  <div id="tipo-mascota">
+                  <div id="tipo_mascota">
                     <table class="table">
                       <tbody>
                         <tr>
