@@ -22,6 +22,7 @@ Class Login extends Controller{
                 $this->view->usuario->setEmail($_POST['login_email']);
                 $this->view->usuario->setFoto($_POST['login_foto']);
                 $this->view->render('login/index');
+                var_dump ($_POST['login_nombre']);
                 return true;
             }                                  
             header('Location:' . getenv('HTTP_REFERER'));

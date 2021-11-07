@@ -6,11 +6,17 @@ Class Perfil extends Controller{
         $this->view->user=new Usuario();
     }
     function Render(){
+
         if(isset($_SESSION['id'])){
             $this->view->user->setUsuario($this->userSession->getCurrentUsuario());
+            
         }
+        
         $this->view->render('perfil/index');
+        echo $this->userSession->getCurrentUsuario();
+        
     }
+
 }
 
 ?>

@@ -19,7 +19,7 @@ function validarTamImagenes(tam) {
 }
 
 function redireccionar(){
-    window.location.href = "main";
+    window.location.href = "adopciones";
   }
    
  
@@ -68,7 +68,7 @@ function createPreview(file,id_elemento) {
 }
 function validarCantImagenes(){
     agregadas=$(".img-agregada");
-    console.log(agregadas.length);
+    //console.log(agregadas.length);
     if (agregadas.length==0 || agregadas.length>5){
         return false;
     }
@@ -87,7 +87,7 @@ $(document).on("change", ".add_photo", function () {
 
   
         element = files[0];
-        console.log(element);
+        //console.log(element);
 
             if(validarTamImagenes(element.size)){
                 if (supportedImages.indexOf(element.type) != -1) {
@@ -124,7 +124,10 @@ $(document).on("change", ".add_photo", function () {
         return regExpResult.test(str);
     }
 
-
+$("#test").click(function test(e){
+    console.log($("#provincia").val());
+    console.log($("#localidades").val());
+});
 
     $("#publicar").click(function validarForm(e){
             var formValido=true;
@@ -156,7 +159,7 @@ $(document).on("change", ".add_photo", function () {
           
 
             //NOMBRE
-            console.log(nombre.val());
+            //console.log(nombre.val());
             if(nombre.val()==""){
                 nombre.addClass("is-invalid");
                 var errorElement = errorNombre;
@@ -174,7 +177,7 @@ $(document).on("change", ".add_photo", function () {
             }
         }
 
-        console.log(telefono.val());
+        //console.log(telefono.val());
         if(telefono.val()==""){
             telefono.addClass("is-invalid");
             var errorElement = errorTelefono;
@@ -195,15 +198,15 @@ $(document).on("change", ".add_photo", function () {
             
         console.log(estado.val());
             switch(estado.val()){
-                case "adopcion": 
+                case "0": 
                 errorEstado.hide();
                 estado.removeClass("is-invalid");
                 break;
-                case "encontrado":
+                case "1":
                 errorEstado.hide();
                 estado.removeClass("is-invalid");
                 break;
-                case "perdido":
+                case "2":
                 errorEstado.hide();
                 estado.removeClass("is-invalid");
                 break;
@@ -217,11 +220,11 @@ $(document).on("change", ".add_photo", function () {
             }
             //console.log(tipo.val());
             switch(tipo.val()){
-                case "perro": 
+                case "0": 
                 errorTipo.hide();
                 tipo.removeClass("is-invalid");
                 break;
-                case "gato":
+                case "1":
                 errorTipo.hide();
                 tipo.removeClass("is-invalid");
                 break;
@@ -235,11 +238,11 @@ $(document).on("change", ".add_photo", function () {
             }
             //console.log(sexo.val());
             switch(sexo.val()){
-                case "hembra": 
+                case "0": 
                 errorSexo.hide();
                 sexo.removeClass("is-invalid");
                 break;
-                case "macho":
+                case "1":
                 errorSexo.hide();
                 sexo.removeClass("is-invalid");
                 break;
@@ -253,15 +256,15 @@ $(document).on("change", ".add_photo", function () {
             }
             //console.log(tam.val());
             switch(tam.val()){
-                case "pequeño": 
+                case "0": 
                 errorTamaño.hide();
                 tam.removeClass("is-invalid");
                 break;
-                case "mediano":
+                case "1":
                 errorTamaño.hide();
                 tam.removeClass("is-invalid");
                 break;
-                case "grande":
+                case "2":
                 errorTamaño.hide();
                 tam.removeClass("is-invalid");
                 break;
@@ -275,15 +278,15 @@ $(document).on("change", ".add_photo", function () {
             }
             //console.log(edad.val());
             switch(edad.val()){
-                case "cachorro": 
+                case "0": 
                 errorEdad.hide();
                 edad.removeClass("is-invalid");
                 break;
-                case "adulto":
+                case "1":
                 errorEdad.hide();
                 edad.removeClass("is-invalid");
                 break;
-                case "anciano":
+                case "2":
                 errorEdad.hide();
                 edad.removeClass("is-invalid");
                 break;
@@ -306,114 +309,25 @@ $(document).on("change", ".add_photo", function () {
                 errorDescripcion.hide();
                 desc.removeClass("is-invalid");
             }
-            //console.log(provincia.val());
-            switch(provincia.val()){
-                case "06": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "10": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "22": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "26": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "02": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "14": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "18": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "30": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "30": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "34": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "38": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "42": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "46": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "50": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "54": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "58": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "62": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "66": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "74": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "78": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "82": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "86": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                case "94": 
-                errorProvincia.hide();
-                provincia.removeClass("is-invalid");
-                break;
-                default:
+
+            if(provincia.val()==""){
                 provincia.addClass("is-invalid");
                 var errorElement = errorProvincia;
                 errorProvincia.show();
                 formValido=false;
-                break;
-                
+                console.log("tiro falso");
+            }else{
+                errorProvincia.hide();
+                provincia.removeClass("is-invalid");
             }
-            //console.log(localidades.val());
+            
+            
             if(localidades.val()==""){
                 localidades.addClass("is-invalid");
                 var errorElement = errorLocalidades;
                 errorLocalidades.show();
                 formValido=false;
+                console.log("tiro falso");
             }else{
                 errorLocalidades.hide();
                 localidades.removeClass("is-invalid");
@@ -449,12 +363,11 @@ $(document).on("change", ".add_photo", function () {
 
 
 
-    
+            console.log(formValido);
             if(!formValido){
-                e.preventDefault;
+                e.preventDefault();
             }else{
-                alert("Publicacion enviada exitosamente");
-                setTimeout("redireccionar()", 3000);
+                //setTimeout("redireccionar()", 3000);
                
             }
         });
@@ -540,4 +453,5 @@ function ordenarLocalidades(loc){
 }
 
 });
+
 

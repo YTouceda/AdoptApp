@@ -51,13 +51,14 @@
                             <option <?php if(($_GET['estado'])==0){ echo "selected";} ?> value="0">En Adopción</option>
                             <option <?php if(($_GET['estado'])==1){ echo "selected";} ?> value="1">Lo encontré</option>
                             <option <?php if(($_GET['estado'])==2){ echo "selected";} ?> value="2">Está perdido</option>
+
                             <?php if($_GET['estado']==0)?>
                         </select>
                         </div>
                         <div id="errorEstado" class="invalid-feedback">Debe elegir un estado válido.</div>
                    
                         <div>
-                        <select class="form-select select-cp" aria-label="Mascota" id="select-tipo" name="tipo"> 
+                        <select class="form-select select-cp" aria-label="Mascota" id="select-tipo" name="especie"> 
                             <option selected disabled>Elija el tipo de mascota</option>
                             <option value="0">Perro</option>
                             <option value="1">Gato</option>
@@ -102,7 +103,7 @@
                         <div id="fil-ubicacion" class="select-cp col" >
                            
                             <select name="provincia" id="provincia" class="form form-control">
-                                <option disabled="true" selected="true" value="">Seleccionar una Provincia</option>
+                                <option value="">Seleccionar una Provincia</option>
                                 <option value="06">Buenos Aires</option>
                                 <option value="10">Catamarca</option>
                                 <option value="22">Chaco</option>
@@ -128,7 +129,7 @@
                             </select>
                             <div id="errorProvincia" class="invalid-feedback">Debe seleccionar una provincia.</div>
                             <select id="localidades" class="form-control ciudad-cp col" name="localidad">
-                                <option disabled="true" selected="true" value="">Seleccionar una Localidad</option>
+                                <option value="" >Seleccionar una Localidad</option>
                             </select>
                             <div id="errorLocalidades" class="invalid-feedback">Debe seleccionar una localidad</div>
                             <input id="xlocalidad" type="hidden">
@@ -174,6 +175,7 @@
                     <div id="errorFotos" class="invalid-feedback">Debe subir al menos una foto</div>
                 </div>
 
+                <div id="alertaCreacionExitosa"></div>
                 <button type="submit" id="publicar" name="publicar" class="btn btn-success">Publicar</button>
             </div> 
             

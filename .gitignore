@@ -1,0 +1,88 @@
+
+.SyncFolders History/2021-11-03 21.24.21/
+*.jpeg
+*.jpg
+Syncfolders_Database_db
+.SyncFolders History/2021-11-06 20.17.40/Clases/publicacion.php
+.SyncFolders History/2021-11-06 20.17.40/Clases/usuario.php
+.SyncFolders History/2021-11-06 20.17.40/config/config.php
+.SyncFolders History/2021-11-06 20.17.40/Controller/adopciones.php
+.SyncFolders History/2021-11-06 20.17.40/Controller/editar_perfil.php
+.SyncFolders History/2021-11-06 20.17.40/Controller/editar_publicacion.php
+.SyncFolders History/2021-11-06 20.17.40/Controller/encontrados.php
+.SyncFolders History/2021-11-06 20.17.40/Controller/header.php
+.SyncFolders History/2021-11-06 20.17.40/Controller/logout.php
+.SyncFolders History/2021-11-06 20.17.40/Controller/mi_publicacion.php
+.SyncFolders History/2021-11-06 20.17.40/Controller/mis_publicaciones.php
+.SyncFolders History/2021-11-06 20.17.40/Controller/perdidos.php
+.SyncFolders History/2021-11-06 20.17.40/Controller/perfil.php
+.SyncFolders History/2021-11-06 20.17.40/index.php
+.SyncFolders History/2021-11-06 20.17.40/libs/app.php
+.SyncFolders History/2021-11-06 20.17.40/libs/controller.php
+.SyncFolders History/2021-11-06 20.17.40/libs/db.php
+.SyncFolders History/2021-11-06 20.17.40/libs/model.php
+.SyncFolders History/2021-11-06 20.17.40/libs/user.php
+.SyncFolders History/2021-11-06 20.17.40/libs/user_session.php
+.SyncFolders History/2021-11-06 20.17.40/libs/view.php
+.SyncFolders History/2021-11-06 20.17.40/Model/abrir_publicacionmodel.php
+.SyncFolders History/2021-11-06 20.17.40/Model/adopcionesmodel.php
+.SyncFolders History/2021-11-06 20.17.40/Model/crear_publicacionmodel.php
+.SyncFolders History/2021-11-06 20.17.40/Model/editar_perfilmodel.php
+.SyncFolders History/2021-11-06 20.17.40/Model/editar_publicacionmodal.php
+.SyncFolders History/2021-11-06 20.17.40/Model/headermodel.php
+.SyncFolders History/2021-11-06 20.17.40/Model/mi_publicacionmodel.php
+.SyncFolders History/2021-11-06 20.17.40/Model/mis_publicacionesmodel.php
+.SyncFolders History/2021-11-06 20.17.40/Model/perdidosmodel.php
+.SyncFolders History/2021-11-06 20.17.40/Model/postulacionesmodel.php
+.SyncFolders History/2021-11-06 20.17.40/public/css/estilo.css
+.SyncFolders History/2021-11-06 20.17.40/public/css/ppropia.css
+.SyncFolders History/2021-11-06 20.17.40/public/css/style-abrir_publicacion.css
+.SyncFolders History/2021-11-06 20.17.40/public/css/style-CrearPublicacion.css
+.SyncFolders History/2021-11-06 20.17.40/public/css/style-CrearPublicacionold.css
+.SyncFolders History/2021-11-06 20.17.40/public/css/style-header-footer.css
+.SyncFolders History/2021-11-06 20.17.40/public/css/style-misPublicaciones.css
+.SyncFolders History/2021-11-06 20.17.40/public/css/style-modal-filtros.css
+.SyncFolders History/2021-11-06 20.17.40/public/css/style-modal.css
+.SyncFolders History/2021-11-06 20.17.40/public/css/style-perfil.css
+.SyncFolders History/2021-11-06 20.17.40/public/css/style.css
+.SyncFolders History/2021-11-06 20.17.40/public/js/header.js
+.SyncFolders History/2021-11-06 20.17.40/public/js/mis_publicaciones.js
+.SyncFolders History/2021-11-06 20.17.40/public/js/ubicacion.js
+.SyncFolders History/2021-11-06 20.17.40/public/js/validar_editar_perfil.js
+.SyncFolders History/2021-11-06 20.17.40/public/media/agregar-foto.png
+.SyncFolders History/2021-11-06 20.17.40/public/media/btn-iniciarSesion.png
+.SyncFolders History/2021-11-06 20.17.40/public/media/fondo-body.png
+.SyncFolders History/2021-11-06 20.17.40/public/media/Logo.png
+.SyncFolders History/2021-11-06 20.17.40/public/media/logo_face.png
+.SyncFolders History/2021-11-06 20.17.40/public/media/logoOld.png
+.SyncFolders History/2021-11-06 20.17.40/public/media/pagina_inexistente.png
+.SyncFolders History/2021-11-06 20.17.40/public/Otros/abrir_publicacion.html
+.SyncFolders History/2021-11-06 20.17.40/public/Otros/Crear_publicacion.html
+.SyncFolders History/2021-11-06 20.17.40/public/Otros/index2.php
+.SyncFolders History/2021-11-06 20.17.40/public/Otros/localidades.json
+.SyncFolders History/2021-11-06 20.17.40/public/Otros/perfil.html
+.SyncFolders History/2021-11-06 20.17.40/public/Otros/Postulantes.html
+.SyncFolders History/2021-11-06 20.17.40/public/Otros/PublicacionPropia.html
+.SyncFolders History/2021-11-06 20.17.40/public/public_media/descarga (1).jfif
+.SyncFolders History/2021-11-06 20.17.40/public/public_media/descarga (2).jfif
+.SyncFolders History/2021-11-06 20.17.40/public/public_media/descarga (3).jfif
+.SyncFolders History/2021-11-06 20.17.40/public/public_media/descarga.jfif
+.SyncFolders History/2021-11-06 20.17.40/public/script/formval.js
+.SyncFolders History/2021-11-06 20.17.40/View/adopciones/index.php
+.SyncFolders History/2021-11-06 20.17.40/View/editar_perfil/index.php
+.SyncFolders History/2021-11-06 20.17.40/View/editar_publicacion/index.php
+.SyncFolders History/2021-11-06 20.17.40/View/encontrados/index.php
+.SyncFolders History/2021-11-06 20.17.40/View/header.php
+.SyncFolders History/2021-11-06 20.17.40/View/mi_publicacion/index.php
+.SyncFolders History/2021-11-06 20.17.40/View/mis_publicaciones/index.php
+.SyncFolders History/2021-11-06 20.17.40/View/perdidos/index.php
+.SyncFolders History/2021-11-07 04.18.03/Clases/usuario.php
+.SyncFolders History/2021-11-07 04.18.03/config/config.php
+.SyncFolders History/2021-11-07 04.18.03/Controller/login.php
+.SyncFolders History/2021-11-07 04.18.03/Controller/perfil.php
+.SyncFolders History/2021-11-07 04.18.03/Model/crear_publicacionmodel.php
+.SyncFolders History/2021-11-07 04.18.03/public/js/header.js
+.SyncFolders History/2021-11-07 04.18.03/public/script/formval.js
+.SyncFolders History/2021-11-07 04.18.03/View/crear_publicacion/index.php
+Syncfolders_Database_db
+Syncfolders_Database_db
