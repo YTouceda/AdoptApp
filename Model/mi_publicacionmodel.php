@@ -7,28 +7,29 @@ class mi_publicacionModel extends Model{
         parent::__construct();
     }
 
-    public function get($ID_MASCOTA){
+    public function get(){
         $items = [];
         try {
-            $query = $this->db->connect()->prepare("SELECT * FROM V_MASCOTA WHERE ID_MASCOTA = :ID_MASCOTA");
-            $query->execute(['ID_MASCOTA' => $ID_MASCOTA]);
-            $row = $query->fetch();
-            $item = new Mascota();
-            $item->id_mascota = $row['ID_MASCOTA'];
-            $item->id_usuario = $row['ID_USUARIO'];
-            $item->nombre_mascota = $row['NOMBRE_MASCOTA'];
-            $item->descripcion_mascota = $row['DESCRIPCION_MASCOTA'];
-            $item->fotos_mascota = $row['FOTO_MASCOTA'];
-            $item->num_contacto_mascota = $row['NUM_CONTACTO_MASCOTA'];
-            $item->fecha_publicado = $row['FECHA_PUBLICADO'];
-            $item->sexo_mascota = $row['SEXO_MASCOTA'];
-            $item->edad_mascota = $row['EDAD_MASCOTA'];
-            $item->tamanio_mascota = $row['TAMANIO_MASCOTA'];
-            $item->estado_mascota = $row['ESTADO_MASCOTA'];
-            $item->localidad_mascota = $row['LOCALIDAD'];
-            $item->provincia_mascota = $row['PROVINCIA'];
-            $item->tipo_mascota = $row['TIPO_MASCOTA'];
-            return $item;
+            $query = $this->db->connect()->prepare("SELECT  ID_PUBLICACION, FECHA_BAJA_PUBLICACION, NOMBRE_MASCOTA, DESCRIPCION_MASCOTA, FOTO_MASCOTA, TIPO_ESPECIE_MASCOTA, SEXO_MASCOTA, EDAD_MASCOTA, TAMANIO_MASCOTA, ESTADO_PUBLICACION, ID_LOCALIDAD, LOCALIDAD, ID_PROVINCIA, PROVINCIA  FROM  ID_PUBLICACION ");
+            $query->execute();
+            while($row = $query->fetch()){
+                $item = new Publicacion();
+                $mascota= new Mascota();
+                $item->setId_publicacion($row['ID_PUBLICACION']);
+                $item->setEstado($row['ESTADO_PUBLICACION']);
+                $item->setFecha_baja_publicacion($row['FECHA_BAJA_PUBLICACION']);
+                $mascota->setSexo_mascota($row['SEXO_MASCOTA']);
+                $mascota->setEdad_mascota($row['EDAD_MASCOTA']);
+                $mascota->setTamanio_mascota($row['TAMANIO_MASCOTA']);
+                $item->setLocalidad($row['ID_PROVINCIA']);
+                $item->setProvincia($row['ID_LOCALIDAD']);
+                $mascota->setEspecie_mascota($row['TIPO_ESPECIE_MASCOTA']);
+                $mascota->setNombre_mascota($row['NOMBRE_MASCOTA']);
+                $mascota->setDescripcion_mascota($row['DESCRIPCION_MASCOTA']);
+                $mascota->setFotos_mascota($row['FOTO_MASCOTA']);
+                $item->setMascota($mascota);
+            }
+            return $items;
         } catch (PDOException $exc) {
             return false;
         }
