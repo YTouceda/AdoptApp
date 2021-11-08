@@ -28,7 +28,7 @@ class Publicacion{
     } 
     public function getMascota(){
         return $this->mascota;
-    }
+    } 
     public function getFecha_alta_publicacion(){
         return $this->fecha_alta_publicacion;
     } 
@@ -57,7 +57,6 @@ class Publicacion{
     public function setMascota($Mascota){
         $this->mascota = $Mascota;
     }
-    
     public function setFecha_alta_publicacion($Fecha_alta_publicacion){
         $this->fecha_alta_publicacion = $Fecha_alta_publicacion;
     }

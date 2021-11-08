@@ -25,7 +25,7 @@
                 $postulacion = $row;
             ?>
             <div class="form-check">
-                <input class="form-check-input invisible" type="radio" name="postulante" id="<?php echo $postulacion['USUARIO_POSTULADO']->getId()?>" required value="<?php echo $postulacion['POSTULACION']?>">
+                <input class="form-check-input invisible" type="checkbox" name="postulante" id="<?php echo $postulacion['USUARIO_POSTULADO']->getId()?>" required value="<?php echo $postulacion['POSTULACION']?>">
                 <label class="form-check-label lbl_check_postulante w-100  me-3 mb-3" for="<?php echo $postulacion['USUARIO_POSTULADO']->getId()?>">
                     <div class="card card_mis_publicaciones">
                         <div class="row g-0">
