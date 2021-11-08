@@ -87,3 +87,6 @@ Syncfolders_Database_db
 Syncfolders_Database_db
 Syncfolders_Database_db
 Syncfolders_Database_db
+*.27
+Config/config.php
+*.php
