@@ -3,25 +3,25 @@
 Class mi_publicacion extends Controller{
     function __construct(){
         parent::__construct();
-        $this->view->user=new Usuario();
+        $this->view->user=new user();
         $this->view->postulaciones = [];
     }
 
     function Render(){
-        if(!isset($_GET['mascota'])){
+        if(!isset($_GET['publicacion'])){
             $this->view->render('errores/index');
         }else{
-            $mascota = $_GET['mascota'];
+            $publicacion = $_GET['publicacion'];
         }
-        $post = $this->model->getPostulaciones($mascota);
+        $post = $this->model->getPostulaciones($publicacion);
         if($post){
             $this->view->postulaciones = $post;
         }else{
             echo 'No se encontraron postulaciones.';
         }
-        $datos = $this->model->get($mascota);
+        $datos = $this->model->get($publicacion);
         if($datos){
-            $this->view->mascota = $datos;
+            $this->view->publicacion = $datos;
             $this->view->render('mi_publicacion/index');
         }else{
             echo 'No se encontro la publicacion.';

@@ -2,30 +2,32 @@
 
 
 
-class Abrir_Publicacion extends Controller{
+class abrir_publicacion extends Controller{
     function __construct(){
         parent::__construct();
+        $this->view->user=new Usuario();
+        $this->view->publicacion = [];
         $this->view->mascota = [];
 
     }
     
     
     function Render(){
-        if(!isset($_GET['mascota'])){
+        if(!isset($_GET['publicacion'])){
             $this->view->render('errores/index');
+        }else{
+            $publicacion = $_GET['publicacion'];
         }
-        else{
-            $mascota = $_GET['mascota'];
-        }
-        $datos = $this->model->getDatos($mascota);
-        if($datos){
-            $this->view->mascota = $datos;
+        $objPublicacion = $this->model->get($publicacion);
+        if($objPublicacion){
+            $this->view->publicacion = $objPublicacion;
+            $this->view->mascota = $objPublicacion->getMascota();
             $this->view->render('abrir_publicacion/index');
         }else{
+                // var_dump($publicacion);
             echo 'No se encontro la publicacion.';
-        }
     }
-    
+}
 }
 
 
