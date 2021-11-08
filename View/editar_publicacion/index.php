@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>AdoptApp - Crear Publicación</title>
+        <title>AdoptApp - Editar Publicación</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
@@ -26,73 +26,75 @@
                 <div class="row">
            
                 <div class="titulo-cp col-12">
-                <h3 class="titulo-cp">Crear Publicación</h3>
+                <h3 class="titulo-cp">Editar publicación</h3>
                 <div class="titulo-cp"></div>
                 </div>
                 
             <div class="row">
-                
+                <?php //$objMascota=$this->publicacion->getMascota();?>
 
                 <div class="col-12 col-sm-6">
                         <div class="titulo-cp col">
                         <h6 class="titulo-cp">Datos  <i class="fas fa-id-card"></i></h6>
                         </div>
-                <form class="detalle-cp" action="<?php echo constant('URL'); ?>crear_publicacion/registrarMascota" enctype="multipart/form-data" method="post" id="formcp">
+                <form class="detalle-cp" action="<?php echo constant('URL'); ?>editar_publicacion/editarMascota"  enctype="multipart/form-data" method="post" id="formcp">
+                <!-- EN SUBMIT VA ABRIR PUBLICACION CON EL GET DEL ID PUB-->
                     <div>
-                    <input type="text"  id="nombre" name="nombre" class="form-control" placeholder="Nombre de la mascota" aria-label="Mascota" maxlength="12" aria-describedby="basic-addon1">
+                    <input type="text" value="<?php echo $this->mascota->getNombre_mascota();?>" id="nombre" name="nombre" class="form-control" placeholder="Nombre de la mascota" aria-label="Mascota" maxlength="12" aria-describedby="basic-addon1">
                     </div>
                     <div id="errorNombre" class="invalid-feedback">Nombre inválido, debe contener solo letras.</div>
                     <div>
-                    <input type="tel"  id="telefono" name="telefono" class="form-control" placeholder="Telefono de contacto" aria-label="Tel contacto" maxlength="12" pattern="^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$" aria-describedby="basic-addon1">
+                    <input type="tel"  value="<?php echo $this->mascota->getNombre_mascota();?>"  id="telefono" name="telefono" class="form-control" placeholder="Telefono de contacto" aria-label="Tel contacto" maxlength="12" pattern="^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$" aria-describedby="basic-addon1">
                     </div>
                     <div id="errorTelefono" class="invalid-feedback">Debe ingresar un telefono válido.</div>
                         <div>
                         <select class="form-select select-cp" aria-label="Mascota" id="select-estado" name="estado">
-                            <option <?php if(($_GET['estado'])==0){ echo "selected";} ?> value="0">En Adopción</option>
-                            <option <?php if(($_GET['estado'])==1){ echo "selected";} ?> value="1">Lo encontré</option>
-                            <option <?php if(($_GET['estado'])==2){ echo "selected";} ?> value="2">Está perdido</option>
-                            <?php if($_GET['estado']==0)?>
+                            <option  value="0"<?php if($this->publicacion->getEstado()==0){ echo "selected";} ?>>En Adopción</option>
+                            <option  value="1"<?php if($this->publicacion->getEstado()==1){ echo "selected";} ?>>Lo encontré</option>
+                            <option  value="2"<?php if($this->publicacion->getEstado()==2){ echo "selected";} ?>>Está perdido</option>
+
+                           
                         </select>
                         </div>
                         <div id="errorEstado" class="invalid-feedback">Debe elegir un estado válido.</div>
                    
                         <div>
-                        <select class="form-select select-cp" aria-label="Mascota" id="select-tipo" name="tipo"> 
+                        <select class="form-select select-cp" aria-label="Mascota" id="select-tipo" name="especie"> 
                             <option selected disabled>Elija el tipo de mascota</option>
-                            <option value="0">Perro</option>
-                            <option value="1">Gato</option>
+                            <option value="0"<?php if($this->mascota->getEspecie_mascota()==0){ echo "selected";} ?>>Perro</option>
+                            <option value="1"<?php if($this->mascota->getEspecie_mascota()==1){ echo "selected";} ?>>Gato</option>
                         </select>
                         </div>
                         <div id="errorTipo" class="invalid-feedback">Debe elegir una mascota válida.</div>
                         <div>
                         <select class="form-select select-cp" aria-label="Sexo" id="select-sexo" name="sexo"> 
                             <option selected disabled>Elija el sexo</option>
-                            <option value="0">Hembra</option>
-                            <option value="1">Macho</option>
+                            <option value="0"<?php if($this->mascota->getSexo_mascota()==0){ echo "selected";} ?>>Hembra</option>
+                            <option value="1"<?php if($this->mascota->getSexo_mascota()==1){ echo "selected";} ?>>Macho</option>
                         </select>
                         </div>
                         <div id="errorSexo" class="invalid-feedback">Debe elegir una opción válida.</div>
                         <div>
                         <select class="form-select select-cp" aria-label="Tamaño" id="select-tam" name="tamanio"> 
                             <option selected disabled>Elija el tamaño</option>
-                            <option value="0">Pequeño</option>
-                            <option value="1">Mediano</option>
-                            <option value="2">Grande</option>
+                            <option value="0"<?php if($this->mascota->getTamanio_mascota()==0){ echo "selected";} ?>>Pequeño</option>
+                            <option value="1"<?php if($this->mascota->getTamanio_mascota()==1){ echo "selected";} ?>>Mediano</option>
+                            <option value="2"<?php if($this->mascota->getTamanio_mascota()==2){ echo "selected";} ?>>Grande</option>
                         </select>
                         </div>
                         <div id="errorTamaño" class="invalid-feedback">Debe elegir un tamaño válido.</div>
                         <div>
                             <select class="form-select select-cp" aria-label="Edad" id="select-edad" name="edad"> 
                                 <option disabled selected>Elija la edad aproximada</option>
-                                <option value="0">Cachorro (Menos de 2 años)</option>
-                                <option value="1">Adulto (Entre 2 y 10 años)</option>
-                                <option value="2">Anciano (Más de 10 años)</option>
+                                <option value="0"<?php if($this->mascota->getEdad_mascota()==0){ echo "selected";} ?>>Cachorro (Menos de 2 años)</option>
+                                <option value="1"<?php if($this->mascota->getEdad_mascota()==1){ echo "selected";} ?>>Adulto (Entre 2 y 10 años)</option>
+                                <option value="2"<?php if($this->mascota->getEdad_mascota()==3){ echo "selected";} ?>>Anciano (Más de 10 años)</option>
                             </select>
                             </div>
                             <div id="errorEdad" class="invalid-feedback">Debe elegir una edad válida.</div>
                             <div class="row">
                             <div class="col">
-                            <textarea class="form-control cp-textarea" maxlength="500" minlength="50" rows="10" placeholder="Ingrese una descripción lo más detallada posible. Se sugiere incluir información de importancia para el adoptante, por ejemplo : Si está castrado, si está vacunado, si puede acercar la mascota a la casa del adoptante, etc." id="text-desc"  name="descripcion" required ></textarea>
+                            <textarea class="form-control cp-textarea"  maxlength="500" minlength="50" rows="10" placeholder="Ingrese una descripción lo más detallada posible. Se sugiere incluir información de importancia para el adoptante, por ejemplo : Si está castrado, si está vacunado, si puede acercar la mascota a la casa del adoptante, etc." id="text-desc"  name="descripcion" required ><?php echo $this->mascota->getDescripcion_mascota();?></textarea>
                             <div id="errorDescripcion" class="invalid-feedback">Debe escribir una descripión de no menos de 50 caracteres.</div>
                             </div>
                             </div>
@@ -101,8 +103,9 @@
                         </div>
                         <div id="fil-ubicacion" class="select-cp col" >
                            
-                            <select name="provincia" id="provincia" class="form form-control">
-                                <option disabled="true" selected="true" value="">Seleccionar una Provincia</option>
+                            <select name="provincia" id="provincia" class="form form-control" value="06">
+                                <option value="">Seleccionar una Provincia</option>
+                                <option value="06">Buenos Aires</option>
                                 <option value="06">Buenos Aires</option>
                                 <option value="10">Catamarca</option>
                                 <option value="22">Chaco</option>
@@ -128,7 +131,7 @@
                             </select>
                             <div id="errorProvincia" class="invalid-feedback">Debe seleccionar una provincia.</div>
                             <select id="localidades" class="form-control ciudad-cp col" name="localidad">
-                                <option disabled="true" selected="true" value="">Seleccionar una Localidad</option>
+                                <option value="" >Seleccionar una Localidad</option>
                             </select>
                             <div id="errorLocalidades" class="invalid-feedback">Debe seleccionar una localidad</div>
                             <input id="xlocalidad" type="hidden">
@@ -153,10 +156,9 @@
                     <input required class="form-control cp mb-3 add_photo" type="file" accept="image/*" id="input_add_photo5"> -->
 
                 </div>
-
                 <label for="input_add_photo1">
-                <div class="img-seleccionada col " id="img_grande"> <img src="Public/media/agregar-foto.png"  class="img-fluid fotos-mascota" ></div></label>
-            
+               
+                <div class="img-seleccionada col " id="img_grande"> <img src="<?php echo constant('URL'); ?>Public/public_media/<?php echo $this->mascota->getFotos_mascota() ?>"  class="img-fluid fotos-mascota" ></div></label>
                 <div class="row">
                     <!-- <label for="input_add_photo2" class="img-chiq col col-3">
                     <div class="img-chiq col col-3" id="img_chiq1"><img src="Public/media/agregar-foto.png" class="img-fluid fotos-mascota" > </div></label>
@@ -174,6 +176,7 @@
                     <div id="errorFotos" class="invalid-feedback">Debe subir al menos una foto</div>
                 </div>
 
+                <div id="alertaCreacionExitosa"></div>
                 <button type="submit" id="publicar" name="publicar" class="btn btn-success">Publicar</button>
             </div> 
             
@@ -188,8 +191,5 @@
     </body>
     
 </html>
-
-
-
 
 
