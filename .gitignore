@@ -86,3 +86,7 @@ Syncfolders_Database_db
 .SyncFolders History/2021-11-07 04.18.03/View/crear_publicacion/index.php
 Syncfolders_Database_db
 Syncfolders_Database_db
+Syncfolders_Database_db
+*.27
+Config/config.php
+*.php

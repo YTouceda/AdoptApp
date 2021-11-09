@@ -9,71 +9,84 @@ Class editar_publicacion extends Controller{
         $this->view->mascota = [];
     }
     function Render(){
-        if(!isset($_GET['mascota'])){
+        if(!isset($_GET['publicacion'])){
             $this->view->render('errores/index');
         }else{
-            $mascota = $_GET['mascota'];
+            $publicacion = $_GET['publicacion'];
         }
-        $datos = $this->model->get($mascota);
-        if($datos){
-            $this->view->mascota = $datos;
+        $objPublicacion = $this->model->get($publicacion);
+        if($objPublicacion){
+            $this->view->publicacion = $objPublicacion;
+            $this->view->mascota = $objPublicacion->getMascota();
             $this->view->render('editar_publicacion/index');
         }else{
             echo 'No se encontro la publicacion.';
         }
     }
-
-
-    // function Guardar_cambios(){
-    //     $this->view->render('editar_publicacion/index');
-    //     $check = getimagesize($_FILES["foto"]["tmp_name"]);
-    //     if($check !== false){
-    //         $file = $_FILES['foto'];
-    //         $name = $file['name'];
-    //         $ruta_provisional = $file['tmp_name'];
-    //         $carpeta ="Public/public_media/";
-    //         $src = $carpeta.$name;
-    //         move_uploaded_file($ruta_provisional, $src);
-    //         $dataTime = date("Y-m-d H:i:s");
-    //         if(isset($_POST['nombre']) && isset($_POST['sexo']) && isset($_POST['edad']) && isset($_POST['tamanio']) && isset($_POST['descripcion']) && isset($_POST['estado']) && isset($_POST['localidad']) && isset($_POST['tipo']) && isset($_POST['telefono'])){
-    //             $usuario = $this->user->getId();
-    //             $nombre  = $_POST['nombre'];
-    //             $sexo = $_POST['sexo'];
-    //             $edad = $_POST['edad'];
-    //             $tamanio = $_POST['tamanio'];
-    //             $descripcion = $_POST['descripcion'];
-    //             $estado   = $_POST['estado'];
-    //             $localidad   = $_POST['localidad'];
-    //             $tipo  = $_POST['tipo'];
-    //             $foto  = $name;
-    //             $telefono  = $_POST['telefono'];
-    //             $fecha_publicado  = $dataTime;
     
-    //             if($this->model->insert([
-    //            'usuario'=>$usuario,
-    //            'nombre'=>$nombre,
-    //            'sexo'=>$sexo,
-    //            'edad'=>$edad,
-    //            'tamanio'=>$tamanio,
-    //            'descripcion'=>$descripcion,
-    //            'estado'=>$estado,
-    //            'localidad'=>$localidad,
-    //            'tipo'=>$tipo,
-    //            'telefono'=>$telefono,
-    //            'fecha_publicado'=>$fecha_publicado,
-    //            'foto'=>$foto,])){
-    //                 //$this->view->mensaje = "Se guardo correctamente los cambios.";
-    //             }else {
-    //                 //$this->view->mensaje = "No se pudo guardar correctamente la publicacion.";
-    //             }
+
+    function editarMascota(){
+        $this->view->render('editar_publicacion/index');
+        if(isset($_SESSION['id']) && isset($_POST['sexo']) && isset($_POST['edad']) && isset($_POST['tamanio'])  && isset($_POST['especie'])  && isset($_POST['nombre'])  && isset($_POST['descripcion'])  && isset($_POST['estado']) && isset($_POST['provincia']) && isset($_POST['telefono']) && isset($_POST['localidad'])){
+            
+        
+        $check = getimagesize($_FILES["foto"]["tmp_name"]);
+        if($check !== false){
+            $file = $_FILES['foto'];
+            $name = $file['name'];
+            $ruta_provisional = $file['tmp_name'];
+            $carpeta ="Public/public_media/";
+            //Randomiza el nombre de la imagen
+            $logitudPass= 10;
+            $newNameFoto= substr( md5(microtime()), 1, $logitudPass);
+            $explode= explode('.', $name);
+            $extension_foto= array_pop($explode);
+            $nuevoNameFoto= $newNameFoto.'.'.$extension_foto;
+            $src = $carpeta.$nuevoNameFoto;
+            if(isset($_POST['nombre'])){
+                $objMascota= new Mascota();
+                $objMascota->setSexo_mascota($_POST['sexo']);
+                $objMascota->setEdad_mascota( $_POST['edad']);
+                $objMascota->setTamanio_mascota ($_POST['tamanio']) ;
+                $objMascota->setEspecie_mascota  ($_POST['especie']) ;
+                $objMascota->setNombre_mascota  ($_POST['nombre']) ;
+                $objMascota->setDescripcion_mascota ($_POST['descripcion']) ;
+                $objMascota->setFotos_mascota ($nuevoNameFoto);
                 
-    //         }else{
-    //             echo "Debe ingresar toda la informacion de la mascota";
-    //         }
-    //     }else{
-    //         echo "Debe ingresar la foto de la mascota";
-    //     }
-    // }
+                $objPublicacion= new Publicacion();
+                $objPublicacion->setMascota($objMascota);
+                $objPublicacion->setEstado( $_POST['estado']);
+                $objPublicacion->setProvincia( $_POST['provincia']);
+                $objPublicacion->setNum_contacto_publicacion( $_POST['telefono']);
+                $objPublicacion->setLocalidad( $_POST['localidad']);
+                
+                if($this->model->update($objPublicacion)){
+                    move_uploaded_file($ruta_provisional, $src);
+                    //header('Location:' . constant('URL'));
+                    
+                    //$this->view->mensaje = "Se guardaron correctamente los cambios.";
+                }else {
+                    //$this->view->mensaje = "No se pudo guardar correctamente la publicacion.";
+                }
+                
+            }else{
+                echo "Debe ingresar toda la informacion de la mascota";
+            }
+        }else{
+            echo "Debe ingresar la foto de la mascota";
+            }
+        }else{
+            echo "Error, publicación no guardada. Debe seleccionar los datos de su ubicación.";
+        }
+    }
+
+    
+
+
+
+
+
+
     // function Guardar_cambios(){
     //     if(isset($_POST['Id']) && isset($_POST['Nombre']) && isset($_POST['Email']) && isset($_POST['Numero'])){
     //         $ID_USUARIO = $_POST['Id']; 
