@@ -15,7 +15,7 @@
         <title>AdoptApp - Adopciones</title>
     </head>
     <body class="body-adoptapp">
-        <header>
+        <header id="header">
             <?php
                 require 'View/header.php';
             ?>
@@ -187,8 +187,6 @@
                                                             <input type="checkbox" id="mdl-anciano" name="EDAD_MASCOTA[]" value="Anciano/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Anciano/a")echo "checked";}?>>
                                                             <label for="mdl-anciano" class="form-check-label">Anciano/a</label>
                                                         </div>
-                                                    </div>
-                                                    <div class="col col-12 position-relative">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
