@@ -13,6 +13,7 @@ Class Perdidos extends Controller{
             $seccion = $_GET['seccion'];
         }
         $this->view->seccion = $seccion;
+        
         $query_values = $_POST;
         $extra_query = "WHERE ESTADO_PUBLICACION = 'Perdido' ";
         

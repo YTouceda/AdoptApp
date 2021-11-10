@@ -15,7 +15,7 @@
         <title>AdoptApp - Adopciones</title>
     </head>
     <body class="body-adoptapp">
-        <header>
+        <header id="header">
             <?php
                 require 'View/header.php';
             ?>
@@ -88,11 +88,11 @@
                         <div class="col">
                             <label for="edad" class="col-form-label label-checkbox">Edad de mascota:</label>
                             <div name="edad" class="form-check form-check-inline checkbox">
-                                <input type="checkbox" id="cachorro" name="EDAD_MASCOTA[]" value="Cachorro/a" class="form-check-input"  <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Cachorro/a")echo "checked";}?>>
+                                <input type="checkbox" id="cachorro" name="EDAD_MASCOTA[]" value="Cachorro/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Cachorro/a")echo "checked";}?>>
                                 <label for="cachorro" class="form-check-label">Cachorro/a</label><br>
-                                <input type="checkbox" id="adulto" name="EDAD_MASCOTA[]" value="Adulto/a" class="form-check-input"  <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Adulto/a")echo "checked";}?>>
+                                <input type="checkbox" id="adulto" name="EDAD_MASCOTA[]" value="Adulto/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Adulto/a")echo "checked";}?>>
                                 <label for="adulto" class="form-check-label">Adulto/a</label><br>
-                                <input type="checkbox" id="anciano" name="EDAD_MASCOTA[]" value="Anciano/a" class="form-check-input"  <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Anciano/a")echo "checked";}?>>
+                                <input type="checkbox" id="anciano" name="EDAD_MASCOTA[]" value="Anciano/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Anciano/a")echo "checked";}?>>
                                 <label for="anciano" class="form-check-label">Anciano/a</label>
                             </div>
                         </div>
@@ -146,49 +146,47 @@
                                                         <select name="ID_LOCALIDAD[]" id="localidades_modal" class="form form-control m-2">
                                                             <option disabled="true" selected="true" value="">Seleccionar una Localidad</option>
                                                         </select>
-                                                        <input id="xlocalidad_modal" type="hidden">
+                                                        <input id="xlocalidad_modal" type="hidden" <?php if(isset($_POST["ID_LOCALIDAD"]))echo "value='".$_POST["ID_LOCALIDAD"][0]."'";?>>
                                                     </div>
                                                     <div class="col  col-12">
                                                         <label for="tipo" class="col-12 col-form-label label-checkbox">Tipo de mascota:</label>
                                                         <div name="tipo" class="form-check form-check-inline checkbox">
-                                                            <input type="checkbox" id="mdl-perro" name="TIPO_ESPECIE_MASCOTA[]" value="Perro/a" class="form-check-input">
+                                                            <input type="checkbox" id="mdl-perro" name="TIPO_ESPECIE_MASCOTA[]" value="Perro/a" class="form-check-input" <?php if(isset($_POST["TIPO_ESPECIE_MASCOTA"])){if($_POST["TIPO_ESPECIE_MASCOTA"][0] == "Perro/a")echo "checked";}?>>
                                                             <label for="mdl-perro" class="form-check-label"><i class="fas fa-dog"></i>- Perro/a</label>
-                                                            <input type="checkbox" id="mdl-gato" name="TIPO_ESPECIE_MASCOTA[]" value="Gato/a" class="form-check-input">
+                                                            <input type="checkbox" id="mdl-gato" name="TIPO_ESPECIE_MASCOTA[]" value="Gato/a" class="form-check-input" <?php if(isset($_POST["TIPO_ESPECIE_MASCOTA"])){if($_POST["TIPO_ESPECIE_MASCOTA"][0] == "Gato/a")echo "checked";}?>>
                                                             <label for="mdl-gato" class="form-check-label"><i class="fas fa-cat"></i>- Gato/a</label>
                                                         </div>
                                                     </div>
                                                     <div class="col  col-12">
                                                         <label for="tamanio" class="col-12 col-form-label label-checkbox">Tamaño de mascota:</label>
                                                         <div name="tamanio" class="form-check form-check-inline checkbox">
-                                                            <input type="checkbox" id="mdl-chico" name="TAMANIO_MASCOTA[]" value="Chico" class="form-check-input">
+                                                            <input type="checkbox" id="mdl-chico" name="TAMANIO_MASCOTA[]" value="Chico" class="form-check-input" <?php if(isset($_POST["TAMANIO_MASCOTA"])){if($_POST["TAMANIO_MASCOTA"][0] == "Chico")echo "checked";}?>>
                                                             <label for="mdl-chico" class="form-check-label">Chico/a</label>
-                                                            <input type="checkbox" id="mdl-mediano" name="TAMANIO_MASCOTA[]" value="Mediano" class="form-check-input">
+                                                            <input type="checkbox" id="mdl-mediano" name="TAMANIO_MASCOTA[]" value="Mediano" class="form-check-input" <?php if(isset($_POST["TAMANIO_MASCOTA"])){if($_POST["TAMANIO_MASCOTA"][0] == "Mediano")echo "checked";}?>>
                                                             <label for="mdl-mediano" class="form-check-label">Mediano/a</label>
-                                                            <input type="checkbox" id="mdl-grande" name="TAMANIO_MASCOTA[]" value="Grande" class="form-check-input">
+                                                            <input type="checkbox" id="mdl-grande" name="TAMANIO_MASCOTA[]" value="Grande" class="form-check-input" <?php if(isset($_POST["TAMANIO_MASCOTA"])){if($_POST["TAMANIO_MASCOTA"][0] == "Grande")echo "checked";}?>>
                                                             <label for="mdl-grande" class="form-check-label">Grande</label>
                                                         </div>
                                                     </div>
                                                     <div class="col  col-12">
                                                         <label for="sexo" class="col-12 col-form-label label-checkbox">Sexo de la mascota:</label>
                                                         <div name="sexo" class="form-check form-check-inline checkbox">
-                                                            <input type="checkbox" id="mdl-hembra" name="SEXO_MASCOTA[]" value="Hembra" class="form-check-input">
+                                                            <input type="checkbox" id="mdl-hembra" name="SEXO_MASCOTA[]" value="Hembra" class="form-check-input" <?php if(isset($_POST["SEXO_MASCOTA"])){if($_POST["SEXO_MASCOTA"][0] == "Hembra")echo "checked";}?>>
                                                             <label for="mdl-hembra" class="form-check-label">Hembra</label>
-                                                            <input type="checkbox" id="mdl-macho" name="SEXO_MASCOTA[]" value="Macho" class="form-check-input">
+                                                            <input type="checkbox" id="mdl-macho" name="SEXO_MASCOTA[]" value="Macho" class="form-check-input" <?php if(isset($_POST["SEXO_MASCOTA"])){if($_POST["SEXO_MASCOTA"][0] == "Macho")echo "checked";}?>>
                                                             <label for="mdl-macho" class="form-check-label">Macho</label>
                                                         </div>
                                                     </div>
                                                     <div class="col  col-12">
                                                         <label for="edad" class="col-12 col-form-label label-checkbox">Edad de mascota:</label>
                                                         <div name="edad" class="form-check form-check-inline checkbox">
-                                                            <input type="checkbox" id="mdl-cachorro" name="EDAD_MASCOTA[]" value="Cachorro/a" class="form-check-input">
+                                                            <input type="checkbox" id="mdl-cachorro" name="EDAD_MASCOTA[]" value="Cachorro/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Cachorro/a")echo "checked";}?>>
                                                             <label for="mdl-cachorro" class="form-check-label">Cachorro/a</label>
-                                                            <input type="checkbox" id="mdl-adulto" name="EDAD_MASCOTA[]" value="Adulto/a" class="form-check-input">
+                                                            <input type="checkbox" id="mdl-adulto" name="EDAD_MASCOTA[]" value="Adulto/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Adulto/a")echo "checked";}?>>
                                                             <label for="mdl-adulto" class="form-check-label">Adulto/a</label>
-                                                            <input type="checkbox" id="mdl-anciano" name="EDAD_MASCOTA[]" value="Anciano/a" class="form-check-input">
+                                                            <input type="checkbox" id="mdl-anciano" name="EDAD_MASCOTA[]" value="Anciano/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Anciano/a")echo "checked";}?>>
                                                             <label for="mdl-anciano" class="form-check-label">Anciano/a</label>
                                                         </div>
-                                                    </div>
-                                                    <div class="col col-12 position-relative">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
