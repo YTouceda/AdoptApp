@@ -211,7 +211,7 @@
                         ?>
                                 <div class="col-sm-12 col-md-6 m-md-0 p-md-3 col-lg-6 col-xl-4 px-2">
                                     <div class="card m-2 card_publicaciones">
-                                        <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion?publicacion=<?php echo $row->getId_publicacion()?>">
+                                        <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?publicacion=<?php echo $row->getId_publicacion()?>">
                                             <img src="<?php echo constant('URL')."Public/public_media/".$mascota->getFotos_mascota();?>" class="text-center card-img-top card-imagen">
                                             <div class="card-body">
                                                 <h4><?php echo $mascota->getNombre_mascota()?></h4>

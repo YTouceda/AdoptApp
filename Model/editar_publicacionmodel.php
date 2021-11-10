@@ -19,12 +19,10 @@ class editar_publicacionModel extends Model{
                 $objMascota->setSexo_mascota ($row['SEXO_MASCOTA']); 
                 $objMascota->setEdad_mascota ($row['EDAD_MASCOTA']); 
                 $objMascota->setTamanio_mascota ($row['TAMANIO_MASCOTA']); 
-                $objMascota->setEspecie_mascota($row['ID_ESPECIE_MASCOTA']);
+                $objMascota->setEspecie_mascota($row['TIPO_ESPECIE_MASCOTA']);
                 $objMascota->setNombre_mascota ($row['NOMBRE_MASCOTA']); 
                 $objMascota->setDescripcion_mascota ($row['DESCRIPCION_MASCOTA']); 
                 $objMascota->setFotos_mascota ($row['FOTO_MASCOTA']); 
-                $objMascota->setId_mascota($row['ID_MASCOTA']);
-                
 
                 
                 $objPublicacion= new Publicacion();
@@ -37,6 +35,7 @@ class editar_publicacionModel extends Model{
                 $objPublicacion->setNum_contacto_publicacion($row['NUM_CONTACTO_PUBLICACION']);
                 $objPublicacion->setFecha_alta_publicacion($row['FECHA_ALTA_PUBLICACION']);
 
+                //var_dump($objPublicacion);
 
 
                 
@@ -82,6 +81,8 @@ class editar_publicacionModel extends Model{
 
             $query->rollback();
             echo "Error: " . $exc->getMessage();
+            echo "<br>";
+            var_dump($Mascota->getId_mascota());
             return false;
 
         }       
