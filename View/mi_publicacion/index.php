@@ -1,5 +1,5 @@
 <?php
-$postulaciones = $this->postulaciones;
+// $postulaciones = $this->postulaciones;
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,8 +49,8 @@ $postulaciones = $this->postulaciones;
                         </tr>
                         <tr>
                           <th scope="row">Tipo de mascota:</th>
-                          <td><?php echo $this->mascota->getId_especie_mascota();?></td>
-                          <?php if($this->mascota->getEspecie_de_mascota() == "Perro"){
+                          <td><?php echo $this->mascota->getEspecie_mascota();?></td>
+                          <?php if($this->mascota->getEspecie_mascota() == "Perro"){
                             echo '<td><i class="fas fa-dog" aria-hidden="true"></i></td>';
                           }else{
                             echo '<td><i class="fas fa-cat" aria-hidden="true"></i></td>';
@@ -73,17 +73,17 @@ $postulaciones = $this->postulaciones;
                         </tr>
                         <tr>
                             <th scope="row">Provincia:</th>
-                            <td><?php echo $this->mascota->getProvincia_mascota();?></td>
+                            <td><?php echo $this->publicacion->getProvincia();?></td>
                             <td><i class="fas fa-map-marker-alt" aria-hidden="true"></i></td>
                         </tr>
                         <tr>
                             <th scope="row">Localidad:</th>
-                            <td><?php echo $this->mascota->getLocalidad_mascota();?></td>
+                            <td><?php echo $this->publicacion->getLocalidad();?></td>
                             <td><i class="fas fa-city" aria-hidden="true"></i></td>
                         </tr> 
                         <tr>
                             <th scope="row">Estado:</th>
-                            <td><?php echo $this->publicacion->getEstado_publicacion();?></td>
+                            <td><?php echo $this->publicacion->getEstado();?></td>
                             <td><i class="far fa-smile-beam" aria-hidden="true"></i></td>
                         </tr>
                       </tbody>
@@ -97,7 +97,7 @@ $postulaciones = $this->postulaciones;
           <a href="<?php echo constant('URL'); ?>editar_publicacion?mascota=<?php echo $this->mascota->id_mascota;?>"><button id="boton" class="btn btn-secondary m-2">Editar Publicacion</button></a>
           <div id="pills-Postulantes">
             <?php
-              require 'View/postulaciones/index.php';
+              // require 'View/postulaciones/index.php';
             ?>
           </div>
         </div>
