@@ -30,12 +30,12 @@ Class Adopciones extends Controller{
             
         }
         
-        if(!isset($_GET['pagina'])){
+        
+        if(!isset($_POST['pagina'])){
             $pagina = 1;
         }else{
-            $pagina = $_GET['pagina'];
+            $pagina = $_POST['pagina'];
         }
-
         $datos = $this->model->get($extra_query , $pagina);
         if(!empty($datos['items'])){
             $this->view->publicacion = $datos['items'];
