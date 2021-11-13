@@ -1,9 +1,11 @@
 <?php
 
+
+
 Class Mis_publicaciones extends Controller{
     function __construct(){
         parent::__construct();
-        $this->view->mascotas = [];
+        $this->view->publicaciones = [];
         $this->view->user=new Usuario();
 
     }
@@ -18,15 +20,19 @@ Class Mis_publicaciones extends Controller{
             $pagina = $_GET['pagina'];
         }
         $datos = $this->model->get($this->view->user->getId(),$pagina);
-        if($datos['items']){
-            $this->view->mascotas = $datos['items'];
+        if($datos['publicaciones']){
+            $this->view->publicaciones = $datos['publicaciones'];
             $this->view->total_paginas = $datos['total'];
             $this->view->pagina = $pagina;
+            
+           
             $this->view->render('mis_publicaciones/index');
         }else{
             $this->view->render('mis_publicaciones/index');
         }
     }
+
+    
 }
 
 ?>

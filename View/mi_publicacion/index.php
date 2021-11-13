@@ -94,7 +94,7 @@
             </div>
           </div>
           <button id="boton" class="btn btn-danger m-2 ">Eliminar Publicacion</button>
-          <a href="<?php echo constant('URL'); ?>editar_publicacion?mascota=<?php echo $this->mascota->id_mascota;?>"><button id="boton" class="btn btn-secondary m-2">Editar Publicacion</button></a>
+          <a href="<?php echo constant('URL'); ?>editar_publicacion?publicacion=<?php echo $this->publicacion->getId_publicacion();?>"><button id="boton" class="btn btn-secondary m-2">Editar Publicacion</button></a>
           <div id="pills-Postulantes">
             <?php
               // require 'View/postulaciones/index.php';

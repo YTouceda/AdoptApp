@@ -1,7 +1,6 @@
 <?php
 
 include_once 'Clases/publicacion.php';
-include_once 'Clases/mascota.php';
 
 class abrir_publicacionModel extends Model{
     public function __construct(){
@@ -40,6 +39,7 @@ class abrir_publicacionModel extends Model{
             return false;
         }
     }
+    
 }
 
 ?>
