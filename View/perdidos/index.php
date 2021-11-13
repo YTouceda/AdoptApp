@@ -85,20 +85,31 @@
                                 </div>
                             </div>
                             <div class="col">
-                                    <label for="edad" class="col-form-label label-checkbox">Edad de mascota:</label>
-                                    <div name="edad" class="form-check form-check-inline checkbox">
-                                        <input type="checkbox" id="cachorro" name="EDAD_MASCOTA[]" value="Cachorro/a" class="form-check-input">
-                                        <label for="cachorro" class="form-check-label">Cachorro/a</label><br>
-                                        <input type="checkbox" id="adulto" name="EDAD_MASCOTA[]" value="Adulto/a" class="form-check-input">
-                                        <label for="adulto" class="form-check-label">Adulto/a</label><br>
-                                        <input type="checkbox" id="anciano" name="EDAD_MASCOTA[]" value="Anciano/a" class="form-check-input">
-                                        <label for="anciano" class="form-check-label">Anciano/a</label>
-                                    </div>
+                                <label for="edad" class="col-form-label label-checkbox">Edad de mascota:</label>
+                                <div name="edad" class="form-check form-check-inline checkbox">
+                                    <input type="checkbox" id="cachorro" name="EDAD_MASCOTA[]" value="Cachorro/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Cachorro/a")echo "checked";}?>>
+                                    <label for="cachorro" class="form-check-label">Cachorro/a</label><br>
+                                    <input type="checkbox" id="adulto" name="EDAD_MASCOTA[]" value="Adulto/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Adulto/a")echo "checked";}?>>
+                                    <label for="adulto" class="form-check-label">Adulto/a</label><br>
+                                    <input type="checkbox" id="anciano" name="EDAD_MASCOTA[]" value="Anciano/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Anciano/a")echo "checked";}?>>
+                                    <label for="anciano" class="form-check-label">Anciano/a</label>
+                                </div>
                             </div>
-                            <div class="col col-1 position-relative">
-                                <input type="submit" id="boton" value="Filtrar" class="btn btn-success btn-filtrar position-absolute top-50 start-50 translate-middle">
+                            <div class="col col-12">
+                                <div class="m-3 text-center">
+                                    <?php if($_POST){
+                                    ?>
+                                        <a href="<?php echo constant('URL'); ?>encontrados"><input type="button" id="boton2" value="Quitar Filtros" class="btn btn-secondary mx-2"></a>
+                                        <input type="submit" id="boton" value="Filtrar" class="btn btn-success mx-2 px-4">
+                                    <?php
+                                    }else{
+                                    ?>
+                                        <input type="submit" id="boton" value="Filtrar" class="btn btn-success mx-2 px-5">
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
                             </div>
-
                         </form>
                         <div id="seccion-btn-filtros-modal" class="col-sm-12">
                             <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#modal_filtros">
@@ -180,18 +191,27 @@
                                                         <div class="col  col-12">
                                                             <label for="edad" class="col-12 col-form-label label-checkbox">Edad de mascota:</label>
                                                             <div name="edad" class="form-check form-check-inline checkbox">
-                                                                <input type="checkbox" id="mdl-cachorro" name="EDAD_MASCOTA[]" value="Cachorro/a" class="form-check-input">
-                                                                <label for="mdl-cachorro" class="form-check-label">Cachorro/a</label>
-                                                                <input type="checkbox" id="mdl-adulto" name="EDAD_MASCOTA[]" value="Adulto/a" class="form-check-input">
-                                                                <label for="mdl-adulto" class="form-check-label">Adulto/a</label>
-                                                                <input type="checkbox" id="mdl-anciano" name="EDAD_MASCOTA[]" value="Anciano/a" class="form-check-input">
-                                                                <label for="mdl-anciano" class="form-check-label">Anciano/a</label>
+                                                                <input type="checkbox" id="cachorro" name="EDAD_MASCOTA[]" value="Cachorro/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Cachorro/a")echo "checked";}?>>
+                                                                <label for="cachorro" class="form-check-label">Cachorro/a</label><br>
+                                                                <input type="checkbox" id="adulto" name="EDAD_MASCOTA[]" value="Adulto/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Adulto/a")echo "checked";}?>>
+                                                                <label for="adulto" class="form-check-label">Adulto/a</label><br>
+                                                                <input type="checkbox" id="anciano" name="EDAD_MASCOTA[]" value="Anciano/a" class="form-check-input" <?php if(isset($_POST["EDAD_MASCOTA"])){if($_POST["EDAD_MASCOTA"][0] == "Anciano/a")echo "checked";}?>>
+                                                                <label for="anciano" class="form-check-label">Anciano/a</label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" id="btn-cancelar-filtrar-modal" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                        <button type="submit" id="btn-filtrar-modal" class="btn btn-primary btn-filtrar">Filtrar</button>
+                                                        <?php if($_POST){
+                                                        ?>
+                                                            <a href="<?php echo constant('URL'); ?>perdidos"><input type="button" id="boton2" value="Quitar Filtros" class="btn btn-secondary mx-2"></a>
+                                                            <input type="submit" id="boton" value="Filtrar" class="btn btn-success mx-2 px-4">
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                            <input type="submit" id="boton" value="Filtrar" class="btn btn-success mx-2 px-5">
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </form>
                                             </div>
@@ -204,10 +224,10 @@
                     <div class="nav-PE">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a class="text-decoration-none" href="<?php echo constant('URL').'perdidos?seccion=perdidos';?>"><button class="nav-link nav-style<?php if($this->seccion == 'perdidos'){echo ' active';}?>" id="perdidos-tab" data-bs-toggle="tab" data-bs-target="#perdidos" type="button" role="tab" aria-controls="perdidos" aria-selected="true">Perdidos</button></a>
+                                <a class="text-decoration-none" href="<?php echo constant('URL').'perdidos?seccion=perdidos';?>"><button class="px-4 nav-link nav-style<?php if($this->seccion == 'perdidos'){echo ' active';}?>" id="perdidos-tab">Mascotas perdidas</button></a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="text-decoration-none" href="<?php echo constant('URL').'encontrados?seccion=encontrados';?>"><button class="nav-link nav-style<?php if($this->seccion == 'encontrados'){echo ' active';}?>" id="encontrados-tab" data-bs-toggle="tab" data-bs-target="#encontrados" type="button" role="tab" aria-controls="encontrados" aria-selected="false">Encontrados</button></a>
+                                <a class="text-decoration-none" href="<?php echo constant('URL').'encontrados?seccion=encontrados';?>"><button class="px-4 nav-link nav-style<?php if($this->seccion == 'encontrados'){echo ' active';}?>" id="encontrados-tab">Mascotas encontradas</button></a>
                             </li>
                         </ul>
                     </div>
@@ -225,7 +245,7 @@
                                 ?>
                                     <div class="col-sm-12 col-md-6 m-md-0 p-md-3 col-lg-6 col-xl-4 px-2">
                                         <div class="card m-2 card_publicaciones">
-                                            <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?publicacion=<?php echo $row->getId_publicacion()?>">
+                                            <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion?publicacion=<?php echo $row->getId_publicacion()?>">
                                                 <img src="<?php echo constant('URL')."Public/public_media/".$mascota->getFotos_mascota(); ?>" class="text-center card-img-top card-imagen" alt="...">
                                                 <div class="card-body">
                                                     <h4><?php echo $mascota->getNombre_mascota();?></h4>
@@ -268,7 +288,7 @@
                             ?>
                                 <div class="text-center">
                                     <h2 class="mt-3">Ups, no se encontraron publicaciones!</h2>
-                                    <img src="<?php echo constant('URL'); ?>public\media\pagina_inexistente.png" class="w-50 ps-4" alt="">
+                                    <img src="<?php echo constant('URL'); ?>public\media\pagina_inexistente.png" class="w-50 mx-auto" alt="">
                                 </div>
                             <?php
                             }

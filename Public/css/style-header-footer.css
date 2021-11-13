@@ -59,6 +59,39 @@ div#header_adoptapp label.dropdown-item{
 div#header_adoptapp .dropdown-menu-lg-end{
     background-color: #fcedd8;
 }
+
+div#header_adoptapp .dropdown-menu-end,
+div#header_adoptapp .list-group-item{
+    background-color: #fcedd8;
+}
+
+div#header_adoptapp .list-group-item:hover{
+    background-color: #ebd2af;
+}
+
+div#header_adoptapp .icono_menu_notificacion{
+    background: #ebd2af;
+    border-radius: 17px;
+    font-size: 20px;
+    padding: 10px;
+    color: rgb(133, 84, 20);
+}
+
+div#header_adoptapp label .icono_menu_notificacion:hover{
+    background: rgb(241, 176, 119);
+    border-radius: 17px;
+    color: rgb(133, 84, 20);
+    cursor: pointer;
+}
+
+/* label.label_menu_notificacion{
+    display: none;
+}
+
+div.div_notificacion_opc + label.label_menu_notificacion{
+    display: block;
+} */
+
 .secciones-grupo label.seccion-active{
     background: rgb(133, 84, 20);
     border-radius: 50px;
