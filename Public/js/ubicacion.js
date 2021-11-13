@@ -14,12 +14,9 @@ $(document).ready(function () {
         success:  function (response) {
             respuesta=response;
             if( $("#provincia option:selected").val() != ""){
+                $("#ilocalidades").val("");
                 let id_provincia = $("#provincia option:selected").val();
                 filtrar(respuesta, id_provincia);
-            }
-            if( $("#provincia_modal option:selected").val() != ""){
-                let id_provincia = $("#provincia_modal option:selected").val();
-                filtrarModal(respuesta, id_provincia);
             }
         }
     });
@@ -87,11 +84,7 @@ $(document).ready(function () {
         localidades = ordenarLocalidades(localidades);
         $(localidades).each((index)=>{
             loc = localidades[index];
-            if($("#xlocalidad").val() == loc.id_localidad){
-                $option+= `<option value="${loc.id_localidad}" id-p="${loc.id_provincia}" selected>${loc.nombre}</option>`;
-            }else{
-                $option+= `<option value="${loc.id_localidad}" id-p="${loc.id_provincia}">${loc.nombre}</option>`;
-            }
+            $option+= `<option data-l='${loc.id_localidad}' data-p='${loc.id_provincia}'> ${loc.nombre} </option>`;
         })
         $("#localidades_modal").html($option);
         
