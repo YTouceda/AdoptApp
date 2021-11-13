@@ -9,15 +9,9 @@ class Localidad{
 $(document).ready(function () {
     var respuesta;
     $.ajax({
-        //url: 'getLocalidades.php',
         url: 'Public/Otros/localidades.json',
-        type:  'POST',
-        beforeSend: function () {
-            //console.log("enviando");
-        },
+        type: 'POST',
         success:  function (response) {
-            //$("#resultado").html(response);
-            //agregarItems(response);
             respuesta=response;
             if( $("#provincia option:selected").val() != ""){
                 let id_provincia = $("#provincia option:selected").val();
@@ -34,7 +28,6 @@ $(document).ready(function () {
     const filtrar =(data, filtro)=>{
         let $option, elemento, loc;
         var localidades=[];
-        console.log(data["localidades-censales"]);;
         $(data["localidades-censales"]).each((index)=>{
             var aux=new Localidad();
             elemento= data["localidades-censales"][index];

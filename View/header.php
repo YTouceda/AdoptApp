@@ -9,6 +9,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/header.js" defer></script>
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/notificaciones.js" defer></script>
         <title>AdoptApp - header</title>
     </head>
     <body class="body-adoptapp">
@@ -40,11 +41,11 @@
                 </div>
             </div>
             <?php
-                if(!(isset($_SESSION['id']))){
+            if(!(isset($_SESSION['id']))){
             ?>
-                <div id="seccion_iniciar_sesion" class="col-12 col-lg-6 col-xxl-3">
-                    <div class="row">
-                        <div id='menu-secciones-cont' class='text-center col-6 end-100 px-0 mx-0 ps-5 my-3 py-4 my-lg-4 py-lg-5 my-xxl-3 py-xxl-4'>
+                <div id="seccion_iniciar_sesion" class="col-12 col-md-6 col-xxl-3">
+                    <div class="row h-100">
+                        <div id='menu-secciones-cont' class='text-center col-6 px-0 mx-0 ps-5 d-lg-block d-xxl-none my-auto'>
                             <div class='dropdown justify-content-md-center'>
                                 <label id='dropdown-menu-secciones' class='lbl-seccion nav-icon-menu-secciones' data-bs-toggle='dropdown' aria-expanded='false'>
                                     <i class='fas fa-bars'></i>
@@ -64,7 +65,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="text-center col-6 end-50 px-0 mx-0 my-3 py-4 my-lg-4 py-lg-5 my-xxl-3 py-xxl-4">
+                        <div class="text-center col-6 px-0 mx-0 ms-xxl-5 my-2 my-md-auto">
                             <div id="btns_usuario" class="">
                                 <button id="btn-iniciarSesion" type="button" class="btn btn-primary"><span><i class="fab fa-facebook"></i></span> INICIAR SESIÓN</button>
                             </div>
@@ -72,92 +73,56 @@
                     </div>
                 </div>
             <?php
-                }else{
+            }else{
             ?>
-                <!-- <div  class="col-12 col-xxl-3">
-
-                </div> -->
-                <div class='col-12 col-xl-6 col-xxl-3'>
-                    <div id='header-user' class='user-grupo'>
-                        <div class='row'>
-                            <div id='menu-secciones-cont' class='col col-xxl-2 position-relative my-3 mx-xxl-2 py-5 px-xl-5 d-lg-block d-xxl-none'>
-                                <div class="text-center col-6 end-100 px-0 mx-0 ps-5">
-                                    <div class='dropdown justify-content-md-center'>
-                                        <label id='dropdown-menu-secciones' class='lbl-seccion nav-icon-menu-secciones' data-bs-toggle='dropdown' aria-expanded='false'>
-                                            <i class='fas fa-bars'></i>
-                                        </label>
-                                        <ul class='dropdown-menu dropdown-menu-lg-end' aria-labelledby='dropdown-menu-secciones'>
-                                            <li>
-                                                <a href='<?php echo constant('URL'); ?>adopciones' class='text-decoration-none'><label for='adopciones' id='lbl-adopciones' class='lbl-seccion dropdown-item'>Adopciones</label></a>
-                                            </li>
-                                            <li><hr class='dropdown-divider'></li>
-                                            <li>
-                                                <a href='<?php echo constant('URL'); ?>perdidos' class='text-decoration-none'><label for='perdidos' class='lbl-seccion dropdown-item'>Perdidos</label></a>
-                                            </li>
-                                            <li><hr class='dropdown-divider'></li>
-                                            <li>
-                                                <label for='crear' class='text-decoration-none dropdown-item' data-bs-toggle='modal' data-bs-target='#modal_crear_publicacion'>Crear Publicacion</label>
-                                            </li>
-                                        </ul>
+                <div class="col-12 col-md-6 col-xxl-3">
+                    <div class='row  h-100'>
+                        <div id='menu-secciones-cont' class='text-center col col-xxl-2 px-0 mx-0 d-lg-block d-xxl-none my-auto'>
+                            <div class='dropdown justify-content-md-center'>
+                                <label id='dropdown-menu-secciones' class='lbl-seccion nav-icon-menu-secciones' data-bs-toggle='dropdown' aria-expanded='false'>
+                                    <i class='fas fa-bars'></i>
+                                </label>
+                                <ul class='dropdown-menu dropdown-menu-lg-end' aria-labelledby='dropdown-menu-secciones'>
+                                    <li>
+                                        <a href='<?php echo constant('URL'); ?>adopciones' class='text-decoration-none'><label for='adopciones' id='lbl-adopciones' class='lbl-seccion dropdown-item'>Adopciones</label></a>
+                                    </li>
+                                    <li><hr class='dropdown-divider'></li>
+                                    <li>
+                                        <a href='<?php echo constant('URL'); ?>perdidos' class='text-decoration-none'><label for='perdidos' class='lbl-seccion dropdown-item'>Perdidos</label></a>
+                                    </li>
+                                    <li><hr class='dropdown-divider'></li>
+                                    <li>
+                                        <label for='crear' class='text-decoration-none dropdown-item' data-bs-toggle='modal' data-bs-target='#modal_crear_publicacion'>Crear Publicacion</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class='col col-xxl-2 text-center px-0 mx-0 my-2 my-md-auto'>
+                            <div id="drop_notis" class='dropdown'>
+                                <label id='dropdown-notificaciones' class='lbl-seccion nav-icon-notificaciones' data-bs-toggle='dropdown' aria-expanded='false'>
+                                    <div class=''>
+                                        <i class='fas fa-bell campana-notificaciones'>
+                                            <span class='position-absolute alerta-notificacion-sin-leer translate-middle badge border border-light rounded-circle bg-danger p-1'>
+                                            <span class='visually-hidden'>unread messages</span>
+                                            </span>
+                                        </i>
                                     </div>
+                                </label>
+                                <div id='notificacion_list' class="dropdown-menu dropdown-menu-end" aria-labelledby='dropdown-notificaciones'>
+
                                 </div>
                             </div>
-                            <div class='col col-xxl-2 position-relative my-3 mx-xxl-2 py-5 px-xl-5'>
-                                <div class='dropdown position-absolute top-50 start-50 translate-middle'>
-                                    <label id='dropdown-notificaciones' class='lbl-seccion nav-icon-notificaciones' data-bs-toggle='dropdown' aria-expanded='false'>
-                                        <div class='position-relative'>
-                                            <i class='fas fa-bell campana-notificaciones'>
-                                                <span class='position-absolute alerta-notificacion-sin-leer translate-middle badge border border-light rounded-circle bg-danger p-1'>
-                                                <span class='visually-hidden'>unread messages</span>
-                                                </span>
-                                            </i>
-                                        </div>
-                                    </label>
-                                    <ul id="notificacion_list" class='dropdown-menu' aria-labelledby='dropdown-notificaciones'>
-                                        <li>
-                                            <a href='<?php echo constant('URL'); ?>#' class='dropdown-item'>
-                                                <div class='d-flex w-100 justify-content-between'>
-                                                    <h5 class='mb-1'>List group item heading</h5>
-                                                    <small>3 days ago</small>
-                                                </div>
-                                                <p class='mb-1'>Some placeholder content in a paragraph.</p>
-                                                <small>And some small print.</small>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href='<?php echo constant('URL'); ?>#' class='dropdown-item'>
-                                                <div class='d-flex w-100 justify-content-between'>
-                                                    <h5 class='mb-1'>List group item heading</h5>
-                                                    <small>3 days ago</small>
-                                                </div>
-                                                <p class='mb-1'>Some placeholder content in a paragraph.</p>
-                                                <small>And some small print.</small>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href='<?php echo constant('URL'); ?>#' class='dropdown-item'>
-                                                <div class='d-flex w-100 justify-content-between'>
-                                                    <h5 class='mb-1'>List group item heading</h5>
-                                                    <small>3 days ago</small>
-                                                </div>
-                                                <p class='mb-1'>Some placeholder content in a paragraph.</p>
-                                                <small>And some small print.</small>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class='col col-xxl-2 position-relative my-3 mx-xxl-2 py-5 px-xl-5'>
-                                <a href='<?php echo constant('URL'); ?>perfil'><label id='icon-perfil' class='lbl-seccion nav-icon-perfil position-absolute top-50 start-50 translate-middle'><i class='fas fa-user'></i></label></a>
-                            </div>
-                            <div class='col col-xxl-2 position-relative my-3 mx-xxl-2 py-5 px-xl-5'>
-                                <a href="<?php echo constant('URL'); ?>logout" id='cerrar_sesion' class='lbl-seccion nav-icon-logout position-absolute top-50 start-50 translate-middle'><i class='fas fa-sign-in-alt'></i></a>
-                            </div>
+                        </div>
+                        <div class='col col-xxl-2 text-center px-0 mx-0 my-2 my-md-auto'>
+                            <a href='<?php echo constant('URL'); ?>perfil'><label id='icon-perfil' class='lbl-seccion nav-icon-perfil'><i class='fas fa-user'></i></label></a>
+                        </div>
+                        <div class='col col-xxl-2 text-center px-0 mx-0 my-2 my-md-auto'>
+                            <a href="<?php echo constant('URL'); ?>logout" id='cerrar_sesion' class='lbl-seccion nav-icon-logout'><i class='fas fa-sign-in-alt'></i></a>
                         </div>
                     </div>
                 </div>
             <?php
-                }
+            }
             ?>
             <div id="modal_crear_publicacion" class="modal fade modal-style" tabindex="-1" aria-labelledby="titulo_modal_crear_publicacion" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -189,9 +154,9 @@
                                     </li>
                                 </ul>
                             </div>
-                            <?php
+                        <?php
                         }else{
-                            ?>
+                        ?>
                             <div class="alert alert-danger" role="alert">
                                 Inicie Sesión para crear una nueva publicación!
                             </div>

@@ -8,6 +8,7 @@ Class Header extends Controller{
     }
     
     function Render(){
+        $this->view->notificaciones = $this->model->get($_SESSION['id']);
         $this->view->render('header/index');
         if(isset($_SESSION['id'])){
             $this->usuario->setUsuario($this->userSession->getCurrentUsuario());
