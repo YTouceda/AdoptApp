@@ -113,7 +113,7 @@
                                             </i>
                                         </div>
                                     </label>
-                                    <ul id="notificacion_list" class='dropdown-menu' aria-labelledby='dropdown-notificaciones'>
+                                    <ul class='dropdown-menu dropdown-menu-lg-end' aria-labelledby='dropdown-notificaciones'>
                                         <li>
                                             <a href='<?php echo constant('URL'); ?>#' class='dropdown-item'>
                                                 <div class='d-flex w-100 justify-content-between'>

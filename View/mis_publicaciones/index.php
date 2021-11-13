@@ -29,10 +29,10 @@ if(isset($_SESSION['id'])){
                 <div class="col-12">
                     <ul class="nav nav-tabs  justify-content-center mt-3" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a href="<?php echo constant('URL'); ?>perfil"" class="text-decoration-none"><button class="nav-link nav-style" id="Perfil-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Perfil</button></a>
+                            <a href="<?php echo constant('URL'); ?>perfil" class="text-decoration-none"><button class="nav-link nav-style" id="Perfil-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Perfil</button></a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a href="<?php echo constant('URL'); ?>mis_publicaciones"" class="text-decoration-none"><button class="nav-link nav-style active" id="Mis-publicaciones-tab" data-bs-toggle="tab" type="button" role="tab" aria-controls="Mis_publicaciones" aria-selected="false">Mis Publicaciones</button></a>
+                            <a href="<?php echo constant('URL'); ?>mis_publicaciones" class="text-decoration-none"><button class="nav-link nav-style active" id="Mis-publicaciones-tab" data-bs-toggle="tab" type="button" role="tab" aria-controls="Mis_publicaciones" aria-selected="false">Mis Publicaciones</button></a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <?php
@@ -52,33 +52,38 @@ if(isset($_SESSION['id'])){
                                 <h1 id="titulo_mis_publicaciones">Mis Publicaciones:</h1>
                             </div>
                             <?php
-                            if(!empty($this->mascotas)){
-                                foreach($this->mascotas as $row){
-                                    $mascota = new Mascota();
-                                    $mascota = $row;
+                            if(!empty($this->publicaciones)){
+                                foreach($this->publicaciones as $row){
+                                    $publicacion= new Publicacion();
+                                    //$publicacion->setMascota($mascota);
+                                    //$mascota = new Mascota();
+                                    $publicacion = $row;
+                                    $mascota=$publicacion->getMascota();
+
+                                    //$diff = $publicacion->getFecha_alta_publicacion()->diff($this->fechaactual);
                             ?>
                                     <div class="card mb-3 card_mis_publicaciones">
-                                        <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>mi_publicacion/?publicacion=<?php echo $mascota->id_mascota?>">
+                                        <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>mi_publicacion/?publicacion=<?php echo $publicacion->getId_publicacion()?>">
                                             <div class="g-0 row row-cols-1 row-cols-sm-2 g-xs-3">
                                                 <div class="col-md-2">
-                                                    <img src="<?php echo constant('URL')."Public/public_media/".$mascota->fotos_mascota;?>" class="img-fluid rounded-start card-imagen-mp h-100 w-100" alt="...">
+                                                    <img src="<?php echo constant('URL')."Public/public_media/".$mascota->getFotos_mascota();?>" class="img-fluid rounded-start card-imagen-mp h-100 w-100" alt="...">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
-                                                        <h5 class="card-title"><?php echo $mascota->nombre_mascota?></h5>
+                                                        <h5 class="card-title"><?php echo $mascota->getNombre_mascota()?></h5>
                                                         <p class="card-text">
                                                             <?php 
                                                             for( $i = 0; $i <=350 ; $i++){
-                                                                if($i < strlen($mascota->descripcion_mascota)){
-                                                                    echo $mascota->descripcion_mascota[$i];
+                                                                if($i < strlen($mascota->getDescripcion_mascota())){
+                                                                    echo $mascota->getDescripcion_mascota()[$i];
                                                                 }
-                                                                else if($i == strlen($mascota->descripcion_mascota)){
+                                                                else if($i == strlen($mascota->getDescripcion_mascota())){
                                                                     echo "...";
                                                                 }
                                                             }
                                                             ?>
                                                         </p>
-                                                        <p class="card-text"><small class="text-muted"><?php echo $mascota->fecha_publicado?></small></p>
+                                                        <p class="card-text"><small class="text-muted"><?php echo $publicacion->getFecha_alta_publicacion(); ?></small></p>
                                                     </div>
                                                 </div>
                                             </div>
