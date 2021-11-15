@@ -15,7 +15,6 @@ class Crear_Publicacion extends Controller{
 
 
     function registrarMascota(){
-        $this->view->render('creacionexitosa/index');
         if(isset($_SESSION['id']) && isset($_POST['sexo']) && isset($_POST['edad']) && isset($_POST['tamanio'])  && isset($_POST['especie'])  && isset($_POST['nombre'])  && isset($_POST['descripcion'])  && isset($_POST['estado']) && isset($_POST['provincia']) && isset($_POST['telefono']) && isset($_POST['localidad'])){
             
         
@@ -54,7 +53,7 @@ class Crear_Publicacion extends Controller{
                 
                 if($this->model->insert($objPublicacion)){
                     move_uploaded_file($ruta_provisional, $src);
-                    //header('Location:' . constant('URL'));
+                    header('Location:' . constant('URL'));
                     
                     //$this->view->mensaje = "Se guardaron correctamente los cambios.";
                 }else {
