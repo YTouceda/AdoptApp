@@ -19,7 +19,7 @@
             <div id="titulo">
               <h1>Postulaciones</h1>
             </div>
-            <form class="formulario_postulantes" action="<?php echo constant('URL')?>mi_publicacion/elegir_postulante" method="POST">
+            <form class="formulario_postulantes" action="<?php echo constant('URL')?>abrir_publicacion/elegir_postulante" method="POST">
             <?php
             foreach($this->postulaciones as $row){
                 $postulacion = $row;

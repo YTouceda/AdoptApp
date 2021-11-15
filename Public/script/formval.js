@@ -374,7 +374,7 @@ $(document).on("change", ".add_photo", function () {
                     'Tu publicación fue creada exitosamente',
                     'success'
                   )
-                  setTimeout(() => {$("#formcp").submit()}, 5000);
+                  setTimeout(() => {$("#formcp").submit()}, 3000);
                
             }
         });

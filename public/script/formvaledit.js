@@ -379,7 +379,7 @@ $("#test").click(function test(e){
                     'Tu publicación fue editada exitosamente',
                     'success'
                   )
-                  setTimeout(() => {$("#formedit").submit()}, 5000);
+                  setTimeout(() => {$("#formedit").submit()}, 3000);
                
             }
         });

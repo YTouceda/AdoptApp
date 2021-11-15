@@ -17,6 +17,8 @@ if(isset($_SESSION['id'])){
         <script src="<?php echo constant('URL'); ?>Public/js/validar_editar_perfil.js" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.css">
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/header.js" defer></script>
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/notificaciones.js" defer></script>
         <title>AdoptApp - Perfil</title>
     </head>
     <body class="body-adoptapp">

@@ -8,6 +8,7 @@ class abrir_publicacion extends Controller{
         $this->view->user=new Usuario();
         $this->view->publicacion = [];
         $this->view->mascota = [];
+        $this->view->postulaciones = [];
 
     }
     
@@ -18,6 +19,12 @@ class abrir_publicacion extends Controller{
         }else{
             $publicacion = $_GET['publicacion'];
         }
+        $post = $this->model->getPostulaciones($publicacion);
+        if($post){
+            $this->view->postulaciones = $post;
+        }
+        $this->view->estado_post=$this->validarPostulacion();
+
         $objPublicacion = $this->model->get($publicacion);
         // var_dump($objPublicacion);
         if($objPublicacion){
@@ -64,6 +71,46 @@ class abrir_publicacion extends Controller{
 
 
     }
+    function postularse(){
+        if(isset($_GET['publicacion'])){
+        $this->model->setPostulacion($_GET['publicacion']);
+        }
+        header('Location:' . getenv('HTTP_REFERER'));
+    }
+    function cancelarPostulacion(){
+        $this->model->cancelarPostulacion($_SESSION['id']);
+        
+        header('Location:' . getenv('HTTP_REFERER'));
+    }
+    function validarPostulacion(){
+        if(empty($this->view->postulaciones)){
+            return true;
+        }else{
+            $resultado_post=true;
+            foreach ($this->view->postulaciones as $postulacion){
+                if($postulacion['USUARIO_POSTULADO']->getId()==$_SESSION['id']){
+                    $resultado_post=false;
+                }
+            }
+            return $resultado_post;
+        }
+    }
+    function elegir_postulante(){
+            if(isset($_POST['postulante'])){
+            if($this->model->get($_POST['postulante'])){
+                $this->mensaje = "Se almaceno correctamente";
+            }else{
+                $this->mensaje = "No se pudo almacenar la adopcion.";
+            }
+            }else{
+                $this->mensaje = "No se eligio ningun postulante.";
+            }
+         }
+
+
+
+
+
 }
 
 

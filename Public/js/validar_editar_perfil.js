@@ -24,7 +24,7 @@ $('#btn_guardar').click(function (event) {
             'Tu perfil fue editado exitosamente!',
             'success'
           )
-          setTimeout(() => {$("#form_editar").submit()}, 5000);
+          setTimeout(() => {$("#form_editar").submit()}, 3000);
     }
 });
 
