@@ -13,7 +13,7 @@ Class Perfil extends Controller{
         }
         
         $this->view->render('perfil/index');
-        echo $this->userSession->getCurrentUsuario();
+        // echo $this->userSession->getCurrentUsuario();
         
     }
 

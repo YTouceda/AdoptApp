@@ -36,10 +36,10 @@ Class Encontrados extends Controller{
         }
         
         
-        if(!isset($_POST['pagina'])){
+        if(!isset($_GET['pagina'])){
             $pagina = 1;
         }else{
-            $pagina = $_POST['pagina'];
+            $pagina = $_GET['pagina'];
         }
         $datos = $this->model->get($extra_query , $pagina);
         if(!empty($datos['items'])){

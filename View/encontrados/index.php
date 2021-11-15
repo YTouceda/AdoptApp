@@ -265,17 +265,38 @@
                                 <nav aria-label="Page navigation example">
                                     <ul id="navegacion-entre-paginas" class="pagination justify-content-center">
                                         <li class="page-item<?php if($this->pagina == 1){echo ' disabled';}?>">
-                                        <a class="page-link" href="<?php echo '?pagina='.($this->pagina-1);?>">Anterior</a>
+                                            <a class="page-link" href="<?php echo '?pagina='.($this->pagina-1);
+                                                if(isset($_GET["ID_PROVINCIA"]))for($x=0;$x<sizeof($_GET["ID_PROVINCIA"]);$x++){ echo "&ID_PROVINCIA%5B%5D=".$_GET["ID_PROVINCIA"][$x];} 
+                                                if(isset($_GET["ID_LOCALIDAD"]))for($x=0;$x<sizeof($_GET["ID_LOCALIDAD"]);$x++){ echo "&ID_LOCALIDAD%5B%5D=".$_GET["ID_LOCALIDAD"][$x];} 
+                                                if(isset($_GET["TIPO_ESPECIE_MASCOTA"]))for($x=0;$x<sizeof($_GET["TIPO_ESPECIE_MASCOTA"]);$x++){ echo "&TIPO_ESPECIE_MASCOTA%5B%5D=".$_GET["TIPO_ESPECIE_MASCOTA"][$x];} 
+                                                if(isset($_GET["TAMANIO_MASCOTA"]))for($x=0;$x<sizeof($_GET["TAMANIO_MASCOTA"]);$x++){ echo "&TAMANIO_MASCOTA%5B%5D=".$_GET["TAMANIO_MASCOTA"][$x];} 
+                                                if(isset($_GET["SEXO_MASCOTA"]))for($x=0;$x<sizeof($_GET["SEXO_MASCOTA"]);$x++){ echo "&SEXO_MASCOTA%5B%5D=".$_GET["SEXO_MASCOTA"][$x];} 
+                                                if(isset($_GET["EDAD_MASCOTA"]))for($x=0;$x<sizeof($_GET["EDAD_MASCOTA"]);$x++){ echo "&EDAD_MASCOTA%5B%5D=".$_GET["EDAD_MASCOTA"][$x];}
+                                            ?>">Anterior</a>
                                         </li>
+                                            <?php
+                                                for($i = 1 ; $i <= $this->total_paginas ; $i++){
+                                            ?>
+                                                <li class='page-item'><a class='page-link' href='<?php echo "?pagina=".$i;
+                                                    if(isset($_GET["ID_PROVINCIA"]))for($x=0;$x<sizeof($_GET["ID_PROVINCIA"]);$x++){ echo "&ID_PROVINCIA%5B%5D=".$_GET["ID_PROVINCIA"][$x];} 
+                                                    if(isset($_GET["ID_LOCALIDAD"]))for($x=0;$x<sizeof($_GET["ID_LOCALIDAD"]);$x++){ echo "&ID_LOCALIDAD%5B%5D=".$_GET["ID_LOCALIDAD"][$x];} 
+                                                    if(isset($_GET["TIPO_ESPECIE_MASCOTA"]))for($x=0;$x<sizeof($_GET["TIPO_ESPECIE_MASCOTA"]);$x++){ echo "&TIPO_ESPECIE_MASCOTA%5B%5D=".$_GET["TIPO_ESPECIE_MASCOTA"][$x];} 
+                                                    if(isset($_GET["TAMANIO_MASCOTA"]))for($x=0;$x<sizeof($_GET["TAMANIO_MASCOTA"]);$x++){ echo "&TAMANIO_MASCOTA%5B%5D=".$_GET["TAMANIO_MASCOTA"][$x];} 
+                                                    if(isset($_GET["SEXO_MASCOTA"]))for($x=0;$x<sizeof($_GET["SEXO_MASCOTA"]);$x++){ echo "&SEXO_MASCOTA%5B%5D=".$_GET["SEXO_MASCOTA"][$x];} 
+                                                    if(isset($_GET["EDAD_MASCOTA"]))for($x=0;$x<sizeof($_GET["EDAD_MASCOTA"]);$x++){ echo "&EDAD_MASCOTA%5B%5D=".$_GET["EDAD_MASCOTA"][$x];}
+                                                ?>'><?php echo $i?></a></li>
                                         <?php
-                                        for($i = 1 ; $i <= $this->total_paginas ; $i++){
-                                        ?>
-                                        <li class="page-item"><a class="page-link" href="<?php echo '?pagina='.$i?>"><?php echo $i?></a></li>
-                                        <?php
-                                        }
+                                            }
                                         ?>
                                         <li class="page-item<?php if($this->pagina == $this->total_paginas){echo ' disabled';}?>">
-                                        <a class="page-link" href="<?php echo '?pagina='.($this->pagina+1);?>">Siguiente</a>
+                                            <a class="page-link" href="<?php echo '?pagina='.($this->pagina+1);
+                                                if(isset($_GET["ID_PROVINCIA"]))for($x=0;$x<sizeof($_GET["ID_PROVINCIA"]);$x++){ echo "&ID_PROVINCIA%5B%5D=".$_GET["ID_PROVINCIA"][$x];} 
+                                                if(isset($_GET["ID_LOCALIDAD"]))for($x=0;$x<sizeof($_GET["ID_LOCALIDAD"]);$x++){ echo "&ID_LOCALIDAD%5B%5D=".$_GET["ID_LOCALIDAD"][$x];} 
+                                                if(isset($_GET["TIPO_ESPECIE_MASCOTA"]))for($x=0;$x<sizeof($_GET["TIPO_ESPECIE_MASCOTA"]);$x++){ echo "&TIPO_ESPECIE_MASCOTA%5B%5D=".$_GET["TIPO_ESPECIE_MASCOTA"][$x];} 
+                                                if(isset($_GET["TAMANIO_MASCOTA"]))for($x=0;$x<sizeof($_GET["TAMANIO_MASCOTA"]);$x++){ echo "&TAMANIO_MASCOTA%5B%5D=".$_GET["TAMANIO_MASCOTA"][$x];} 
+                                                if(isset($_GET["SEXO_MASCOTA"]))for($x=0;$x<sizeof($_GET["SEXO_MASCOTA"]);$x++){ echo "&SEXO_MASCOTA%5B%5D=".$_GET["SEXO_MASCOTA"][$x];} 
+                                                if(isset($_GET["EDAD_MASCOTA"]))for($x=0;$x<sizeof($_GET["EDAD_MASCOTA"]);$x++){ echo "&EDAD_MASCOTA%5B%5D=".$_GET["EDAD_MASCOTA"][$x];}
+                                            ?>">Siguiente</a>
                                         </li>
                                     </ul>
                                 </nav>

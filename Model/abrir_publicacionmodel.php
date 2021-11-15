@@ -1,7 +1,6 @@
 <?php
 
 include_once 'Clases/publicacion.php';
-include_once 'Clases/mascota.php';
 
 class abrir_publicacionModel extends Model{
     public function __construct(){
@@ -31,7 +30,6 @@ class abrir_publicacionModel extends Model{
                 $objPublicacion->setNum_contacto_publicacion($row['NUM_CONTACTO_PUBLICACION']);
                 $objPublicacion->setFecha_alta_publicacion($row['FECHA_ALTA_PUBLICACION']);
                 $objPublicacion->setMascota($objMascota);
-
                 // var_dump($objPublicacion);
             }
             

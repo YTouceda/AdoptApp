@@ -183,6 +183,7 @@ div.publicaciones{
 div.cuerpo{
     background: rgba(255, 234, 202, 0.5);
     padding: 0px;
+    min-height: 650px;
 }
 
 button#btn-iniciarSesion{
