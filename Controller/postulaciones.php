@@ -5,10 +5,6 @@ Class Postulaciones extends Controller{
         parent::__construct();
 
     }
-
-    function Render(){
-        $this->view->render('postulacion/index');
-    }
 }
 
 ?>

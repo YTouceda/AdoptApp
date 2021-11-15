@@ -92,9 +92,20 @@
                         Denunciar publicación
                     </button>
                 </div> -->
-                    <div class="col-12 col-sm-6">
-                    <button type="button" class="btn btn-success boton-ap">Postularse para adoptar</button>
+                  <div class="col-12 col-sm-6">
+                  <?php 
+                  if ($_SESSION['id']!=$this->publicacion->getId_usuario()){?>
+                    <a href='<?php echo constant('URL'); ?>abrir_publicacion/postularse?publicacion=<?php echo  $this->publicacion->getId_publicacion();?>'><button name="postularse" type="button" class="btn btn-success boton-ap">Postularse para adoptar</button></a>
+                  <?php
+                  }?>
+            
+                 
                 </div>
+                <?php 
+                if ($_SESSION['id']==$this->publicacion->getId_usuario()){?>
+                  <a href='<?php echo constant('URL'); ?>editar_publicacion?publicacion=<?php echo  $this->publicacion->getId_publicacion();?>'><button id='boton' class='btn btn-secondary m-2'>Editar Publicacion</button></a>
+                <?php
+                }?>
                 </div> <!-- botones -->
                 
                     
@@ -140,6 +151,11 @@
                 
             </div>
         </div>
+        <?php 
+            if ($_SESSION['id']==$this->publicacion->getId_usuario()){
+                  require 'View/postulaciones/index.php';   
+        
+        }?>
       </main>
       <footer>
             <?php

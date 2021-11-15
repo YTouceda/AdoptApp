@@ -8,17 +8,17 @@ class postulacionesModel extends Model{
         parent::__construct();
     }
 
-    public function get($ID_MASCOTA){
+    public function getPostulaciones($ID_PUBLICACION){
         $items = [];
         try {
-            $query = $this->db->connect()->prepare("SELECT * FROM POSTULACIONES WHERE ID_MASCOTA = :ID_MASCOTA");
-            $query->execute(['ID_MASCOTA' => $ID_MASCOTA]);
+            $query = $this->db->connect()->prepare("SELECT * FROM POSTULACION WHERE ID_PUBLICACION = :ID_PUBLICACION");
+            $query->execute(['ID_PUBLICACION' => $ID_PUBLICACION]);
             while($row = $query->fetch()){
                 $user= new Usuario();
                 $user->setUsuario($row['ID_USUARIO_POSTULADO']);
                 $item=[
                     'POSTULACION' => $row['ID_POSTULACION'],
-                    'MASCOTA' => $row['ID_MASCOTA'],
+                    'PUBLICACION' => $row['ID_PUBLICACION'],
                     'USUARIO_POSTULADO' => $user
                 ];
                 array_push($items,$item);

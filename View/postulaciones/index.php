@@ -15,14 +15,15 @@
     <main class="container">
         <?php
         if(!empty($this->postulaciones)){
+            
         ?>
             <div id="titulo">
               <h1>Postulaciones</h1>
             </div>
             <form class="formulario_postulantes" action="<?php echo constant('URL')?>mi_publicacion/elegir_postulante" method="POST">
             <?php
-            foreach($this->postulaciones as $row){
-                $postulacion = $row;
+                foreach($this->postulaciones as $row){
+                 $postulacion = $row;
             ?>
             <div class="form-check">
                 <input class="form-check-input invisible" type="checkbox" name="postulante" id="<?php echo $postulacion['USUARIO_POSTULADO']->getId()?>" required value="<?php echo $postulacion['POSTULACION']?>">
@@ -43,9 +44,9 @@
                     </div>
                 </label>
             </div>
-        <?php
-            }
-        ?>
+            <?php
+                 }
+            ?>
             <div class="text-center">
                 <button id="btn_aceptar_postulante" type="submit" class="btn btn-primary m-2">Aceptar postulante</button>
             </div>
