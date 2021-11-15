@@ -5,6 +5,7 @@ $(document).on("click", "#add-photo", function(){
 $(document).ready(function(){
 $(".add_photo").hide();
 
+
 });
 
 
@@ -124,12 +125,12 @@ $(document).on("change", ".add_photo", function () {
         return regExpResult.test(str);
     }
 
-$("#test").click(function test(e){
-    console.log($("#provincia").val());
-    console.log($("#localidades").val());
-});
+// $("#test").click(function test(e){
+//     console.log($("#provincia").val());
+//     console.log($("#localidades").val());
+// });
 
-    $("#publicar").click(function validarForm(e){
+    $("#enviar").click(function validarForm(e){
             var formValido=true;
             var nombre=$("#nombre");
             var errorNombre=$("#errorNombre");
@@ -367,7 +368,13 @@ $("#test").click(function test(e){
             if(!formValido){
                 e.preventDefault();
             }else{
-                //setTimeout("redireccionar()", 3000);
+                $("#enviar").attr("disabled",true);
+                Swal.fire(
+                    'Bien hecho!',
+                    'Tu publicación fue creada exitosamente',
+                    'success'
+                  )
+                  setTimeout(() => {$("#formcp").submit()}, 5000);
                
             }
         });

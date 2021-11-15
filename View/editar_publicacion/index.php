@@ -15,6 +15,8 @@
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style.css">
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style-header-footer.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.css">
     </head>
     <body>
         <header>
@@ -37,7 +39,7 @@
                         <div class="titulo-cp col">
                         <h6 class="titulo-cp">Datos  <i class="fas fa-id-card"></i></h6>
                         </div>
-                <form class="detalle-cp" action="<?php echo constant('URL'); ?>editar_publicacion/editarMascota?publicacion=<?php echo $_GET['publicacion'];?>"  enctype="multipart/form-data" method="post" id="formcp">
+                <form class="detalle-cp" action="<?php echo constant('URL'); ?>editar_publicacion/editarMascota?publicacion=<?php echo $_GET['publicacion'];?>"  enctype="multipart/form-data" id="formedit" method="post" id="formcp">
                 <!-- EN SUBMIT VA ABRIR PUBLICACION CON EL GET DEL ID PUB-->
                     <div>
                     <input type="text" value="<?php echo $this->mascota->getNombre_mascota();?>" id="nombre" name="nombre" class="form-control" placeholder="Nombre de la mascota" aria-label="Mascota" maxlength="12" aria-describedby="basic-addon1">
@@ -162,7 +164,7 @@
                         
                     </div>
                     <input  class="form-control cp mb-3 add_photo" type="file"  accept="image/*" id="input_add_photo1" name="foto">
-                    <img src="<?php echo constant('URL'); ?>Public/media/edit.svg" class="edit col mascota-edit p-50">
+                   
 
 
                     
@@ -176,8 +178,8 @@
                 <label for="input_add_photo1">
 
 
-                    <div class="img-seleccionada col img-agregada" id="img_grande"> <img  src="<?php echo constant('URL'); ?>Public/public_media/<?php echo $this->mascota->getFotos_mascota() ?>"  class="img-fluid img-mascota" ></div></label>
-                    <input type="hidden" name="fotovieja" value="< ?php echo $this->mascota->getFotos_mascota() ?>">
+                    <div class="img-seleccionada col img-agregada position-relative" id="img_grande"> <img  src="<?php echo constant('URL'); ?>Public/public_media/<?php echo $this->mascota->getFotos_mascota() ?>"  class="img-fluid img-mascota" > <img src="<?php echo constant('URL'); ?>Public/media/edit.svg" class="edit col mascota-edit p-50 position-absolute top-50 start-50 translate-middle"></div></label>
+                    <input type="hidden" name="fotovieja" value="<?php echo $this->mascota->getFotos_mascota() ?>">
                     <div class="row">
 
                     <!-- <label for="input_add_photo2" class="img-chiq col col-3">
@@ -197,8 +199,8 @@
                 </div>
 
                 <div id="alertaCreacionExitosa"></div>
-                <button type="submit" id="publicar" name="publicar" class="btn btn-success">Publicar</button>
-                <button type="button" id="test" name="test" class="btn btn-danger">test</button>
+                <button type="button" id="enviar" name="publicar" class="btn btn-success">Guardar cambios</button>
+               
                 </div> 
             
                 </form> 

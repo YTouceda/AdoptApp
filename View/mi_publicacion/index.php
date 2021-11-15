@@ -94,6 +94,7 @@
             </div>
           </div>
           <button id="boton" class="btn btn-danger m-2 ">Eliminar Publicacion</button>
+          
           <a href="<?php echo constant('URL'); ?>editar_publicacion?publicacion=<?php echo $this->publicacion->getId_publicacion();?>"><button id="boton" class="btn btn-secondary m-2">Editar Publicacion</button></a>
           <div id="pills-Postulantes">
             <?php

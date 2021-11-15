@@ -11,4 +11,5 @@ INSERT INTO `tamanio_mascota`(`ID_TAMANIO_MASCOTA`, `TIPO_TAMANIO_MASCOTA`) VALU
 INSERT INTO `estado`(`ID_ESTADO`, `TIPO_ESTADO_PUBLICACION`) VALUES ('0','En adopción');
 INSERT INTO `estado`(`ID_ESTADO`, `TIPO_ESTADO_PUBLICACION`) VALUES ('1','Lo encontré');
 INSERT INTO `estado`(`ID_ESTADO`, `TIPO_ESTADO_PUBLICACION`) VALUES ('2','Está perdido');
-INSERT INTO `permisos` (`ID_PERMISO`, `NOMBRE_PERMISO`) VALUES ('0', 'Visitante'), ('1', 'Registrado')
+INSERT INTO `permisos` (`ID_PERMISO`, `NOMBRE_PERMISO`) VALUES ('0', 'Visitante'), ('1', 'Registrado');
+INSERT INTO `tipo_denuncia` (`ID_TIPO_DENUNCIA`, `TIPO_DENUNCIA`) VALUES ('0', 'Spam'), ('1', 'Inapropiado'), ('2', 'Seccion incorrecta'), ('3', 'Otro');

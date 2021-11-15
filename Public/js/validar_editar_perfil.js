@@ -13,11 +13,18 @@ function validarTamImagenes(tam) {
 
 var form = $('.needs-validation');
 
-$('#form_editar').submit(function (event) {
+$('#btn_guardar').click(function (event) {
     if (!validar_formulario()) {
         event.preventDefault();
     }else{
         form.addClass('was-validated');
+        $("#btn_guardar").attr("disabled",true);
+        Swal.fire(
+            'Exito!',
+            'Tu perfil fue editado exitosamente!',
+            'success'
+          )
+          setTimeout(() => {$("#form_editar").submit()}, 5000);
     }
 });
 

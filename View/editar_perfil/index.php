@@ -15,6 +15,8 @@ if(isset($_SESSION['id'])){
         <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/script.js" defer></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <script src="<?php echo constant('URL'); ?>Public/js/validar_editar_perfil.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.css">
         <title>AdoptApp - Perfil</title>
     </head>
     <body class="body-adoptapp">
@@ -73,7 +75,7 @@ if(isset($_SESSION['id'])){
                         </div>
                         <div class="col-12 text-center pt-5">
                             <a href="<?php echo constant('URL'); ?>perfil"><button id="btn_cancelar" type="button" class="btn btn-danger mx-1 mx-lg-2">Cancelar cambios</button></a>
-                            <button id="btn_guardar" type="submit" class="btn btn-success mx-1 mx-lg-2">Guardar cambios</button>
+                            <button id="btn_guardar" type="button" class="btn btn-success mx-1 mx-lg-2">Guardar cambios</button>
                         </div>
                     </form>
                 </div>

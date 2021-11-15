@@ -58,3 +58,6 @@ div.img-chiq img:hover{
 button.boton-ap{
 margin: 10px 0px;
 }
+button#botonEliminar{
+    display: none;
+}

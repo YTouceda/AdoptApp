@@ -5,6 +5,7 @@ $(document).on("click", ".edit", function(){
 $(document).ready(function(){
 $(".add_photo").hide();
 
+
 });
 
 $(document).on("click", "#test", function(){
@@ -134,7 +135,7 @@ $("#test").click(function test(e){
     console.log($("#localidades").val());
 });
 
-    $("#publicar").click(function validarForm(e){
+    $("#enviar").click(function validarForm(e){
             var formValido=true;
             var nombre=$("#nombre");
             var errorNombre=$("#errorNombre");
@@ -372,7 +373,13 @@ $("#test").click(function test(e){
             if(!formValido){
                 e.preventDefault();
             }else{
-                //setTimeout("redireccionar()", 3000);
+                $("#enviar").attr("disabled",true);
+                Swal.fire(
+                    'Bien hecho!',
+                    'Tu publicación fue editada exitosamente',
+                    'success'
+                  )
+                  setTimeout(() => {$("#formedit").submit()}, 5000);
                
             }
         });
