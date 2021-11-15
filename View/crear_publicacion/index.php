@@ -15,6 +15,8 @@
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style.css">
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style-header-footer.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.css">
     </head>
     <body>
         <header>
@@ -176,7 +178,7 @@
                 </div>
 
                 <div id="alertaCreacionExitosa"></div>
-                <button type="submit" id="publicar" name="publicar" class="btn btn-success">Publicar</button>
+                <button type="button" id="enviar" name="publicar" class="btn btn-success">Publicar</button>
             </div> 
             
                 </form> 

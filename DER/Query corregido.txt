@@ -63,7 +63,7 @@ CREATE TABLE TAMANIO_MASCOTA
 CREATE TABLE TIPO_DENUNCIA
        (
        ID_TIPO_DENUNCIA BIGINT NOT NULL,                              
-       TIPO_DENUNCIA BIGINT NOT NULL,                              
+       TIPO_DENUNCIA VARCHAR(20) NOT NULL,                              
        PRIMARY KEY
                (
                ID_TIPO_DENUNCIA

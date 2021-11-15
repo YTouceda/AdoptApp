@@ -1,9 +1,10 @@
-$(document).on("click", "#add-photo", function(){
+$(document).on("click", ".edit", function(){
     $("#input_add_photo1").click();
 });
 
 $(document).ready(function(){
 $(".add_photo").hide();
+
 
 });
 
@@ -39,26 +40,26 @@ function createPreview(file,id_elemento) {
 
     switch(id_elemento){
         case "input_add_photo1":
-            var img = $('<div class="img-seleccionada col img-agregada" id="img_grande"><img src="'+ imgCodified +'" class="img-fluid" > </div>');
+            var img = $('<div class="img-seleccionada col img-agregada" id="img_grande"><img src="'+ imgCodified +'" class="img-fluid img-mascota" > </div>');
             $($("#img_grande")).replaceWith($(img));
             break;
         case "input_add_photo2":
-            var img = ('<div class="img-chiq col col-3 img-agregada" id="img_chiq1"><img src="'+ imgCodified +'" class="img-fluid" > </div>');
+            var img = ('<div class="img-chiq col col-3 img-agregada" id="img_chiq1"><img src="'+ imgCodified +'" class="img-fluid img-mascota" > </div>');
             $($("#img_chiq1")).replaceWith($(img));
             break;
             
         case "input_add_photo3":
-            var img = ('<div class="img-chiq col col-3 img-agregada" id="img_chiq2"><img src="'+ imgCodified +'" class="img-fluid" > </div>');
+            var img = ('<div class="img-chiq col col-3 img-agregada" id="img_chiq2"><img src="'+ imgCodified +'" class="img-fluid img-mascota" > </div>');
             $($("#img_chiq2")).replaceWith($(img));
             break;
             
         case "input_add_photo4":
-            var img = ('<div class="img-chiq col col-3 img-agregada" id="img_chiq3"><img src="'+ imgCodified +'" class="img-fluid" > </div>');
+            var img = ('<div class="img-chiq col col-3 img-agregada" id="img_chiq3"><img src="'+ imgCodified +'" class="img-fluid img-mascota" > </div>');
             $($("#img_chiq3")).replaceWith($(img));
             break;
             
         case "input_add_photo5":
-            var img = ('<div class="img-chiq col col-3 img-agregada" id="img_chiq4"><img src="'+ imgCodified +'" class="img-fluid" > </div>');
+            var img = ('<div class="img-chiq col col-3 img-agregada" id="img_chiq4"><img src="'+ imgCodified +'" class="img-fluid img-mascota" > </div>');
             $($("#img_chiq4")).replaceWith($(img));
             break;
         default:
@@ -134,7 +135,7 @@ $("#test").click(function test(e){
     console.log($("#localidades").val());
 });
 
-    $("#publicar").click(function validarForm(e){
+    $("#enviar").click(function validarForm(e){
             var formValido=true;
             var nombre=$("#nombre");
             var errorNombre=$("#errorNombre");
@@ -372,7 +373,13 @@ $("#test").click(function test(e){
             if(!formValido){
                 e.preventDefault();
             }else{
-                //setTimeout("redireccionar()", 3000);
+                $("#enviar").attr("disabled",true);
+                Swal.fire(
+                    'Bien hecho!',
+                    'Tu publicación fue editada exitosamente',
+                    'success'
+                  )
+                  setTimeout(() => {$("#formedit").submit()}, 5000);
                
             }
         });
