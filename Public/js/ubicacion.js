@@ -11,6 +11,9 @@ $(document).ready(function () {
     $.ajax({
         url: 'Public/Otros/localidades.json',
         type: 'POST',
+        error: function(){
+            console.log(hola);
+        },
         success:  function (response) {
             respuesta=response;
             if( $("#provincia option:selected").val() != ""){

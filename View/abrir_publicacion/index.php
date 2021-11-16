@@ -8,15 +8,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant ('URL'); ?>public/css/style.css">
         <link rel="stylesheet" type="text/css" href="<?php echo constant ('URL'); ?>public/css/style-abrirPublicacion.css">
-        <script type="text/javascript" src="<?php echo constant('URL'); ?>public/script/abrirpub.js" defer></script>
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/abrirpub.js" defer></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>public/css/style-header-footer.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.css">
-
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/notificaciones.js" defer></script>
     </head>
-    <body>
+    <body  class="body-adoptapp">
         <header>
             <?php
                 require 'View/header.php';
@@ -40,8 +40,9 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th class="nombre" scope="row"><h1><?php echo $this->mascota->getNombre_mascota();?></h1></th>
-                                    <td><i class="far fa-id-card nombre"></i></td>
+                                    <th class="nombre" scope="row"><h1><?php echo $this->mascota->getNombre_mascota();?></h1>
+                                    <?php echo $this->publicacion->getEstado();?></th>
+                                    <td><i class="far fa-id-card nombre mt-4"></i></td>
                                 </tr>
                                 <tr>
                                     <th scope="row"><?php echo $this->mascota->getEspecie_mascota();?></th>
@@ -139,7 +140,7 @@
                                     if($this->estado_post){
                                     ?>
                                     <div class="col-12 col-sm-6">
-                                        <a href='<?php echo constant('URL'); ?>abrir_publicacion/postularse?publicacion=<?php echo  $this->publicacion->getId_publicacion();?>'><button name="postularse" type="button" class="btn btn-success boton-ap">Postularse</button></a>
+                                        <a href='<?php echo constant('URL'); ?>abrir_publicacion/postularse?publicacion=<?php echo  $this->publicacion->getId_publicacion();?>'><button name="postularse" type="button" class="btn btn-success boton-ap"><?php echo $this->estado_boton; ?></button></a>
                                     </div>
                                 <?php
                                     }else{

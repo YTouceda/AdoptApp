@@ -36,15 +36,6 @@ if(isset($_SESSION['id'])){
                         <li class="nav-item" role="presentation">
                             <a href="<?php echo constant('URL'); ?>mis_publicaciones" class="text-decoration-none"><button class="nav-link nav-style" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Mis Publicaciones</button></a>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <?php
-                            if("user" == "rescatista"){
-                            ?>
-                                <a href="rescatista.php" class="text-decoration-none"><button class="nav-link nav-style" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button></a>
-                            <?php
-                            }
-                            ?>    
-                        </li>
                     </ul>
                 </div>
                 <div class="mx-1 mx-xl-5 px-0 px-lg-5 col-12">
@@ -74,20 +65,6 @@ if(isset($_SESSION['id'])){
                                                 <th scope="row">Telefono de contacto:</th>
                                                 <td><p id="telefonoId"><?php echo $this->user->getNumero();?></p></td>
                                             </tr>
-                                            <?php
-                                            if($this->user->getPermisos() == "rescatista"){
-                                            ?>
-                                            <tr>
-                                                <th scope="row">Provincia:</th>
-                                                <td><p id="provinciaId">Buenos Aires</p></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Ciudad:</th>
-                                                <td><p id="ciudadId">Tristan Suarez</p></td>
-                                            </tr>
-                                            <?php
-                                            }
-                                            ?> 
                                         </tbody>
                                     </table>
                                 </div>

@@ -71,7 +71,7 @@
                         </div>
                         <div class="col-12 text-center pt-5">
                             <a href="<?php echo constant('URL'); ?>"><button id="btn_cancelar" type="button" class="btn btn-danger mx-1 mx-lg-2">Cancelar</button></a>
-                            <button id="btn_guardar" type="submit" class="btn btn-success mx-1 mx-lg-2">Guardar Datos</button>
+                            <button id="btn_guardar_datos" type="submit" class="btn btn-success mx-1 mx-lg-2">Guardar Datos</button>
                         </div>
                     </form>
                 </div>

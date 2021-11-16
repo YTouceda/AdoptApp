@@ -28,6 +28,15 @@ $('#btn_guardar').click(function (event) {
     }
 });
 
+$('#btn_guardar_datos').click(function (event) {
+    if (!validar_formulario()) {
+        event.preventDefault();
+    }else{
+        form.addClass('was-validated');
+        form.submit();
+    }
+});
+
 //Genera las previsualizaciones
 function createPreview(file,id_elemento) {
     var imgCodified = URL.createObjectURL(file);

@@ -1,3 +1,4 @@
+
 <div id="header_adoptapp" class="header-adoptapp row header-grupo">
     <div id="cont-logo" class="col-12 col-md-6 col-xxl-3">
         <div id="header-logo" class="text-center logo-grupo p-2 m-0">
@@ -88,7 +89,7 @@
                         <label id='dropdown-notificaciones' class='lbl-seccion nav-icon-notificaciones' data-bs-auto-close="false" data-bs-toggle='dropdown' aria-expanded='false'>
                             <div class=''>
                                 <i class='fas fa-bell campana-notificaciones'>
-                                    <span id="alerta_sin_leer" class='position-absolute alerta-notificacion-sin-leer translate-middle badge border border-light rounded-circle bg-danger p-1'>
+                                    <span id="alerta_sin_leer" class='position-absolute alerta-notificacion-sin-leer translate-middle badge border border-light rounded-circle bg-danger p-1 invisible'>
                                     <span class='visually-hidden'>unread messages</span>
                                     </span>
                                 </i>

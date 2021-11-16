@@ -22,16 +22,16 @@ class Usuario extends Controller{
         return $this->id_permiso;
     }
     public function getNombre(){
-        return $this->datos_personales->nombre_usuario;
+        return $this->datos_personales->getNombre_usuario();
     }
     public function getNumero(){
-        return $this->datos_personales->num_contacto_usuario;
+        return $this->datos_personales->getNum_contacto_usuario();
     }
     public function getEmail(){
-        return $this->datos_personales->email_usuario;
+        return $this->datos_personales->getEmail_usuario();
     }
     public function getFoto(){
-        return $this->datos_personales->foto_perfil;
+        return $this->datos_personales->getFoto_perfil();
     }
 
     public function setId($id){
@@ -41,16 +41,16 @@ class Usuario extends Controller{
         $this->id_permiso = $permiso;
     }
     public function setNombre($nombre){
-        $this->datos_personales->nombre_usuario = $nombre;
+        $this->datos_personales->setNombre_usuario($nombre);
     }
     public function setNumero($num){
-        $this->datos_personales->num_contacto_usuario = $num;
+        $this->datos_personales->setNum_contacto_usuario($num);
     }
     public function setEmail($email){
-        $this->datos_personales->email_usuario = $email;
+        $this->datos_personales->setEmail_usuario($email);
     }
     public function setFoto($foto){
-        $this->datos_personales->foto_perfil = $foto;
+        $this->datos_personales->setFoto_perfil($foto);
     }
 
     public function setUsuario($Id){
@@ -58,10 +58,10 @@ class Usuario extends Controller{
         $datos = $datos->getUsuario($Id);
         $this->id_usuario = $datos['ID_USUARIO'];
         $this->id_permiso = $datos['NOMBRE_PERMISO'];
-        $this->datos_personales->nombre_usuario = $datos['NOMBRE_USUARIO'];
-        $this->datos_personales->num_contacto_usuario = $datos['NUM_CONTACTO_USUARIO'];
-        $this->datos_personales->email_usuario = $datos['EMAIL_USUARIO'];
-        $this->datos_personales->foto_perfil = $datos['FOTO_PERFIL'];
+        $this->datos_personales->setNombre_usuario($datos['NOMBRE_USUARIO']);
+        $this->datos_personales->setNum_contacto_usuario($datos['NUM_CONTACTO_USUARIO']);
+        $this->datos_personales->setEmail_usuario($datos['EMAIL_USUARIO']);
+        $this->datos_personales->setFoto_perfil($datos['FOTO_PERFIL']);
     }
 
 }

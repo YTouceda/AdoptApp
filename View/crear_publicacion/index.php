@@ -10,7 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/sweetalert2/6.0.1/sweetalert2.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant ('URL'); ?>Public/css/style-CrearPublicacion.css">
-        <script type="text/javascript" src="<?php echo constant ('URL'); ?>Public/script/formval.js" defer></script>
+        <script type="text/javascript" src="<?php echo constant ('URL'); ?>Public/js/abrirpub.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style.css">
@@ -18,7 +18,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.css">
     </head>
-    <body>
+    <body class="body-adoptapp">
         <header>
         <?php
             require 'View/header.php';
@@ -50,11 +50,11 @@
                     <div id="errorTelefono" class="invalid-feedback">Debe ingresar un telefono válido.</div>
                         <div>
                         <select class="form-select select-cp" aria-label="Mascota" id="select-estado" name="estado">
-                            <option <?php if(($_GET['estado'])==0){ echo "selected";} ?> value="0">En Adopción</option>
-                            <option <?php if(($_GET['estado'])==1){ echo "selected";} ?> value="1">Lo encontré</option>
-                            <option <?php if(($_GET['estado'])==2){ echo "selected";} ?> value="2">Está perdido</option>
+                            <option <?php if(($_GET['estado'])==0){ echo "selected";} ?> value="1">En Adopción</option>
+                            <option <?php if(($_GET['estado'])==1){ echo "selected";} ?> value="2">Lo encontré</option>
+                            <option <?php if(($_GET['estado'])==2){ echo "selected";} ?> value="3">Está perdido</option>
 
-                            <?php if($_GET['estado']==0)?>
+                            <?php if($_GET['estado']==1)?>
                         </select>
                         </div>
                         <div id="errorEstado" class="invalid-feedback">Debe elegir un estado válido.</div>
@@ -62,34 +62,34 @@
                         <div>
                         <select class="form-select select-cp" aria-label="Mascota" id="select-tipo" name="especie"> 
                             <option selected disabled>Elija el tipo de mascota</option>
-                            <option value="0">Perro</option>
-                            <option value="1">Gato</option>
+                            <option value="1">Perro</option>
+                            <option value="2">Gato</option>
                         </select>
                         </div>
                         <div id="errorTipo" class="invalid-feedback">Debe elegir una mascota válida.</div>
                         <div>
                         <select class="form-select select-cp" aria-label="Sexo" id="select-sexo" name="sexo"> 
                             <option selected disabled>Elija el sexo</option>
-                            <option value="0">Hembra</option>
-                            <option value="1">Macho</option>
+                            <option value="1">Hembra</option>
+                            <option value="2">Macho</option>
                         </select>
                         </div>
                         <div id="errorSexo" class="invalid-feedback">Debe elegir una opción válida.</div>
                         <div>
                         <select class="form-select select-cp" aria-label="Tamaño" id="select-tam" name="tamanio"> 
                             <option selected disabled>Elija el tamaño</option>
-                            <option value="0">Pequeño</option>
-                            <option value="1">Mediano</option>
-                            <option value="2">Grande</option>
+                            <option value="1">Pequeño</option>
+                            <option value="2">Mediano</option>
+                            <option value="3">Grande</option>
                         </select>
                         </div>
                         <div id="errorTamaño" class="invalid-feedback">Debe elegir un tamaño válido.</div>
                         <div>
                             <select class="form-select select-cp" aria-label="Edad" id="select-edad" name="edad"> 
                                 <option disabled selected>Elija la edad aproximada</option>
-                                <option value="0">Cachorro (Menos de 2 años)</option>
-                                <option value="1">Adulto (Entre 2 y 10 años)</option>
-                                <option value="2">Anciano (Más de 10 años)</option>
+                                <option value="1">Cachorro (Menos de 2 años)</option>
+                                <option value="2">Adulto (Entre 2 y 10 años)</option>
+                                <option value="3">Anciano (Más de 10 años)</option>
                             </select>
                             </div>
                             <div id="errorEdad" class="invalid-feedback">Debe elegir una edad válida.</div>

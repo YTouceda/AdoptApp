@@ -9,7 +9,7 @@ class abrir_publicacion extends Controller{
         $this->view->publicacion = [];
         $this->view->mascota = [];
         $this->view->postulaciones = [];
-
+        $this->view->estado_boton = "";
     }
     
     
@@ -29,6 +29,15 @@ class abrir_publicacion extends Controller{
         // var_dump($objPublicacion);
         if($objPublicacion){
             $this->view->publicacion = $objPublicacion;
+            if($this->view->publicacion->getEstado() =='En adopción'){
+                $this->view->estado_boton = "Postularse para adoptar";
+            }
+            else if($this->view->publicacion->getEstado() =='Perdido'){
+                $this->view->estado_boton = "Encontre tu mascota";
+            }
+            else if($this->view->publicacion->getEstado() =='Encontrado'){
+                $this->view->estado_boton = "Soy el dueño";
+            }
             $this->view->mascota = $objPublicacion->getMascota();
             $this->view->estado_denuncia=$this->validar();
             $this->view->render('abrir_publicacion/index');
@@ -56,7 +65,7 @@ class abrir_publicacion extends Controller{
             $this->model->denunciar($objDenuncia);
 
         }else{
-            echo "Error, faltan datos pillín :)";
+            echo "Error, faltan datos";
         }
         header('Location:' . constant('URL'));//const url
     }
@@ -73,7 +82,7 @@ class abrir_publicacion extends Controller{
     }
     function postularse(){
         if(isset($_GET['publicacion'])){
-        $this->model->setPostulacion($_GET['publicacion']);
+            $this->model->setPostulacion($_GET['publicacion']);
         }
         header('Location:' . getenv('HTTP_REFERER'));
     }
@@ -95,22 +104,36 @@ class abrir_publicacion extends Controller{
             return $resultado_post;
         }
     }
-    function elegir_postulante(){
-            if(isset($_POST['postulante'])){
-            if($this->model->get($_POST['postulante'])){
-                $this->mensaje = "Se almaceno correctamente";
+
+    function eliminar_postulacion(){
+        if(isset($_GET['id_postulacion'])){
+            if($this->model->eliminarPostulacion($_GET['id_postulacion'])){
+                $this->mensaje = "Se elimino correctamente";
+                header('Location:' . getenv('HTTP_REFERER'));
             }else{
-                $this->mensaje = "No se pudo almacenar la adopcion.";
+                $this->mensaje = "No se pudo eliminar la postulacion.";
+                header('Location:' . getenv('HTTP_REFERER'));
             }
-            }else{
-                $this->mensaje = "No se eligio ningun postulante.";
-            }
-         }
+        }else{
+            $this->mensaje = "No se eligio ningun postulante.";
+            header('Location:' . getenv('HTTP_REFERER'));
+        }
+    }
 
-
-
-
-
+    function aceptar_postulacion(){
+        if(isset($_GET['id_postulacion'])){
+        if($this->model->getAdopcion($_GET['id_postulacion'])){
+            $this->mensaje = "Se almaceno correctamente";
+            header('Location:' . getenv('HTTP_REFERER'));
+        }else{
+            $this->mensaje = "No se pudo almacenar la adopcion.";
+            header('Location:' . getenv('HTTP_REFERER'));
+        }
+        }else{
+            $this->mensaje = "No se eligio ningun postulante.";
+            header('Location:' . getenv('HTTP_REFERER'));
+        }
+    }
 }
 
 

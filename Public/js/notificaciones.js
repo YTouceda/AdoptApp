@@ -1,6 +1,6 @@
 $(document).ready(function () {
     consultaNotificaciones();
-    setInterval(consultaNotificaciones,60000);
+    setInterval(consultaNotificaciones,15000);
 })
 
 function consultaNotificaciones()
@@ -44,8 +44,16 @@ function consultaNotificaciones()
                 if(index == 4){
                     fiveNoti = nuevaNoti;
                 }
+                if(index <= 4){
+                    fiveNoti = nuevaNoti;
+                }
+                
             })
-
+            if(response == 'No hay notificaciones'){
+                nuevaNoti = "<div class='div_notificacion text-center'><h5 class='p-3'>¡No hay notificaciones!</h5></div>";
+                fiveNoti = nuevaNoti;
+                console.log(nuevaNoti);
+            }
             if(notis_estado == true){
                 $('#alerta_sin_leer').removeClass('invisible');
             }else{
