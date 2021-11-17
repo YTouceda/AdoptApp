@@ -137,7 +137,7 @@ h3.titulo-ap{
     color: rgb(133, 84, 20);
 }
 
-.edit{
+#edit{
     /* position:absolute;
     height:100px;
     width:100px;
@@ -152,7 +152,7 @@ h3.titulo-ap{
 }
 */
 img.mascota-edit{
-    height: 300px;
+    height: 150px;
     width: auto;
     object-fit: cover;
 }

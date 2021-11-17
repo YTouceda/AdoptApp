@@ -20,12 +20,11 @@ Class Mis_publicaciones extends Controller{
             $pagina = $_GET['pagina'];
         }
         $datos = $this->model->get($this->view->user->getId(),$pagina);
-        if($datos['publicaciones']){
+        // die(var_dump($datos));
+        if($datos){
             $this->view->publicaciones = $datos['publicaciones'];
             $this->view->total_paginas = $datos['total'];
             $this->view->pagina = $pagina;
-            
-           
             $this->view->render('mis_publicaciones/index');
         }else{
             $this->view->render('mis_publicaciones/index');

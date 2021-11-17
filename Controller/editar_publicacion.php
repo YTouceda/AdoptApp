@@ -104,10 +104,6 @@ Class editar_publicacion extends Controller{
             header('Location:' . constant('URL').'abrir_publicacion?publicacion='.$_GET['publicacion']);
     }
 
-
-    
-
-
 }
 
 ?>

@@ -10,6 +10,8 @@ if(isset($_SESSION['id'])){
         <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/header.js" defer></script>
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/notificaciones.js" defer></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style.css">
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style-header-footer.css">
         <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/script.js" defer></script>
@@ -33,15 +35,6 @@ if(isset($_SESSION['id'])){
                         </li>
                         <li class="nav-item" role="presentation">
                             <a href="<?php echo constant('URL'); ?>mis_publicaciones" class="text-decoration-none"><button class="nav-link nav-style" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Mis Publicaciones</button></a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <?php
-                            if("user" == "rescatista"){
-                            ?>
-                                <a href="rescatista.php" class="text-decoration-none"><button class="nav-link nav-style" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button></a>
-                            <?php
-                            }
-                            ?>    
                         </li>
                     </ul>
                 </div>
@@ -72,20 +65,6 @@ if(isset($_SESSION['id'])){
                                                 <th scope="row">Telefono de contacto:</th>
                                                 <td><p id="telefonoId"><?php echo $this->user->getNumero();?></p></td>
                                             </tr>
-                                            <?php
-                                            if($this->user->getPermisos() == "rescatista"){
-                                            ?>
-                                            <tr>
-                                                <th scope="row">Provincia:</th>
-                                                <td><p id="provinciaId">Buenos Aires</p></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Ciudad:</th>
-                                                <td><p id="ciudadId">Tristan Suarez</p></td>
-                                            </tr>
-                                            <?php
-                                            }
-                                            ?> 
                                         </tbody>
                                     </table>
                                 </div>

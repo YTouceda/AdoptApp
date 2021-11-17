@@ -14,18 +14,19 @@ if(isset($_SESSION['id'])){
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style-header-footer.css">
         <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/script.js" defer></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/notificaciones.js" defer></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/estilo.css">
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style-perfil.css">
         <title>AdoptApp - Mis Publicaciones</title>
     </head>
-    <body>
+    <body class="body-adoptapp">
         <header>
             <?php
                 require 'View/header.php';
             ?>
         </header>
         <main class="main container">
-            <div class="row cuerpo">
+            <div class="row cuerpo py-5">
                 <div class="col-12">
                     <ul class="nav nav-tabs  justify-content-center mt-3" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -33,15 +34,6 @@ if(isset($_SESSION['id'])){
                         </li>
                         <li class="nav-item" role="presentation">
                             <a href="<?php echo constant('URL'); ?>mis_publicaciones" class="text-decoration-none"><button class="nav-link nav-style active" id="Mis-publicaciones-tab" data-bs-toggle="tab" type="button" role="tab" aria-controls="Mis_publicaciones" aria-selected="false">Mis Publicaciones</button></a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <?php
-                            if("user" == "rescatista"){
-                            ?>
-                                <a href="<?php echo constant('URL'); ?>rescatista" class="text-decoration-none"><button class="nav-link nav-style" id="Rescatista-tab" data-bs-toggle="tab" type="button" role="tab" aria-controls="Rescatista" aria-selected="false">Rescatista</button></a>
-                            <?php
-                            }
-                            ?>    
                         </li>
                     </ul>
                 </div>
@@ -63,25 +55,20 @@ if(isset($_SESSION['id'])){
                                     //$diff = $publicacion->getFecha_alta_publicacion()->diff($this->fechaactual);
                             ?>
                                     <div class="card mb-3 card_mis_publicaciones">
-                                        <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>mi_publicacion/?publicacion=<?php echo $publicacion->getId_publicacion()?>">
+                                        <a class="text-decoration-none text-black" href="<?php echo constant('URL'); ?>abrir_publicacion/?publicacion=<?php echo $publicacion->getId_publicacion()?>">
                                             <div class="g-0 row row-cols-1 row-cols-sm-2 g-xs-3">
                                                 <div class="col-md-2">
-                                                    <img src="<?php echo constant('URL')."Public/public_media/".$mascota->getFotos_mascota();?>" class="img-fluid rounded-start card-imagen-mp h-100 w-100" alt="...">
+                                                    <img src="<?php echo constant('URL')."Public/public_media/".$mascota->getFotos_mascota();?>" class="img-fluid rounded-start card-imagen-mp" alt="...">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
                                                         <h5 class="card-title"><?php echo $mascota->getNombre_mascota()?></h5>
                                                         <p class="card-text">
                                                             <?php 
-                                                            for( $i = 0; $i <=350 ; $i++){
-                                                                if($i < strlen($mascota->getDescripcion_mascota())){
-                                                                    echo $mascota->getDescripcion_mascota()[$i];
-                                                                }
-                                                                else if($i == strlen($mascota->getDescripcion_mascota())){
-                                                                    echo "...";
-                                                                }
-                                                            }
-                                                            ?>
+                                                            for( $i = 0; $i <= 70 ; $i++){
+                                                                if($i < strlen($mascota->getDescripcion_mascota()))
+                                                                echo $mascota->getDescripcion_mascota()[$i];
+                                                            }?>...
                                                         </p>
                                                         <p class="card-text"><small class="text-muted"><?php echo $publicacion->getFecha_alta_publicacion(); ?></small></p>
                                                     </div>

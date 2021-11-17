@@ -183,6 +183,7 @@ div.publicaciones{
 div.cuerpo{
     background: rgba(255, 234, 202, 0.5);
     padding: 0px;
+    min-height: 650px;
 }
 
 button#btn-iniciarSesion{
@@ -209,6 +210,7 @@ div.card_publicaciones{
 }
 
 div.card_mis_publicaciones{
+    height: 220px !important;
     background-color: #d6b7938c;
 }
 img.card-imagen{
@@ -216,6 +218,7 @@ img.card-imagen{
     object-fit: cover;
 }
 img.card-imagen-mp{
+    height: 219px;
     object-fit: cover;
 }
 

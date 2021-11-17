@@ -1,10 +1,70 @@
 <?php
 
 include_once 'Clases/publicacion.php';
+include_once 'Clases/denuncia.php';
 
 class abrir_publicacionModel extends Model{
     public function __construct(){
         parent::__construct();
+    }
+
+    function eliminar($id_Publicacion){
+        try{
+        $query = $this->db->connect()->prepare("UPDATE `PUBLICACION` SET `FECHA_BAJA_PUBLICACION`= SYSDATE() WHERE `ID_PUBLICACION` = :ID_PUBLICACION ");
+        $query->execute(['ID_PUBLICACION' => $id_Publicacion]);
+        } catch (PDOException $exc) {
+            echo "Error: " . $exc->getMessage();
+            return false;
+        }
+    }
+
+    function denunciar($objDenuncia){
+        try{
+            $query = $this->db->connect()->prepare("INSERT INTO `DENUNCIA`(
+            `ID_TIPO_DENUNCIA`,
+            `ID_PUBLICACION`,
+            `ID_USUARIO_DENUNCIANTE`,
+            `DESCRIPCION`,
+            `FECHA_DENUNCIA`) 
+            VALUES 
+           (".$objDenuncia->getId_tipo_denuncia().",
+            ".$objDenuncia->getId_publicacion().",
+            ".$objDenuncia->getId_usuario_denunciante().",
+            '".$objDenuncia->getDescripcion()."',
+            SYSDATE()
+            ) ");
+            $query->execute();
+            $this->contarDenuncias($objDenuncia->getId_publicacion());
+            } catch (PDOException $exc) {
+                echo "Error: " . $exc->getMessage();
+                return false;
+            }
+    }
+    function contarDenuncias($publicacion){
+        try{
+            $query = $this->db->connect()->prepare("SELECT `ID_DENUNCIA` FROM `DENUNCIA` WHERE `ID_PUBLICACION` = ".$publicacion."");
+            $query->execute();
+            $num_filas = $query->rowCount();
+            var_dump($num_filas);
+            if($num_filas>=3){
+                $this->eliminar($publicacion);
+            }
+            } catch (PDOException $exc) {
+                echo "Error: " . $exc->getMessage();
+                return false;
+            }
+
+    }
+    function validarDenuncia($objDenuncia){
+        $query= $this->db->connect()->prepare("SELECT `ID_PUBLICACION` FROM `DENUNCIA` WHERE `ID_USUARIO_DENUNCIANTE` = ".$objDenuncia->getId_usuario_denunciante()." AND `ID_PUBLICACION`=".$objDenuncia->getId_publicacion()." ");
+        $query->execute();
+        $num_filas = $query->rowCount();
+        if($num_filas>0){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
     function time_passed($fechaCreacion){
         
@@ -89,22 +149,19 @@ class abrir_publicacionModel extends Model{
     }
     //Generar Postulacion
     public function setPostulacion($Id_publicacion){
-        $query = $this->db->connect()->prepare("INSERT INTO `POSTULACION`(
-            
-            `ID_PUBLICACION`,
-            `ESTADO_PUBLICACION`,
-            `ID_USUARIO_POSTULADO`, 
-            `FECHA_POSTULACION`, 
-            `ESTADO_POSTULACION`)
-            VALUES 
-            (".$Id_publicacion.",
-            '0',
-            ".$_SESSION['id'].",
-            SYSDATE(),
-            '0');");
-            $query->execute();
-        
-        
+        try {
+            $id_usuario = $this->devolverUsuarioPubli($Id_publicacion);
+            $query = $this->db->connect();
+            $query->beginTransaction();            
+            $query->exec("INSERT INTO `POSTULACION`(`ID_PUBLICACION`,`ID_USUARIO_POSTULADO`, `FECHA_POSTULACION`, `ESTADO_POSTULACION`) VALUES (".$Id_publicacion.",".$_SESSION['id'].",SYSDATE(),'0');");
+            $query->exec("INSERT INTO `NOTIFICACION` (`MOTIVO`,`FECHA_ALTA`,`ESTADO`,`URL`,`ID_USUARIO`) VALUES(1,SYSDATE(),1,'abrir_publicacion?publicacion=".$Id_publicacion."',".$id_usuario['ID_USUARIO'].");");
+            $query->commit();
+            return true;
+        }catch(PDOException $exc) {
+            $query->rollback();
+            echo "Error: " . $exc->getMessage();
+            return false;
+        }
     }
     function validarPostulante($objPostulante){
         $query= $this->db->connect()->prepare("SELECT `ID_PUBLICACION` FROM `POSTULACION` WHERE `ID_USUARIO_POSTULADO` = ".$objPostulante->getId_usuario_postulante()." AND `ID_PUBLICACION`=".$objPostulacion->getId_publicacion()." ");
@@ -120,14 +177,14 @@ class abrir_publicacionModel extends Model{
     public function getPostulaciones($ID_PUBLICACION){
         $items = [];
         try {
-            $query = $this->db->connect()->prepare("SELECT * FROM POSTULACION WHERE ID_PUBLICACION = :ID_PUBLICACION");
+            $query = $this->db->connect()->prepare("SELECT * FROM POSTULACION WHERE ID_PUBLICACION = :ID_PUBLICACION AND ESTADO_POSTULACION != 2");
             $query->execute(['ID_PUBLICACION' => $ID_PUBLICACION]);
             while($row = $query->fetch()){
                 $user= new Usuario();
                 $user->setUsuario($row['ID_USUARIO_POSTULADO']);
                 $item=[
+                    'ESTADO_POSTULACION' => $row['ESTADO_POSTULACION'],
                     'POSTULACION' => $row['ID_POSTULACION'],
-                    'PUBLICACION' => $row['ID_PUBLICACION'],
                     'USUARIO_POSTULADO' => $user
                 ];
                 array_push($items,$item);
@@ -137,6 +194,65 @@ class abrir_publicacionModel extends Model{
             return false;
         }
     }
+    public function cancelarPostulacion($postulacion){
+        try{
+            $query = $this->db->connect()->prepare("UPDATE `POSTULACION` SET `ESTADO_POSTULACION`= 2 WHERE `ID_USUARIO_POSTULADO` = ".$postulacion." ");
+            $query->execute();
+            } catch (PDOException $exc) {
+                echo "Error: " . $exc->getMessage();
+                return false;
+            }
+
+    }
+    
+    function devolverUsuarioPubli($Id_publicacion){
+        $query = $this->db->connect();
+        $query= $this->db->connect()->prepare("SELECT ID_USUARIO FROM PUBLICACION WHERE ID_PUBLICACION = ".$Id_publicacion.";");
+        $query->execute();
+        return $query->fetch();
+    }
+    
+    function eliminarPostulacion($id_postulacion){
+        try {
+            $datos = $this->traerDatos($id_postulacion);
+            $query = $this->db->connect();
+            $query->beginTransaction();
+            $query->exec("UPDATE `POSTULACION` SET `ESTADO_POSTULACION` = 1 WHERE `ID_POSTULACION` = ".$id_postulacion.";");       
+            $query->exec("INSERT INTO `NOTIFICACION` (`MOTIVO`,`FECHA_ALTA`,`ESTADO`,`URL`,`ID_USUARIO`) VALUES(4,SYSDATE(),1,'abrir_publicacion?publicacion=".$datos['ID_PUBLICACION']."',".$datos['ID_USUARIO_POSTULADO'].");");
+            $query->commit();
+            return true;
+        }catch(PDOException $exc) {
+            $query->rollback();
+            echo "Error: " . $exc->getMessage();
+            return false;
+        }
+    }
+
+    function getAdopcion($id_postulacion){
+        try {
+            $datos = $this->traerDatos($id_postulacion);
+            $query = $this->db->connect();
+            $query->beginTransaction();            
+            $query->exec("UPDATE `POSTULACION` SET `ESTADO_POSTULACION` = 4 WHERE `ID_POSTULACION` = ".$id_postulacion.";");
+            $query->exec("INSERT INTO `ADOPCION` (`ID_POSTULACION`,`FECHA_ADOPCION`) VALUES (".$id_postulacion.",SYSDATE());");
+            $query->exec("INSERT INTO `NOTIFICACION` (`MOTIVO`,`FECHA_ALTA`,`ESTADO`,`URL`,`ID_USUARIO`) VALUES(2,SYSDATE(),1,'abrir_publicacion?publicacion=".$datos['ID_PUBLICACION']."',".$datos['ID_USUARIO_POSTULADO'].");");
+            $query->commit();
+            return true;
+        }catch(PDOException $exc) {
+            $query->rollback();
+            echo "Error: " . $exc->getMessage();
+            return false;
+        }
+        
+    }
+
+    function traerDatos($id_postulacion){
+        $query = $this->db->connect();
+        $query= $this->db->connect()->prepare("SELECT `POSTULACION`.`ID_USUARIO_POSTULADO`, `POSTULACION`.`ID_PUBLICACION` FROM `POSTULACION` WHERE ID_POSTULACION = ".$id_postulacion.";");
+        $query->execute();
+        return $query->fetch();
+    }
+    
 }
 
 ?>

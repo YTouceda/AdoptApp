@@ -93,7 +93,7 @@ $("#fakeEliminar").click(function(){
                     'Tu denuncia fue enviada exitosamente',
                     'success'
                   )
-                  setTimeout(() => {$("#formdenuncia").submit()}, 5000);
+                  setTimeout(() => {$("#formdenuncia").submit()}, 3000);
 
                   
                 

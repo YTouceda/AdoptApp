@@ -11,10 +11,10 @@ class App{
         $url = explode('/',$url);
 
         if(empty($url[0])){
-            $archivoController = 'Controller/adopciones.php';
+            $archivoController = 'Controller/publicaciones.php';
             require_once $archivoController;
-            $controller = new Adopciones();
-            $controller->loadModel('adopciones');
+            $controller = new publicaciones();
+            $controller->loadModel('publicaciones');
             $controller->Render();
             return;
         }

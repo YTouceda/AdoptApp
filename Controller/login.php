@@ -41,7 +41,7 @@ Class Login extends Controller{
             $this->view->usuario->setEmail($_POST['Email']);
             $this->view->usuario->setFoto($_POST['foto']);
             if($this->model->insertUsuario(['ID_USUARIO' => $id_user, 'ID_PERMISO' => $this->view->usuario->getPermisos(), 'NOMBRE_USUARIO' => $this->view->usuario->getNombre(), 'NUM_CONTACTO_USUARIO' => $this->view->usuario->getNumero() ,'EMAIL_USUARIO' => $this->view->usuario->getEmail(),'FOTO_PERFIL' => $this->view->usuario->getFoto()])){
-                echo "Se inicio sesión correctamente";
+                header('Location: '.constant('URL').'perfil');
             }
             else{
                 echo "No se pudo iniciar sesión.";

@@ -40,30 +40,11 @@ function createPreview(file,id_elemento) {
 
     switch(id_elemento){
         case "input_add_photo1":
-            var img = $('<div class="img-seleccionada col img-agregada" id="img_grande"><img src="'+ imgCodified +'" class="img-fluid img-mascota" > </div>');
+            var img = $('<div class="img-seleccionada col img-agregada" id="img_grande"><img src="'+ imgCodified +'" class="edit img-fluid img-mascota" > </div>');
             $($("#img_grande")).replaceWith($(img));
             break;
-        case "input_add_photo2":
-            var img = ('<div class="img-chiq col col-3 img-agregada" id="img_chiq1"><img src="'+ imgCodified +'" class="img-fluid img-mascota" > </div>');
-            $($("#img_chiq1")).replaceWith($(img));
-            break;
-            
-        case "input_add_photo3":
-            var img = ('<div class="img-chiq col col-3 img-agregada" id="img_chiq2"><img src="'+ imgCodified +'" class="img-fluid img-mascota" > </div>');
-            $($("#img_chiq2")).replaceWith($(img));
-            break;
-            
-        case "input_add_photo4":
-            var img = ('<div class="img-chiq col col-3 img-agregada" id="img_chiq3"><img src="'+ imgCodified +'" class="img-fluid img-mascota" > </div>');
-            $($("#img_chiq3")).replaceWith($(img));
-            break;
-            
-        case "input_add_photo5":
-            var img = ('<div class="img-chiq col col-3 img-agregada" id="img_chiq4"><img src="'+ imgCodified +'" class="img-fluid img-mascota" > </div>');
-            $($("#img_chiq4")).replaceWith($(img));
-            break;
         default:
-            console.log("Que tratabas de hacer pillín ?");
+            console.log("Error de imagen");
         break;
             
 
@@ -204,15 +185,15 @@ $("#test").click(function test(e){
             
         console.log(estado.val());
             switch(estado.val()){
-                case "0": 
-                errorEstado.hide();
-                estado.removeClass("is-invalid");
-                break;
-                case "1":
+                case "1": 
                 errorEstado.hide();
                 estado.removeClass("is-invalid");
                 break;
                 case "2":
+                errorEstado.hide();
+                estado.removeClass("is-invalid");
+                break;
+                case "3":
                 errorEstado.hide();
                 estado.removeClass("is-invalid");
                 break;
@@ -226,11 +207,11 @@ $("#test").click(function test(e){
             }
             //console.log(tipo.val());
             switch(tipo.val()){
-                case "0": 
+                case "1": 
                 errorTipo.hide();
                 tipo.removeClass("is-invalid");
                 break;
-                case "1":
+                case "2":
                 errorTipo.hide();
                 tipo.removeClass("is-invalid");
                 break;
@@ -244,11 +225,11 @@ $("#test").click(function test(e){
             }
             //console.log(sexo.val());
             switch(sexo.val()){
-                case "0": 
+                case "1": 
                 errorSexo.hide();
                 sexo.removeClass("is-invalid");
                 break;
-                case "1":
+                case "2":
                 errorSexo.hide();
                 sexo.removeClass("is-invalid");
                 break;
@@ -262,15 +243,15 @@ $("#test").click(function test(e){
             }
             //console.log(tam.val());
             switch(tam.val()){
-                case "0": 
-                errorTamaño.hide();
-                tam.removeClass("is-invalid");
-                break;
-                case "1":
+                case "1": 
                 errorTamaño.hide();
                 tam.removeClass("is-invalid");
                 break;
                 case "2":
+                errorTamaño.hide();
+                tam.removeClass("is-invalid");
+                break;
+                case "3":
                 errorTamaño.hide();
                 tam.removeClass("is-invalid");
                 break;
@@ -284,15 +265,15 @@ $("#test").click(function test(e){
             }
             //console.log(edad.val());
             switch(edad.val()){
-                case "0": 
-                errorEdad.hide();
-                edad.removeClass("is-invalid");
-                break;
-                case "1":
+                case "1": 
                 errorEdad.hide();
                 edad.removeClass("is-invalid");
                 break;
                 case "2":
+                errorEdad.hide();
+                edad.removeClass("is-invalid");
+                break;
+                case "3":
                 errorEdad.hide();
                 edad.removeClass("is-invalid");
                 break;
@@ -379,7 +360,7 @@ $("#test").click(function test(e){
                     'Tu publicación fue editada exitosamente',
                     'success'
                   )
-                  setTimeout(() => {$("#formedit").submit()}, 5000);
+                  setTimeout(() => {$("#formedit").submit()}, 3000);
                
             }
         });

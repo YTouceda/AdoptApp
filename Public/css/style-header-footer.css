@@ -84,6 +84,37 @@ div#header_adoptapp label .icono_menu_notificacion:hover{
     cursor: pointer;
 }
 
+div.notificaciones_completas .icono_menu_notificacion{
+    
+    background: #ebd2af;
+    border-radius: 17px;
+    font-size: 20px;
+    padding: 10px;
+    color: rgb(133, 84, 20);
+}
+
+div.notificaciones_completas label .icono_menu_notificacion:hover{
+    background: rgb(241, 176, 119);
+    border-radius: 17px;
+    color: rgb(133, 84, 20);
+    cursor: pointer;
+}
+
+div.notificaciones_completas .dropdown-menu-end,
+div.notificaciones_completas .list-group-item{
+    z-index: 100;
+    background-color: #fcedd8;
+}
+
+div.notificaciones_completas .list-group-item:hover{
+    background-color: #ebd2af;
+}
+
+.boton_opciones_notificacion{
+    position:absolute;
+    z-index: 1;
+}
+
 /* label.label_menu_notificacion{
     display: none;
 }

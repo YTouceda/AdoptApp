@@ -24,7 +24,16 @@ $('#btn_guardar').click(function (event) {
             'Tu perfil fue editado exitosamente!',
             'success'
           )
-          setTimeout(() => {$("#form_editar").submit()}, 5000);
+          setTimeout(() => {$("#form_editar").submit()}, 3000);
+    }
+});
+
+$('#btn_guardar_datos').click(function (event) {
+    if (!validar_formulario()) {
+        event.preventDefault();
+    }else{
+        form.addClass('was-validated');
+        form.submit();
     }
 });
 
