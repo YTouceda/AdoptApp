@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Clases/Datos_Personales.php';
+include_once 'Clases/datos_personales.php';
 include_once 'Model/usuariomodel.php';
 include_once 'Libs/model.php';
 

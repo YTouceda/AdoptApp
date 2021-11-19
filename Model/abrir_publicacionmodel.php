@@ -153,7 +153,7 @@ class abrir_publicacionModel extends Model{
             $id_usuario = $this->devolverUsuarioPubli($Id_publicacion);
             $query = $this->db->connect();
             $query->beginTransaction();            
-            $query->exec("INSERT INTO `POSTULACION`(`ID_PUBLICACION`,`ID_USUARIO_POSTULADO`, `FECHA_POSTULACION`, `ESTADO_POSTULACION`) VALUES (".$Id_publicacion.",".$_SESSION['id'].",SYSDATE(),'0');");
+            $query->exec("INSERT INTO `POSTULACION`(`ID_PUBLICACION`,`ID_USUARIO_POSTULADO`, `FECHA_POSTULACION`, `ESTADO_POSTULACION`) VALUES (".$Id_publicacion.",".$_SESSION['id'].",SYSDATE(),'1');");
             $query->exec("INSERT INTO `NOTIFICACION` (`MOTIVO`,`FECHA_ALTA`,`ESTADO`,`URL`,`ID_USUARIO`) VALUES(1,SYSDATE(),1,'abrir_publicacion?publicacion=".$Id_publicacion."',".$id_usuario['ID_USUARIO'].");");
             $query->commit();
             return true;
@@ -163,6 +163,7 @@ class abrir_publicacionModel extends Model{
             return false;
         }
     }
+
     function validarPostulante($objPostulante){
         $query= $this->db->connect()->prepare("SELECT `ID_PUBLICACION` FROM `POSTULACION` WHERE `ID_USUARIO_POSTULADO` = ".$objPostulante->getId_usuario_postulante()." AND `ID_PUBLICACION`=".$objPostulacion->getId_publicacion()." ");
         $query->execute();
@@ -177,7 +178,7 @@ class abrir_publicacionModel extends Model{
     public function getPostulaciones($ID_PUBLICACION){
         $items = [];
         try {
-            $query = $this->db->connect()->prepare("SELECT * FROM POSTULACION WHERE ID_PUBLICACION = :ID_PUBLICACION AND ESTADO_POSTULACION != 2");
+            $query = $this->db->connect()->prepare("SELECT * FROM POSTULACION WHERE ID_PUBLICACION = :ID_PUBLICACION AND ESTADO_POSTULACION != 3");
             $query->execute(['ID_PUBLICACION' => $ID_PUBLICACION]);
             while($row = $query->fetch()){
                 $user= new Usuario();
@@ -196,7 +197,7 @@ class abrir_publicacionModel extends Model{
     }
     public function cancelarPostulacion($postulacion){
         try{
-            $query = $this->db->connect()->prepare("UPDATE `POSTULACION` SET `ESTADO_POSTULACION`= 2 WHERE `ID_USUARIO_POSTULADO` = ".$postulacion." ");
+            $query = $this->db->connect()->prepare("UPDATE `POSTULACION` SET `ESTADO_POSTULACION`= 3 WHERE `ID_USUARIO_POSTULADO` = ".$postulacion." ");
             $query->execute();
             } catch (PDOException $exc) {
                 echo "Error: " . $exc->getMessage();
@@ -217,7 +218,7 @@ class abrir_publicacionModel extends Model{
             $datos = $this->traerDatos($id_postulacion);
             $query = $this->db->connect();
             $query->beginTransaction();
-            $query->exec("UPDATE `POSTULACION` SET `ESTADO_POSTULACION` = 1 WHERE `ID_POSTULACION` = ".$id_postulacion.";");       
+            $query->exec("UPDATE `POSTULACION` SET `ESTADO_POSTULACION` = 2 WHERE `ID_POSTULACION` = ".$id_postulacion.";");       
             $query->exec("INSERT INTO `NOTIFICACION` (`MOTIVO`,`FECHA_ALTA`,`ESTADO`,`URL`,`ID_USUARIO`) VALUES(4,SYSDATE(),1,'abrir_publicacion?publicacion=".$datos['ID_PUBLICACION']."',".$datos['ID_USUARIO_POSTULADO'].");");
             $query->commit();
             return true;
@@ -232,7 +233,8 @@ class abrir_publicacionModel extends Model{
         try {
             $datos = $this->traerDatos($id_postulacion);
             $query = $this->db->connect();
-            $query->beginTransaction();            
+            $query->beginTransaction();
+            $query->exec("UPDATE `PUBLICACION` SET `ID_ESTADO` = 4 WHERE `ID_PUBLICACION` = ".$id_postulacion.";");       
             $query->exec("UPDATE `POSTULACION` SET `ESTADO_POSTULACION` = 4 WHERE `ID_POSTULACION` = ".$id_postulacion.";");
             $query->exec("INSERT INTO `ADOPCION` (`ID_POSTULACION`,`FECHA_ADOPCION`) VALUES (".$id_postulacion.",SYSDATE());");
             $query->exec("INSERT INTO `NOTIFICACION` (`MOTIVO`,`FECHA_ALTA`,`ESTADO`,`URL`,`ID_USUARIO`) VALUES(2,SYSDATE(),1,'abrir_publicacion?publicacion=".$datos['ID_PUBLICACION']."',".$datos['ID_USUARIO_POSTULADO'].");");

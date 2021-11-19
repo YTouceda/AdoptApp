@@ -54,8 +54,6 @@ $(document).ready(function () {
     const cambiarLoc= ()=>{
         $("#ilocalidades").val("");
         let id_provincia = $("#provincia option:selected").val();
-        
-        console.log(respuesta);
         filtrar(respuesta, id_provincia);
     }    
     
