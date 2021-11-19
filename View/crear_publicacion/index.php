@@ -70,8 +70,8 @@
                         <div>
                         <select class="form-select select-cp" aria-label="Sexo" id="select-sexo" name="sexo"> 
                             <option selected disabled>Elija el sexo</option>
-                            <option value="1">Hembra</option>
-                            <option value="2">Macho</option>
+                            <option value="2">Hembra</option>
+                            <option value="1">Macho</option>
                         </select>
                         </div>
                         <div id="errorSexo" class="invalid-feedback">Debe elegir una opción válida.</div>

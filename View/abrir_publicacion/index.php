@@ -26,8 +26,8 @@
             <div class="container cuerpo">
                 <div class="row">
                     <div class="fotos-ap col-12 col-xl-6">
-                        <div class="text-center h-100 w-100">
-                            <img src="<?php echo constant('URL')."Public/public_media/".$this->mascota->getFotos_mascota();?>" class="card-imagen img-fluid rounded-start  h-100 w-75 p-5">
+                        <div class="text-center">
+                            <img src="<?php echo constant('URL')."Public/public_media/".$this->mascota->getFotos_mascota();?>" class=" card-imagen img-fluid rounded-start w-75 p-5">
                         </div>
                     </div>                       
                     <div class="detalle-ap col-12 col-xl-6 p-5 mx-auto"> 
