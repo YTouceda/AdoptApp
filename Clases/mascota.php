@@ -1,5 +1,4 @@
 <?php
-
 class Mascota{
      private $id_mascota;
      private $sexo_mascota;
@@ -34,7 +33,6 @@ class Mascota{
      public function getFotos_mascota(){
           return $this->fotos_mascota;
      }
-
      public function setId_mascota($id){
           $this->id_mascota = $id;
      }
@@ -60,5 +58,4 @@ class Mascota{
           $this->fotos_mascota = $fotos;
      }
 }
-
 ?>

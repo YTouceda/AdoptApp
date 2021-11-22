@@ -1,7 +1,5 @@
 <?php
-
 Class Editar_perfil extends Controller{
-
     function __construct(){
         parent::__construct();
         $this->view->user=new Usuario();
@@ -38,7 +36,5 @@ Class Editar_perfil extends Controller{
         $this->view->mensaje = $mensaje;
         header('Location: ../perfil');
     }
-
 }
-
 ?>

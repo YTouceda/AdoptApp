@@ -1,4 +1,4 @@
-
+<input id="id_url" type="hidden" value="<?php echo constant('URL');?>">
 <div id="header_adoptapp" class="header-adoptapp row header-grupo">
     <div id="cont-logo" class="col-12 col-md-6 col-xxl-3">
         <div id="header-logo" class="text-center logo-grupo p-2 m-0">
@@ -97,7 +97,6 @@
                         </label>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby='dropdown-notificaciones'>
                             <div id='notificacion_list'>
-
                             </div>
                             <div class="text-center my-2">
                                 <a href="ver_notificaciones"><h5>Ver todas las notificaciones</h5></a>
@@ -134,17 +133,17 @@
                         <ul class="nav nav-pills nav-fill">
                             <li class="nav-item">
                                 <div id="adopcion" class="seccion">
-                                    <a href="<?php echo constant('URL'); ?>crear_publicacion?estado=0"><label for="adopcion" id="lbl-adopcion" class="lbl-seccion lbl-seccion-crear">Quiero dar en adopción una mascota</label></a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div id="perdidos" class="seccion">
-                                    <a href="<?php echo constant('URL'); ?>crear_publicacion?estado=1"><label for="perdido" id="lbl-perdido" class="lbl-seccion lbl-seccion-crear">Perdí mi mascota</label></a>
+                                    <a href="<?php echo constant('URL'); ?>crear_publicacion?estado=1"><label for="adopcion" id="lbl-adopcion" class="lbl-seccion lbl-seccion-crear">Quiero dar en adopción una mascota</label></a>
                                 </div>
                             </li>
                             <li class="nav-item">
                                 <div id="crear" class="seccion">
                                     <a href="<?php echo constant('URL'); ?>crear_publicacion?estado=2"><label for="encontrado" id="lbl-encontrado" class="lbl-seccion lbl-seccion-crear">Encontré la mascota de alguien más</label></a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div id="perdidos" class="seccion">
+                                    <a href="<?php echo constant('URL'); ?>crear_publicacion?estado=3"><label for="perdido" id="lbl-perdido" class="lbl-seccion lbl-seccion-crear">Perdí mi mascota</label></a>
                                 </div>
                             </li>
                         </ul>

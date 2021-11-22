@@ -1,14 +1,10 @@
 <?php
-
 include_once 'Clases/publicacion.php';
-
 class editar_publicacionModel extends Model{
     public function __construct(){
         parent::__construct();
     }
-
     public function get($publicacion){
-
         //traer los datos de la bbdd
         //$this->objMascota;
         try {
@@ -19,13 +15,12 @@ class editar_publicacionModel extends Model{
                 $objMascota->setSexo_mascota ($row['SEXO_MASCOTA']); 
                 $objMascota->setEdad_mascota ($row['EDAD_MASCOTA']); 
                 $objMascota->setTamanio_mascota ($row['TAMANIO_MASCOTA']); 
-                $objMascota->setEspecie_mascota($row['TIPO_ESPECIE_MASCOTA']);
+                $objMascota->setEspecie_mascota($row['ID_ESPECIE_MASCOTA']);
                 $objMascota->setNombre_mascota ($row['NOMBRE_MASCOTA']); 
                 $objMascota->setDescripcion_mascota ($row['DESCRIPCION_MASCOTA']); 
                 $objMascota->setFotos_mascota ($row['FOTO_MASCOTA']);
                 $objMascota->setId_mascota($row['ID_MASCOTA']);
                 
-
                 
                 $objPublicacion= new Publicacion();
                 $objPublicacion->setMascota($objMascota);
@@ -36,9 +31,6 @@ class editar_publicacionModel extends Model{
                 $objPublicacion->setProvincia($row['PROVINCIA']);
                 $objPublicacion->setNum_contacto_publicacion($row['NUM_CONTACTO_PUBLICACION']);
                 $objPublicacion->setFecha_alta_publicacion($row['FECHA_ALTA_PUBLICACION']);
-
-
-
                 
                 
             }
@@ -47,14 +39,10 @@ class editar_publicacionModel extends Model{
             return false;
         }
     }
-
-
     public function update($objPublicacion){
         //insertar datos en la bbdd
-
         try{
             
-
             $Mascota=$objPublicacion->getMascota();
             $query = $this->db->connect();
             $query->beginTransaction();            
@@ -75,22 +63,15 @@ class editar_publicacionModel extends Model{
            
             $query->commit();
             return true;
-
         
-
         }catch(PDOException $exc) {
-
             $query->rollback();
             echo "Error: " . $exc->getMessage();
             return false;
-
         }       
             
-
        
  
     }
-
 }
-
 ?>

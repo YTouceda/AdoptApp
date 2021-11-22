@@ -1,5 +1,4 @@
 <?php 
-
 class Denuncia{
     private $id_denuncia;
     private $id_tipo_denuncia;
@@ -7,8 +6,6 @@ class Denuncia{
     private $id_usuario_denunciante;
     private $descripcion;
     private $fecha_denuncia;
-
-
     public function getId_publicacion(){
         return $this->id_publicacion;
     }
@@ -48,9 +45,4 @@ class Denuncia{
     }
     
 }
-
-
-
-
-
 ?>

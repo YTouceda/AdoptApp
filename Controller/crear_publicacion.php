@@ -1,19 +1,14 @@
 <?php 
-
 include_once 'Clases/publicacion.php';
-
 class Crear_Publicacion extends Controller{
     function __construct(){
         parent::__construct();
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         
     }
-
     function render(){
         $this->view->render('crear_publicacion/index');
     }
-
-
     function registrarMascota(){
         if(isset($_SESSION['id']) && isset($_POST['sexo']) && isset($_POST['edad']) && isset($_POST['tamanio'])  && isset($_POST['especie'])  && isset($_POST['nombre'])  && isset($_POST['descripcion'])  && isset($_POST['estado']) && isset($_POST['provincia']) && isset($_POST['telefono']) && isset($_POST['localidad'])){
             
@@ -70,13 +65,7 @@ class Crear_Publicacion extends Controller{
             echo "Error, publicación no guardada. Debe seleccionar los datos de su ubicación.";
         }
     }
-
    
-
 }
-
-
     
-
-
 ?>

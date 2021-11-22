@@ -1,7 +1,5 @@
 <?php 
-
 include_once 'Clases/mascota.php';
-
 class Publicacion{
     private $id_publicacion;
     private $estado;
@@ -12,11 +10,9 @@ class Publicacion{
     private $num_contacto_publicacion;
     private $localidad;
     private $provincia;
-
     function __construct(){
         $this->mascota = new Mascota();
     }
-
     public function getId_publicacion(){
         return $this->id_publicacion;
     } 
@@ -44,7 +40,6 @@ class Publicacion{
     public function getProvincia(){
         return $this->provincia;
     }
-
     public function setId_publicacion($Id_publicacion){
         $this->id_publicacion = $Id_publicacion;
     }
@@ -73,6 +68,4 @@ class Publicacion{
         $this->provincia = $Provincia;
     }
 }
-
-
 ?>

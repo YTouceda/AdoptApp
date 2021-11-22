@@ -1,5 +1,4 @@
 /*   SCRIPT SQL  - Tablas con Restricciones -   */
-
 CREATE TABLE PERMISOS
        (
        ID_PERMISO BIGINT NOT NULL,                              
@@ -9,9 +8,6 @@ CREATE TABLE PERMISOS
                ID_PERMISO
                )
        );
-
-
-
 CREATE TABLE ESTADO
        (
        ID_ESTADO BIGINT NOT NULL,                              
@@ -21,9 +17,6 @@ CREATE TABLE ESTADO
                ID_ESTADO
                )
        );
-
-
-
 CREATE TABLE SEXO_MASCOTA
        (
        ID_SEXO_MASCOTA BIGINT NOT NULL AUTO_INCREMENT=0,                              
@@ -33,9 +26,6 @@ CREATE TABLE SEXO_MASCOTA
                ID_SEXO_MASCOTA
                )
        );
-
-
-
 CREATE TABLE EDAD_MASCOTA
        (
        ID_EDAD_MASCOTA BIGINT NOT NULL AUTO_INCREMENT=0,                              
@@ -45,9 +35,6 @@ CREATE TABLE EDAD_MASCOTA
                ID_EDAD_MASCOTA
                )
        );
-
-
-
 CREATE TABLE TAMANIO_MASCOTA
        (
        ID_TAMANIO_MASCOTA BIGINT NOT NULL AUTO_INCREMENT=0,                              
@@ -57,9 +44,6 @@ CREATE TABLE TAMANIO_MASCOTA
                ID_TAMANIO_MASCOTA
                )
        );
-
-
-
 CREATE TABLE TIPO_DENUNCIA
        (
        ID_TIPO_DENUNCIA BIGINT NOT NULL,                              
@@ -69,9 +53,6 @@ CREATE TABLE TIPO_DENUNCIA
                ID_TIPO_DENUNCIA
                )
        );
-
-
-
 CREATE TABLE PROVINCIA
        (
        ID_PROVINCIA BIGINT NOT NULL,                              
@@ -81,9 +62,6 @@ CREATE TABLE PROVINCIA
                ID_PROVINCIA
                )
        );
-
-
-
 CREATE TABLE ESPECIE_MASCOTA
        (
        ID_ESPECIE_MASCOTA BIGINT NOT NULL AUTO_INCREMENT=0,                              
@@ -93,9 +71,6 @@ CREATE TABLE ESPECIE_MASCOTA
                ID_ESPECIE_MASCOTA
                )
        );
-
-
-
 CREATE TABLE USUARIO
        (
        ID_USUARIO BIGINT NOT NULL,                            
@@ -114,9 +89,6 @@ CREATE TABLE USUARIO
                ID_PERMISO
                )
        );
-
-
-
 CREATE TABLE DATOS_PERSONALES
        (
        ID_USUARIO BIGINT NOT NULL,                          
@@ -137,9 +109,6 @@ CREATE TABLE DATOS_PERSONALES
                ID_USUARIO
                )
        );
-
-
-
 CREATE TABLE LOCALIDAD
        (
        ID_LOCALIDAD BIGINT NOT NULL,                              
@@ -158,9 +127,6 @@ CREATE TABLE LOCALIDAD
                ID_PROVINCIA
                )
        );
-
-
-
 CREATE TABLE RESCATISTA
        (
        ID_USUARIO BIGINT NOT NULL,                                                          
@@ -186,9 +152,6 @@ CREATE TABLE RESCATISTA
                ID_LOCALIDAD
                )
        );
-
-
-
 CREATE TABLE MASCOTA
        (
        ID_MASCOTA BIGINT NOT NULL AUTO_INCREMENT=0,                              
@@ -236,9 +199,6 @@ CREATE TABLE MASCOTA
                ID_ESPECIE_MASCOTA
                )
        );
-
-
-
 CREATE TABLE REGISTRADO
        (
        ID_USUARIO BIGINT NOT NULL,                              
@@ -255,9 +215,6 @@ CREATE TABLE REGISTRADO
                ID_USUARIO
                )
        );
-
-
-
 CREATE TABLE PUBLICACION
        (
        ID_PUBLICACION BIGINT NOT NULL AUTO_INCREMENT=0,                              
@@ -305,9 +262,6 @@ CREATE TABLE PUBLICACION
                ID_MASCOTA
                )
        );
-
-
-
 CREATE TABLE DENUNCIA
        (
        ID_DENUNCIA BIGINT NOT NULL AUTO_INCREMENT=0,                              
@@ -345,9 +299,6 @@ CREATE TABLE DENUNCIA
                ID_USUARIO
                )
        );
-
-
-
 CREATE TABLE POSTULACION
        (
        ID_POSTULACION BIGINT NOT NULL AUTO_INCREMENT=0,                         
@@ -377,9 +328,6 @@ CREATE TABLE POSTULACION
                ID_PUBLICACION
                )
        );
-
-
-
 CREATE TABLE ADOPCION
        (
        ID_ADOPCION BIGINT NOT NULL AUTO_INCREMENT=0,                              
@@ -398,9 +346,6 @@ CREATE TABLE ADOPCION
                ID_POSTULACION
                )
        );
-
-
-
 CREATE TABLE DEVOLUCION
        (
        ID_DEVOLUCION BIGINT NOT NULL AUTO_INCREMENT=0,                              
@@ -419,9 +364,6 @@ CREATE TABLE DEVOLUCION
                ID_POSTULACION
                )
        );
-
-
-
 CREATE TABLE SOLICITUD_RESCATISTA
        (
        ID_SOLICITUD BIGINT NOT NULL AUTO_INCREMENT=0,                           
@@ -449,5 +391,3 @@ CREATE TABLE SOLICITUD_RESCATISTA
                ID_USUARIO
                )
        );
-
-

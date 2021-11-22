@@ -1,5 +1,4 @@
 <?php
-
 Class Footer extends Controller{
     function __construct(){
         parent::__construct();
@@ -8,5 +7,4 @@ Class Footer extends Controller{
         $this->view->render('footer/index');
     }
 }
-
 ?>

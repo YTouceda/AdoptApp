@@ -2,7 +2,6 @@ $(document).ready(function () {
     consultaNotificaciones();
     setInterval(consultaNotificaciones,15000);
 })
-
 function consultaNotificaciones()
 {
     var nuevaNoti = "";
@@ -59,27 +58,22 @@ function consultaNotificaciones()
             }else{
                 $('#alerta_sin_leer').addClass('invisible');
             }
-
             var contenido = $('#notificacion_list');
             contenido.html(fiveNoti);
             
             var contenido1 = $('#notificacion_list_com');
             contenido1.html(nuevaNoti);
-
-
             $(".notification_hover").hover(function(event){
                 $("#"+event.currentTarget.id).children("div.div_botones").removeClass("invisible");
             },function(event){
                 $("#"+event.currentTarget.id).children("div.div_botones").addClass('invisible');
             });
-
             $(".notification_hover").click(function(event){
                 var accion = event.currentTarget.childNodes[0].attributes[1].value;
                 if(accion == "no leído"){
                     cambiarEstado(event.currentTarget.attributes[1].value,"leído");
                 }
             });
-
             $('.btn_notificacion').click(function(event){
                 var accion = $("#"+event.currentTarget.id).html();
                 if(accion == "Marcar como leído"){
@@ -95,7 +89,6 @@ function consultaNotificaciones()
         }
     });
 }
-
 function cambiarEstado(id_notificacion,accion){
     consultaNotificaciones();
     $.ajax({

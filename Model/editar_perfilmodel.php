@@ -1,10 +1,8 @@
 <?php
-
 class editar_perfilModel extends Model{
     public function __construct(){
         parent::__construct();
     }
-
     public function insert($datos){
         //insertar datos en la base de datos
             $query = $this->db->connect()->prepare('UPDATE DATOS_PERSONALES SET `NOMBRE_USUARIO` = :NOMBRE_USUARIO, `NUM_CONTACTO_USUARIO` = :NUM_CONTACTO_USUARIO, `EMAIL_USUARIO` = :EMAIL_USUARIO WHERE `ID_USUARIO` = :ID_USUARIO;');
@@ -15,7 +13,5 @@ class editar_perfilModel extends Model{
             }
         // echo "insertar datos";
     }
-
 }
-
 ?>

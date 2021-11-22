@@ -34,7 +34,6 @@
                 
             <div class="row">
                 <?php //$objMascota=$this->publicacion->getMascota();?>
-
                 <div class="col-12 col-sm-6">
                         <div class="titulo-cp col">
                         <h6 class="titulo-cp">Datos  <i class="fas fa-id-card"></i></h6>
@@ -56,9 +55,7 @@
                             <option  value="3"<?php if($this->publicacion->getEstado()==3){ echo "selected";} ?>>Está perdido</option>
                         </select>
                         </div>
-
                 
-
                         <div id="errorEstado" class="invalid-feedback">Debe elegir un estado válido.</div>
                    
                         <div>
@@ -140,7 +137,6 @@
                             <input id="xlocalidad" type="hidden">
                            
                         </div>
-
                             <input id="id_mascota" type="hidden" name="id_mascota" value="<?php echo $this->mascota->getId_mascota();?>">
             </div><!-- COL -->
           
@@ -151,21 +147,17 @@
                         
                     </div>
                     <input  class="form-control cp mb-3 add_photo" type="file"  accept="image/*" id="input_add_photo1" name="foto">
-
                 </div>
                 <label>
 
-
                     <div class="img-seleccionada col img-agregada position-relative" id="img_grande"> <img src="<?php echo constant('URL'); ?>Public/public_media/<?php echo $this->mascota->getFotos_mascota() ?>"  class="img-fluid img-mascota edit" > <img id="edit" src="<?php echo constant('URL'); ?>Public/media/edit.svg" class="edit col mascota-edit p-50 position-absolute top-50 start-50 translate-middle"></div></label>
                     <input type="hidden" name="fotovieja" value="<?php echo $this->mascota->getFotos_mascota() ?>">
-
                 <div id="alertaCreacionExitosa"></div>
                 <button type="button" id="enviar" name="publicar" class="btn btn-success">Guardar cambios</button>
                
                 </div> 
             
                 </form> 
-
         </main>
         <footer>
             <?php
@@ -175,5 +167,4 @@
     </body>
     
 </html>
-
 

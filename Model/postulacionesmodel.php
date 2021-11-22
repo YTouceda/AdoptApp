@@ -1,13 +1,10 @@
 <?php
-
 include_once 'Clases/mascota.php';
 include_once 'Clases/usuario.php';
-
 class postulacionesModel extends Model{
     public function __construct(){
         parent::__construct();
     }
-
     public function get($ID_MASCOTA){
         $items = [];
         try {
@@ -29,5 +26,4 @@ class postulacionesModel extends Model{
         }
     }
 }
-
 ?>

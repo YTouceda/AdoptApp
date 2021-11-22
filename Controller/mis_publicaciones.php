@@ -1,13 +1,9 @@
 <?php
-
-
-
 Class Mis_publicaciones extends Controller{
     function __construct(){
         parent::__construct();
         $this->view->publicaciones = [];
         $this->view->user=new Usuario();
-
     }
     
     function Render(){
@@ -30,8 +26,6 @@ Class Mis_publicaciones extends Controller{
             $this->view->render('mis_publicaciones/index');
         }
     }
-
     
 }
-
 ?>

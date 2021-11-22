@@ -4,7 +4,6 @@ $(document).ready(function () {
     $("#botonEliminar").hide();
 });
   
-
     
 $("#select-denuncia").change(function(){
     $("#errorDenuncia").hide();
@@ -15,7 +14,6 @@ $("#select-denuncia").change(function(){
         $(".denuncia").attr("disabled");
     }
 });
-
 $("#fakeEliminar").click(function(){
     $("#fakeEliminar").attr("disabled",true);
     Swal.fire(
@@ -24,12 +22,7 @@ $("#fakeEliminar").click(function(){
         'success'
       )
       setTimeout(() => {$("#botonEliminar").click()}, 5000);
-
-
-
 });
-
-
     $("#enviar").click(function validarForm(e){
             var formValido=true;
             var desc=$("#tx-denuncia");
@@ -78,7 +71,6 @@ $("#fakeEliminar").click(function(){
                 errorSelectDenuncia.show();
                 formValido=false;
                 break;
-
             }
             
             
@@ -94,13 +86,10 @@ $("#fakeEliminar").click(function(){
                     'success'
                   )
                   setTimeout(() => {$("#formdenuncia").submit()}, 3000);
-
                   
                 
             }
         });
-
-
         // $(".img-chiquitas").click(function cambiarImagenes(){
         //     var aux= $(this).attr("src");
         //     var grande=$("#img-grande").attr("src");
@@ -108,4 +97,3 @@ $("#fakeEliminar").click(function(){
         //     $("#img-grande").attr("src",aux);
         
         // });
-

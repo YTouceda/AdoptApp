@@ -56,7 +56,6 @@
                         </div>
                     </div>
                 </div>
-
         <?php
             $id_div++;}}
         ?>
@@ -84,7 +83,6 @@
                                 </div>
                             </div>
                         </div>
-
         <?php
                     }
                 }
