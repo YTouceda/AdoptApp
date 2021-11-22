@@ -1,63 +1,63 @@
-/* ------------///// Abrir publicacion /////------------ */
-
-main{
-    background-color: rgb(176, 176, 197);
-}
-
-
-h3.titulo-ap{
-    text-align: center;
-    background-color:brown;
-    color:white;
-    border-radius: 3px;
-}
-/* ------------///// Detalle /////------------ */
-
-
-.table{
-    color: rgb(97, 62, 17);
-}
-
-/* ------------///// FOTOS /////------------ */
-
-.img-seleccionada{
-    width : 400px;
-    height: auto;
-}
-.img-chiq{
-    width:150px;
-    height:auto;
-}
-div.img-chiq img:hover{
-    border: 4px solid rgba(5,7,12,0.001);
-}
-
-.nombre{
-   font-size: 200%; 
-   padding-top: 15px;
-}
-
-.container{
-    background-color: rgba(245, 245, 245, 0.5);
-}
-
-#tx-denuncia{
-    resize:unset;
-    height: auto;
-    margin: 10px 0px ;
-}
-
-
-.modal-content {
-    background-color: rgba(255, 234, 202, 1);
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 100%; /* Could be more or less, depending on screen size */
-}
-
-button.boton-ap{
-margin: 10px 0px;
-}
-button#botonEliminar{
-    display: none;
-}
+/* ------------///// Abrir publicacion /////------------ */
+
+main{
+    background-color: rgb(176, 176, 197);
+}
+
+
+h3.titulo-ap{
+    text-align: center;
+    background-color:brown;
+    color:white;
+    border-radius: 3px;
+}
+/* ------------///// Detalle /////------------ */
+
+
+.table{
+    color: rgb(97, 62, 17);
+}
+
+/* ------------///// FOTOS /////------------ */
+
+.img-seleccionada{
+    width : 400px;
+    height: auto;
+}
+.img-chiq{
+    width:150px;
+    height:auto;
+}
+div.img-chiq img:hover{
+    border: 4px solid rgba(5,7,12,0.001);
+}
+
+.nombre{
+   font-size: 200%; 
+   padding-top: 15px;
+}
+
+.container{
+    background-color: rgba(245, 245, 245, 0.5);
+}
+
+#tx-denuncia{
+    resize:unset;
+    height: auto;
+    margin: 10px 0px ;
+}
+
+
+.modal-content {
+    background-color: rgba(255, 234, 202, 1);
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 100%; /* Could be more or less, depending on screen size */
+}
+
+button.boton-ap{
+margin: 10px 0px;
+}
+button#botonEliminar{
+    display: none;
+}

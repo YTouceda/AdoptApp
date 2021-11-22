@@ -1,11 +1,11 @@
-<?php
-
-class Model{
-
-    function __construct(){
-        $this->db = new DB();
-    }
-    
-}
-
+<?php
+
+class Model{
+
+    function __construct(){
+        $this->db = new DB();
+    }
+    
+}
+
 ?>
