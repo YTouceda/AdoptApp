@@ -26,8 +26,8 @@
             <div class="container cuerpo">
                 <div class="row">
                     <div class="fotos-ap col-12 col-xl-6">
-                        <div class="text-center">
-                            <img src="<?php echo constant('URL')."Public/public_media/".$this->mascota->getFotos_mascota();?>" class=" card-imagen img-fluid rounded-start w-75 p-5">
+                        <div class="text-center  py-5">
+                            <img src="<?php echo constant('URL')."Public/public_media/".$this->mascota->getFotos_mascota();?>" class="card-imagen-publicacion img-fluid rounded-start">
                         </div>
                     </div>                       
                     <div class="detalle-ap col-12 col-xl-6 p-5 mx-auto"> 
@@ -73,7 +73,7 @@
                             if(!($this->publicacion->getEstado() == 'Adoptado' || $this->publicacion->getEstado() == 'Devuelto')){
                                 if($_SESSION['id']!=$this->publicacion->getId_usuario()){ 
                                     if($this->estado_denuncia){
-                            ?>
+                                        ?>
                                         <div class="col-12 col-sm-6">
                                             <button type="button" class="btn btn-danger boton-ap" data-bs-toggle="modal" data-bs-target="#denuncia-Modal">
                                                 Denunciar publicación
@@ -124,34 +124,32 @@
                                                 </div>
                                             </div>
                                         </div>
-                                <?php 
+                                        <?php 
                                     }
-                                ?>
-                            <?php 
                                 } 
-                            ?>
+                                ?>
                                 <?php
-                                    if ($_SESSION['id']!=$this->publicacion->getId_usuario()){
-                                        if($this->estado_post){
-                                    ?>
-                                            <div class="col-12 col-sm-6">
-                                                <a href='<?php echo constant('URL'); ?>abrir_publicacion/postularse?publicacion=<?php echo  $this->publicacion->getId_publicacion();?>'><button name="postularse" type="button" class="btn btn-success boton-ap"><?php echo $this->estado_boton; ?></button></a>
-                                            </div>
-                                <?php
-                                        
-                                        }else{
-                                            ?>
-                                            <div class="col-12 col-sm-6">
-                                                <a href='<?php echo constant('URL'); ?>abrir_publicacion/cancelarPostulacion'><button name="postularse" type="button" class="btn btn-warning boton-ap">Cancelar postulacion</button></a>
-                                            </div>
-                                <?php
-                                        }
+                                if ($_SESSION['id']!=$this->publicacion->getId_usuario()){
+                                    if($this->estado_post){
+                                        ?>
+                                        <div class="col-12 col-sm-6">
+                                            <a href='<?php echo constant('URL'); ?>abrir_publicacion/postularse?publicacion=<?php echo  $this->publicacion->getId_publicacion();?>'><button name="postularse" type="button" class="btn btn-success boton-ap"><?php echo $this->estado_boton; ?></button></a>
+                                        </div>
+                                        <?php
+                                    
+                                    }else{
+                                        ?>
+                                        <div class="col-12 col-sm-6">
+                                            <a href='<?php echo constant('URL'); ?>abrir_publicacion/cancelarPostulacion'><button name="postularse" type="button" class="btn btn-warning boton-ap">Cancelar postulacion</button></a>
+                                        </div>
+                                        <?php
                                     }
                                 }
+                            }
                                 ?>
                             <?php 
                             if($_SESSION['id']==$this->publicacion->getId_usuario()){ 
-                            ?>
+                                ?>
                                 <div class="col-12 col-sm-6">
                                     <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar publicación</button>
                                     <div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="eliminar" aria-hidden="true">
@@ -173,23 +171,22 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php 
+                                <?php 
                             }
                             if ($_SESSION['id']==$this->publicacion->getId_usuario()){
-                            ?>
+                                ?>
                                 <div class="col-12 col-sm-6">
                                     <a href='<?php echo constant('URL'); ?>editar_publicacion?publicacion=<?php echo  $this->publicacion->getId_publicacion();?>'><button id='boton' class='btn btn-secondary'>Editar Publicacion</button></a>
                                 </div>
-                            <?php
+                                <?php
                             }
                             ?>
                         </div><!--   ROW  -->
                     </div> <!-- botones -->
                 </div> <!-- detalle -->
                 <?php 
-                    if ($_SESSION['id']==$this->publicacion->getId_usuario()){
-                          require 'View/postulaciones/index.php';   
-                
+                if ($_SESSION['id']==$this->publicacion->getId_usuario()){
+                    require 'View/postulaciones/index.php';   
                 }?>
             </div>
         </main>

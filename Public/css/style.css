@@ -211,8 +211,17 @@ div.card_publicaciones{
 }
 
 div.card_mis_publicaciones{
-    height: 220px !important;
     background-color: #d6b7938c;
+}
+
+div.card_postulacion{
+    background-color: #d6b7938c;
+}
+
+img.card-imagen-publicacion{
+    height: 405px;
+    width: 405px !important;
+    object-fit: cover;
 }
 img.card-imagen{
     height: 405px;
