@@ -1,0 +1,453 @@
+/*   SCRIPT SQL  - Tablas con Restricciones -   */
+
+CREATE TABLE PERMISOS
+       (
+       ID_PERMISO BIGINT NOT NULL,                              
+       NOMBRE_PERMISO VARCHAR(30) NOT NULL,                            
+       PRIMARY KEY
+               (
+               ID_PERMISO
+               )
+       );
+
+
+
+CREATE TABLE ESTADO
+       (
+       ID_ESTADO BIGINT NOT NULL,                              
+       TIPO_ESTADO_PUBLICACION VARCHAR(50) NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_ESTADO
+               )
+       );
+
+
+
+CREATE TABLE SEXO_MASCOTA
+       (
+       ID_SEXO_MASCOTA BIGINT NOT NULL AUTO_INCREMENT=0,                              
+       TIPO_SEXO_MASCOTA VARCHAR(50) NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_SEXO_MASCOTA
+               )
+       );
+
+
+
+CREATE TABLE EDAD_MASCOTA
+       (
+       ID_EDAD_MASCOTA BIGINT NOT NULL AUTO_INCREMENT=0,                              
+       TIPO_EDAD_MASCOTA VARCHAR(50) NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_EDAD_MASCOTA
+               )
+       );
+
+
+
+CREATE TABLE TAMANIO_MASCOTA
+       (
+       ID_TAMANIO_MASCOTA BIGINT NOT NULL AUTO_INCREMENT=0,                              
+       TIPO_TAMANIO_MASCOTA VARCHAR(50) NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_TAMANIO_MASCOTA
+               )
+       );
+
+
+
+CREATE TABLE TIPO_DENUNCIA
+       (
+       ID_TIPO_DENUNCIA BIGINT NOT NULL,                              
+       TIPO_DENUNCIA VARCHAR(20) NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_TIPO_DENUNCIA
+               )
+       );
+
+
+
+CREATE TABLE PROVINCIA
+       (
+       ID_PROVINCIA BIGINT NOT NULL,                              
+       NOMBRE_PROVINCIA VARCHAR(50) NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_PROVINCIA
+               )
+       );
+
+
+
+CREATE TABLE ESPECIE_MASCOTA
+       (
+       ID_ESPECIE_MASCOTA BIGINT NOT NULL AUTO_INCREMENT=0,                              
+       TIPO_ESPECIE_MASCOTA VARCHAR(20) NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_ESPECIE_MASCOTA
+               )
+       );
+
+
+
+CREATE TABLE USUARIO
+       (
+       ID_USUARIO BIGINT NOT NULL,                            
+       ID_PERMISO BIGINT NOT NULL,                              
+       ESTADO_BLOQUEO DATETIME NULL,                              
+       PRIMARY KEY
+               (
+               ID_USUARIO
+               ),
+       FOREIGN KEY
+               (
+               ID_PERMISO
+               )
+          REFERENCES PERMISOS
+               (
+               ID_PERMISO
+               )
+       );
+
+
+
+CREATE TABLE DATOS_PERSONALES
+       (
+       ID_USUARIO BIGINT NOT NULL,                          
+       NOMBRE_USUARIO VARCHAR(50) NOT NULL,                              
+       NUM_CONTACTO_USUARIO BIGINT NOT NULL,                              
+       EMAIL_USUARIO VARCHAR(100) NULL,                              
+       FOTO_PERFIL VARCHAR(500) NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_USUARIO
+               ),
+       FOREIGN KEY
+               (
+               ID_USUARIO
+               )
+          REFERENCES USUARIO
+               (
+               ID_USUARIO
+               )
+       );
+
+
+
+CREATE TABLE LOCALIDAD
+       (
+       ID_LOCALIDAD BIGINT NOT NULL,                              
+       ID_PROVINCIA BIGINT NOT NULL,                              
+       NOMBRE_LOCALIDAD VARCHAR(100) NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_LOCALIDAD
+               ),
+       FOREIGN KEY
+               (
+               ID_PROVINCIA
+               )
+          REFERENCES PROVINCIA
+               (
+               ID_PROVINCIA
+               )
+       );
+
+
+
+CREATE TABLE RESCATISTA
+       (
+       ID_USUARIO BIGINT NOT NULL,                                                          
+       ID_UBICACION_RESCATISTA BIGINT NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_USUARIO
+               ),
+       FOREIGN KEY
+               (
+               ID_USUARIO
+               )
+          REFERENCES USUARIO
+               (
+               ID_USUARIO
+               ),
+       FOREIGN KEY
+               (
+               ID_UBICACION_RESCATISTA
+               )
+          REFERENCES LOCALIDAD
+               (
+               ID_LOCALIDAD
+               )
+       );
+
+
+
+CREATE TABLE MASCOTA
+       (
+       ID_MASCOTA BIGINT NOT NULL AUTO_INCREMENT=0,                              
+       ID_SEXO_MASCOTA BIGINT NOT NULL,                              
+       ID_EDAD_MASCOTA BIGINT NOT NULL,                              
+       ID_TAMANIO_MASCOTA BIGINT NOT NULL,             
+       ID_ESPECIE_MASCOTA BIGINT NOT NULL,                              
+       NOMBRE_MASCOTA VARCHAR(50) NOT NULL,                              
+       DESCRIPCION_MASCOTA VARCHAR(500) NOT NULL,                              
+       FOTOS_MASCOTA VARCHAR(2000) NOT NULL,   
+       PRIMARY KEY
+               (
+               ID_MASCOTA
+               ),
+       FOREIGN KEY
+               (
+               ID_SEXO_MASCOTA
+               )
+          REFERENCES SEXO_MASCOTA
+               (
+               ID_SEXO_MASCOTA
+               ),
+       FOREIGN KEY
+               (
+               ID_EDAD_MASCOTA
+               )
+          REFERENCES EDAD_MASCOTA
+               (
+               ID_EDAD_MASCOTA
+               ),
+       FOREIGN KEY
+               (
+               ID_TAMANIO_MASCOTA
+               )
+          REFERENCES TAMANIO_MASCOTA
+               (
+               ID_TAMANIO_MASCOTA
+               ),
+       FOREIGN KEY
+               (
+               ID_ESPECIE_MASCOTA
+               )
+          REFERENCES ESPECIE_MASCOTA
+               (
+               ID_ESPECIE_MASCOTA
+               )
+       );
+
+
+
+CREATE TABLE REGISTRADO
+       (
+       ID_USUARIO BIGINT NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_USUARIO
+               ),
+       FOREIGN KEY
+               (
+               ID_USUARIO
+               )
+          REFERENCES USUARIO
+               (
+               ID_USUARIO
+               )
+       );
+
+
+
+CREATE TABLE PUBLICACION
+       (
+       ID_PUBLICACION BIGINT NOT NULL AUTO_INCREMENT=0,                              
+       ID_ESTADO BIGINT NOT NULL,                              
+       ID_USUARIO BIGINT NOT NULL,                              
+       ID_MASCOTA BIGINT NOT NULL,
+       ID_LOCALIDAD BIGINT NOT NULL,                              
+       FECHA_ALTA_PUBLICACION DATETIME NOT NULL,                              
+       FECHA_BAJA_PUBLICACION DATETIME NOT NULL,                              
+       NUM_CONTACTO_PUBLICACION VARCHAR(12) NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_PUBLICACION
+               ),
+       FOREIGN KEY
+               (
+               ID_ESTADO
+               )
+          REFERENCES ESTADO
+               (
+               ID_ESTADO
+               ),
+       FOREIGN KEY
+               (
+               ID_USUARIO
+               )
+          REFERENCES USUARIO
+               (
+               ID_USUARIO
+               ),
+       FOREIGN KEY
+               (
+               ID_LOCALIDAD
+               )
+          REFERENCES LOCALIDAD
+               (
+               ID_LOCALIDAD
+               ),
+       FOREIGN KEY
+               (
+               ID_MASCOTA
+               )
+          REFERENCES MASCOTA
+               (
+               ID_MASCOTA
+               )
+       );
+
+
+
+CREATE TABLE DENUNCIA
+       (
+       ID_DENUNCIA BIGINT NOT NULL AUTO_INCREMENT=0,                              
+       ID_TIPO_DENUNCIA BIGINT NOT NULL,                              
+       ID_PUBLICACION BIGINT NOT NULL,                   
+       ID_USUARIO_DENUNCIANTE BIGINT NOT NULL,                              
+       DESCRIPCION VARCHAR(200) NULL,                              
+       FECHA_DENUNCIA DATETIME NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_DENUNCIA
+               ),
+       FOREIGN KEY
+               (
+               ID_TIPO_DENUNCIA
+               )
+          REFERENCES TIPO_DENUNCIA
+               (
+               ID_TIPO_DENUNCIA
+               ),
+       FOREIGN KEY
+               (
+               ID_PUBLICACION
+               )
+          REFERENCES PUBLICACION
+               (
+               ID_PUBLICACION
+               ),
+       FOREIGN KEY
+               (
+               ID_USUARIO_DENUNCIANTE
+               )
+          REFERENCES USUARIO
+               (
+               ID_USUARIO
+               )
+       );
+
+
+
+CREATE TABLE POSTULACION
+       (
+       ID_POSTULACION BIGINT NOT NULL AUTO_INCREMENT=0,                         
+       ID_PUBLICACION BIGINT NOT NULL,                              
+       ESTADO_PUBLICACION BINARY(1) NOT NULL,                              
+       ID_USUARIO_POSTULADO BIGINT NOT NULL,                              
+       FECHA_POSTULACION DATETIME NOT NULL,                              
+       ESTADO_POSTULACION BIGINT NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_POSTULACION
+               ),
+       FOREIGN KEY
+               (
+               ID_USUARIO_POSTULADO
+               )
+          REFERENCES USUARIO
+               (
+               ID_USUARIO
+               ),
+       FOREIGN KEY
+               (
+               ID_PUBLICACION
+               )
+          REFERENCES PUBLICACION
+               (
+               ID_PUBLICACION
+               )
+       );
+
+
+
+CREATE TABLE ADOPCION
+       (
+       ID_ADOPCION BIGINT NOT NULL AUTO_INCREMENT=0,                              
+       ID_POSTULACION BIGINT NOT NULL,                            
+       FECHA_ADOPCION DATETIME NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_ADOPCION
+               ),
+       FOREIGN KEY
+               (
+               ID_POSTULACION
+               )
+          REFERENCES POSTULACION
+               (
+               ID_POSTULACION
+               )
+       );
+
+
+
+CREATE TABLE DEVOLUCION
+       (
+       ID_DEVOLUCION BIGINT NOT NULL AUTO_INCREMENT=0,                              
+       ID_POSTULACION BIGINT NOT NULL,                         
+       FECHA_DEVOLUCION DATETIME NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_DEVOLUCION
+               ),
+       FOREIGN KEY
+               (
+               ID_POSTULACION
+               )
+          REFERENCES POSTULACION
+               (
+               ID_POSTULACION
+               )
+       );
+
+
+
+CREATE TABLE SOLICITUD_RESCATISTA
+       (
+       ID_SOLICITUD BIGINT NOT NULL AUTO_INCREMENT=0,                           
+       ID_USUARIO_RESCATISTA BIGINT NOT NULL,                              
+       ID_USUARIO_SOLICITANTE BIGINT NOT NULL,                              
+       FECHA_SOLICITUD_RESCATISTA DATETIME NOT NULL,                              
+       PRIMARY KEY
+               (
+               ID_SOLICITUD
+               ),
+       FOREIGN KEY
+               (
+               ID_USUARIO_SOLICITANTE
+               )
+          REFERENCES REGISTRADO
+               (
+               ID_USUARIO
+               ),
+       FOREIGN KEY
+               (
+               ID_USUARIO_RESCATISTA
+               )
+          REFERENCES RESCATISTA
+               (
+               ID_USUARIO
+               )
+       );
+
+

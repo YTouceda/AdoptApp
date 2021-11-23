@@ -11,7 +11,6 @@
         <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/header.js" defer></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style.css">
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style-header-footer.css">
-        <script type="text/javascript" src="Public/js/script.js" defer></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <title>AdoptApp - Adopciones</title>
     </head>

@@ -9,7 +9,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style.css">
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style-header-footer.css">
-        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/script.js" defer></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <script src="<?php echo constant('URL'); ?>Public/js/validar_editar_perfil.js" defer></script>
         <title>AdoptApp - Perfil</title>

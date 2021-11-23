@@ -375,7 +375,7 @@ $(document).ready(function () {
 var respuesta;
 $.ajax({
     //url: 'getLocalidades.php',
-    url: 'Public/otros/localidades.json',
+    url: 'Public/Otros/localidades.json',
     type:  'get',
     beforeSend: function () {
             //console.log("enviando");

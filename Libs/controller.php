@@ -1,7 +1,7 @@
 <?php
 
 include_once 'Clases/usuario.php';
-include_once 'user_session.php';
+include_once 'Libs/user_session.php';
 
 
 class Controller{

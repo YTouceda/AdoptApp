@@ -10,7 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/sweetalert2/6.0.1/sweetalert2.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant ('URL'); ?>Public/css/style-CrearPublicacion.css">
-        <script type="text/javascript" src="<?php echo constant ('URL'); ?>Public/js/abrirpub.js" defer></script>
+        <script type="text/javascript" src="<?php echo constant ('URL'); ?>Public/js/formval.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style.css">
@@ -70,8 +70,8 @@
                         <div>
                         <select class="form-select select-cp" aria-label="Sexo" id="select-sexo" name="sexo"> 
                             <option selected disabled>Elija el sexo</option>
-                            <option value="1">Hembra</option>
-                            <option value="2">Macho</option>
+                            <option value="2">Hembra</option>
+                            <option value="1">Macho</option>
                         </select>
                         </div>
                         <div id="errorSexo" class="invalid-feedback">Debe elegir una opción válida.</div>
