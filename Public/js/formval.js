@@ -1,14 +1,9 @@
 $(document).on("click", "#add-photo", function(){
     $("#input_add_photo").click();
 });
-
 $(document).ready(function(){
 $(".add_photo").hide();
-
-
 });
-
-
 function validarTamImagenes(tam) {
     var maxtam=16*1024*1024;
     //console.log(tam , maxtam);
@@ -18,21 +13,15 @@ function validarTamImagenes(tam) {
     }
     return true;
 }
-
 function redireccionar(){
     window.location.href = "adopciones";
   }
    
  
 
-
-
-
 //Genera las previsualizaciones
 function createPreview(file,id_elemento) {
     var imgCodified = URL.createObjectURL(file);
-
-
     switch(id_elemento){
         case "input_add_photo1":
             var img = $('<div class="img-seleccionada col img-agregada" id="img_grande"><img src="'+ imgCodified +'" class="img-fluid" > </div>');
@@ -42,11 +31,8 @@ function createPreview(file,id_elemento) {
             console.log("Error de imagen");
         break;
             
-
-
     }
     
-
 }
 function validarCantImagenes(){
     agregadas=$(".img-agregada");
@@ -56,21 +42,16 @@ function validarCantImagenes(){
     }
     return true;
 }
-
-
 $(document).on("change", ".add_photo", function () {
     $("#errorFotos").hide();
-
     var files = this.files;
     var element;
     var supportedImages = ["image/jpeg", "image/png", "image/gif"];
     var seEncontraronElementoNoValidos = false;
     //$("img").remove(".img-agregadas");
-
   
         element = files[0];
         //console.log(element);
-
             if(validarTamImagenes(element.size)){
                 if (supportedImages.indexOf(element.type) != -1) {
                     createPreview(element,this.id);
@@ -83,7 +64,6 @@ $(document).on("change", ".add_photo", function () {
             }else{
                 return false;
             }
-
     
     if (seEncontraronElementoNoValidos) {
         $("#errorFotos").show();
@@ -92,25 +72,19 @@ $(document).on("change", ".add_photo", function () {
     else {
         return true;
     }
-
 });
-
-
     function validarRegExpNombre(str){
         var regExpResult = new RegExp ("[A-Za-z]") ;
         return regExpResult.test(str);
     }
-
     function validarRegExpTel(str){
         var regExpResult =  /^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/;
         return regExpResult.test(str);
     }
-
 // $("#test").click(function test(e){
 //     console.log($("#provincia").val());
 //     console.log($("#localidades").val());
 // });
-
     $("#enviar").click(function validarForm(e){
             var formValido=true;
             var nombre=$("#nombre");
@@ -139,7 +113,6 @@ $(document).on("change", ".add_photo", function () {
     
             //Validaciones
           
-
             //NOMBRE
             //console.log(nombre.val());
             if(nombre.val()==""){
@@ -158,7 +131,6 @@ $(document).on("change", ".add_photo", function () {
                 formValido=false;
             }
         }
-
         //console.log(telefono.val());
         if(telefono.val()==""){
             telefono.addClass("is-invalid");
@@ -176,7 +148,6 @@ $(document).on("change", ".add_photo", function () {
             formValido=false;
         }
     }
-
             
         console.log(estado.val());
             switch(estado.val()){
@@ -291,7 +262,6 @@ $(document).on("change", ".add_photo", function () {
                 errorDescripcion.hide();
                 desc.removeClass("is-invalid");
             }
-
             if(provincia.val()==""){
                 provincia.addClass("is-invalid");
                 var errorElement = errorProvincia;
@@ -314,7 +284,6 @@ $(document).on("change", ".add_photo", function () {
                 errorLocalidades.hide();
                 localidades.removeClass("is-invalid");
             }
-
             if(validarCantImagenes()){
                 errorCantImagenes.hide();
                 inputImagenes.removeClass("is-invalid");
@@ -324,7 +293,6 @@ $(document).on("change", ".add_photo", function () {
                 errorCantImagenes.show();
                 formValido=false;
             }
-
             if(validarTamImagenes()){
                 errorTamImagenes.hide();
                 inputImagenes.removeClass("is-invalid");
@@ -335,16 +303,12 @@ $(document).on("change", ".add_photo", function () {
                 formValido=false;
             }
             if (validarCantImagenes()){
-
                 $("#errorFotos").hide();
             }else{
                 $("#errorFotos").show();
                 formValido=false;
             }
             
-
-
-
             console.log(formValido);
             if(!formValido){
                 e.preventDefault();
@@ -359,10 +323,7 @@ $(document).on("change", ".add_photo", function () {
                
             }
         });
-
-
 // ubicacion
-
 class Localidad{
 constructor(varNombre,idLoc,idPro){
     this.nombre=varNombre;
@@ -370,7 +331,6 @@ constructor(varNombre,idLoc,idPro){
     this.id_provincia=idPro;
 }
 }
-
 $(document).ready(function () {
 var respuesta;
 $.ajax({
@@ -386,7 +346,6 @@ $.ajax({
         respuesta=response;
     }
 });
-
 const filtrar =(data, filtro)=>{
     let $option, elemento, nombre, id_localidad, id_provincia, loc;
     var localidades=[];
@@ -407,25 +366,20 @@ const filtrar =(data, filtro)=>{
     })
     $("#localidades").html($option);
 }
-
-
 const cambiarLoc= ()=>{
     $("#ilocalidades").val("");
     let id_provincia = $("#provincia option:selected").val();
     filtrar(respuesta, id_provincia);
 }    
-
 const seleccionarLoc= ()=>{
     //envia lo seleccionado al input
     let loc = $("#localidades option:selected").data("l")
     $("#xlocalidad").val(loc);
 }
-
 $("#provincia").on("change", cambiarLoc);
 $("#localidades").change( ()=>{
     seleccionarLoc();
 })
-
 function ordenarLocalidades(loc){
     var aux;
     for ( var i = 1 ; i < loc.length ; i++ ){
@@ -439,7 +393,4 @@ function ordenarLocalidades(loc){
     }
     return loc;
 }
-
 });
-
-

@@ -5,7 +5,6 @@ class Localidad{
         this.id_provincia=idPro;
     }
 }
-
 $(document).ready(function () {
     var respuesta;
     $.ajax({
@@ -23,7 +22,6 @@ $(document).ready(function () {
             }
         }
     });
-
     
     const filtrar =(data, filtro)=>{
         let $option, elemento, loc;
@@ -64,7 +62,6 @@ $(document).ready(function () {
     }
     
     $("#provincia").on("change", cambiarLoc);
-
     $("#localidades").change( ()=>{
         seleccionarLoc();
     })

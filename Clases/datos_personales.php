@@ -1,5 +1,4 @@
 <?php 
-
 class Datos_Personales{
     private $id_usuario;
     private $nombre_usuario;
@@ -48,6 +47,4 @@ class Datos_Personales{
     }
     
 }
-
-
 ?>

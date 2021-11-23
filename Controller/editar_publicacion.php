@@ -1,7 +1,5 @@
 <?php
-
 Class editar_publicacion extends Controller{
-
     function __construct(){
         parent::__construct();
         $this->view->user=new Usuario();
@@ -24,7 +22,6 @@ Class editar_publicacion extends Controller{
         }
     }
     
-
     function editarMascota(){
        
         //if(isset($_SESSION['id']) && isset($_POST['sexo']) && isset($_POST['edad']) && isset($_POST['tamanio'])  && isset($_POST['especie'])  && isset($_POST['nombre'])  && isset($_POST['descripcion'])  && isset($_POST['estado']) && isset($_POST['provincia']) && isset($_POST['telefono']) && isset($_POST['localidad'])){
@@ -32,7 +29,6 @@ Class editar_publicacion extends Controller{
             
             if(!($_FILES["foto"]['tmp_name'])==""){
                 //echo "SI ESTA SETEADO";
-
                 $check = getimagesize($_FILES["foto"]["tmp_name"]);
                 if($check !== false){
                 
@@ -54,10 +50,8 @@ Class editar_publicacion extends Controller{
                 }else{
                     echo "Formato de imagen invalido";
                     }
-
             }
          
-
             if(isset($_POST['nombre'])){
                 $objMascota= new Mascota();
                 $objMascota->setSexo_mascota($_POST['sexo']);
@@ -84,7 +78,6 @@ Class editar_publicacion extends Controller{
                 // echo $objPublicacion->getId_publicacion();
                 
                 if($this->model->update($objPublicacion)){
-
                    // if($file!=$filecmp)
                    if(!($_FILES["foto"]['tmp_name'])==""){
                     move_uploaded_file($ruta_provisional, $src);
@@ -103,7 +96,5 @@ Class editar_publicacion extends Controller{
         
             header('Location:' . constant('URL').'abrir_publicacion?publicacion='.$_GET['publicacion']);
     }
-
 }
-
 ?>

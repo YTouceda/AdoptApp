@@ -2,7 +2,6 @@
 .header-grupo{
     background-color: rgb(244, 164, 96);
 }
-
 .secciones-grupo label.lbl-seccion{
     background: rgb(241, 176, 119);
     border-radius: 50px;
@@ -16,7 +15,6 @@
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
 }
-
 #moda-opciones-crear-publicacion  label.lbl-seccion-crear{
     background: rgba(241, 176, 119,0.5);
     border-radius: 50px;
@@ -30,13 +28,11 @@
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
 }
-
 .secciones-grupo label.lbl-seccion:hover{
     background: rgb(133, 84, 20);
     border-radius: 50px;
     color: #fff;
 }
-
 div#header_adoptapp .fas{
     background: rgb(241, 176, 119);
     border-radius: 17px;
@@ -44,31 +40,25 @@ div#header_adoptapp .fas{
     padding: 10px;
     color: rgb(133, 84, 20);
 }
-
 div#header_adoptapp label .fas:hover{
     background: rgb(133, 84, 20);
     border-radius: 17px;
     color: #fff;
     cursor: pointer;
 }
-
 div#header_adoptapp label.dropdown-item{
     cursor: pointer;
 }
-
 div#header_adoptapp .dropdown-menu-lg-end{
     background-color: #fcedd8;
 }
-
 div#header_adoptapp .dropdown-menu-end,
 div#header_adoptapp .list-group-item{
     background-color: #fcedd8;
 }
-
 div#header_adoptapp .list-group-item:hover{
     background-color: #ebd2af;
 }
-
 div#header_adoptapp .icono_menu_notificacion{
     background: #ebd2af;
     border-radius: 17px;
@@ -76,14 +66,12 @@ div#header_adoptapp .icono_menu_notificacion{
     padding: 10px;
     color: rgb(133, 84, 20);
 }
-
 div#header_adoptapp label .icono_menu_notificacion:hover{
     background: rgb(241, 176, 119);
     border-radius: 17px;
     color: rgb(133, 84, 20);
     cursor: pointer;
 }
-
 div.notificaciones_completas .icono_menu_notificacion{
     
     background: #ebd2af;
@@ -92,37 +80,30 @@ div.notificaciones_completas .icono_menu_notificacion{
     padding: 10px;
     color: rgb(133, 84, 20);
 }
-
 div.notificaciones_completas label .icono_menu_notificacion:hover{
     background: rgb(241, 176, 119);
     border-radius: 17px;
     color: rgb(133, 84, 20);
     cursor: pointer;
 }
-
 div.notificaciones_completas .dropdown-menu-end,
 div.notificaciones_completas .list-group-item{
     z-index: 100;
     background-color: #fcedd8;
 }
-
 div.notificaciones_completas .list-group-item:hover{
     background-color: #ebd2af;
 }
-
 .boton_opciones_notificacion{
     position:absolute;
     z-index: 1;
 }
-
 /* label.label_menu_notificacion{
     display: none;
 }
-
 div.div_notificacion_opc + label.label_menu_notificacion{
     display: block;
 } */
-
 .secciones-grupo label.seccion-active{
     background: rgb(133, 84, 20);
     border-radius: 50px;
@@ -132,5 +113,3 @@ div.div_notificacion_opc + label.label_menu_notificacion{
     font-size: 17px;
     font-weight: bold;
 }
-
-

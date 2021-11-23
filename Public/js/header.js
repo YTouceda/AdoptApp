@@ -11,7 +11,6 @@ $(document).ready(function () {
         FB.AppEvents.logPageView();
         
     };
-
     (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {return;}
@@ -22,9 +21,7 @@ $(document).ready(function () {
     }(document, 'script', 'facebook-jssdk'));
     
     $('#btn-iniciarSesion').click(onlogin);
-
 })
-
 function onlogin(){
     FB.login((response) => {
         

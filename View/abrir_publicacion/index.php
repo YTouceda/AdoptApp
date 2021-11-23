@@ -87,38 +87,38 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="<?php echo constant('URL'); ?>abrir_publicacion/denunciar" method="post" id="formdenuncia">
-                                                                <div>
-                                                                    <select class="form-select select-cp" aria-label="Denuncia" id="select-denuncia" name="ID_TIPO_DENUNCIA"> 
-                                                                        <option value ="" selected disabled>Tipo de denuncia</option>
-                                                                        <option value="0">Spam</option>
-                                                                        <option value="1">Inapropiado</option>
-                                                                        <option value="2">Sección incorrecta</option>
-                                                                        <option value="3">Otro motivo...</option>
-                                                                    </select>
-                                                                    <input type="hidden" name="ID_PUBLICACION" value="<?php echo $_GET['publicacion']?>">
-                                                                    <div class="error invalid-feedback" id="errorSelectDenuncia">
-                                                                        Debe elegir una opcion valida.
-                                                                    </div>
-                                                                    <div class="form-floating">
-                                                                        <textarea class="form-control denuncia" id="tx-denuncia" id="floatingTextarea" name="DESCRIPCION"></textarea>
-                                                                        <label class="denuncia" for="floatingTextarea">Motivo de la denuncia</label>
-                                                                        <div class="error invalid-feedback" id="errorDenuncia">
-                                                                            Debe escribir al menos 10 caracteres.
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <div class="row">
-                                                                            <div class="col">
-                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                                            </div>
-                                                                            <div class="col">
-                                                                                <button type="button" id="enviar" class="btn btn-primary">Enviar denuncia</button>
-                                                                            </div>
-                                                                        </div>
+                                                                <form action="<?php echo constant('URL'); ?>abrir_publicacion/denunciar" method="post" id="formdenuncia">
+                                                            <div>
+                                                                <select class="form-select select-cp" aria-label="Denuncia" id="select-denuncia" name="ID_TIPO_DENUNCIA"> 
+                                                                    <option value ="" selected disabled>Tipo de denuncia</option>
+                                                                    <option value="0">Spam</option>
+                                                                    <option value="1">Inapropiado</option>
+                                                                    <option value="2">Sección incorrecta</option>
+                                                                    <option value="3">Otro motivo...</option>
+                                                                </select>
+                                                                <input type="hidden" name="ID_PUBLICACION" value="<?php echo $_GET['publicacion']?>">
+                                                                <div class="error invalid-feedback" id="errorSelectDenuncia">
+                                                                    Debe elegir una opcion valida.
+                                                                </div>
+                                                                <div class="form-floating">
+                                                                    <textarea class="form-control denuncia" id="tx-denuncia" id="floatingTextarea" name="DESCRIPCION"></textarea>
+                                                                    <label class="denuncia" for="floatingTextarea">Motivo de la denuncia</label>
+                                                                    <div class="error invalid-feedback" id="errorDenuncia">
+                                                                        Debe escribir al menos 10 caracteres.
                                                                     </div>
                                                                 </div>
-                                                            </form>
+                                                                <divmodal class="modal-footer">
+                                                                    <div class="row">
+                                                                        <div class="col-6">
+                                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <button type="button" id="enviar" class="btn btn-success">Enviar</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </divmodal>
+                                                            </div>
+                                                        </form>
                                                         </div>
                                                     </div>
                                                 </div>

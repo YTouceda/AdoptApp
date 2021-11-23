@@ -50,7 +50,6 @@ if(isset($_SESSION['id'])){
                                     //$mascota = new Mascota();
                                     $publicacion = $row;
                                     $mascota=$publicacion->getMascota();
-
                                     //$diff = $publicacion->getFecha_alta_publicacion()->diff($this->fechaactual);
                             ?>
                                     <div class="card mb-3 card_mis_publicaciones">

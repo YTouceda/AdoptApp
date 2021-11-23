@@ -1,26 +1,18 @@
 <?php
-
 include_once 'Clases/publicacion.php';
-
 class mis_publicacionesModel extends Model{
     public function __construct(){
         parent::__construct();
     }
-
-
-
     function time_passed($fechaCreacion){
         
         
         $timestamp = strtotime($fechaCreacion);
         $diff = time() - (int)$timestamp;
-
         if ($diff == 0) 
             return 'justo ahora';
-
         // if ($diff > 604800)
         //     return date("d M Y",$timestamp);
-
         $intervals = array
         (
                 1                   => array('año',    31556926),
@@ -48,15 +40,12 @@ class mis_publicacionesModel extends Model{
                 $aux = $intervals[1][0];
             }
         }
-
         $value = floor($diff/$intervals[1][1]);
         $devuelto ='hace '.$value.' '.$aux;
         
         return $devuelto;
         
-
     }
-
     public function get($idUsuario,$num_pagina){
         $publicaciones = [];
         try {
@@ -67,13 +56,12 @@ class mis_publicacionesModel extends Model{
             $num_filas = $query->rowCount();
             $total_paginas = ceil($num_filas/$cantidad_publicaciones);
             $desde = ($pagina - 1)*$cantidad_publicaciones;
-            $query = $this->db->connect()->prepare("SELECT * FROM V_MIS_PUBLICACIONES WHERE ID_USUARIO = :ID_USUARIO LIMIT :DESDE,:HASTA");
-            $query->execute(['ID_USUARIO' => $idUsuario,'DESDE' => $desde,'HASTA' => $cantidad_publicaciones]);
+            $query = $this->db->connect()->prepare("SELECT * FROM V_MIS_PUBLICACIONES WHERE ID_USUARIO = ".$idUsuario." LIMIT ".$desde.",".$cantidad_publicaciones." ");
+            //$query->execute(['ID_USUARIO' => $idUsuario,'DESDE' => $desde,'HASTA' => $cantidad_publicaciones]);
+            $query->execute();
             while($row = $query->fetch()){
-
                 $objPublicacion=new Publicacion();
                 $objMascota = new Mascota();
-
                 $objPublicacion->setMascota($objMascota);
                 $objMascota->setNombre_mascota($row['NOMBRE_MASCOTA']);  
                 $objMascota->setSexo_mascota($row['SEXO_MASCOTA']);  
@@ -92,17 +80,15 @@ class mis_publicacionesModel extends Model{
                 $objPublicacion->setProvincia($row['PROVINCIA']);
                 $objPublicacion->setFecha_alta_publicacion($this->time_passed($row['FECHA_ALTA_PUBLICACION']));
                 $objPublicacion->setFecha_baja_publicacion($row['FECHA_BAJA_PUBLICACION']);
-
                 array_push($publicaciones,$objPublicacion);
             }
             $datos = ['publicaciones' => $publicaciones, 'total' => $total_paginas];
             return $datos;
         } catch (PDOException $exc) {
+            echo "Error: " . $exc->getMessage();
             return false;
         }
     }
-
  
 }
-
 ?>

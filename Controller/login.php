@@ -1,14 +1,10 @@
 <?php
-
 include_once 'Clases/usuario.php';
-
 Class Login extends Controller{
     function __construct(){
         parent::__construct();
         $this->view->usuario = new Usuario();
-
     }
-
     function Render(){
         if(isset($_POST['login_id'])){
             $id_user = $_POST['login_id'];
@@ -30,7 +26,6 @@ Class Login extends Controller{
             header('Location:' . getenv('HTTP_REFERER'));
         }
     }
-
     function Guardar_datos(){
         if(isset($_POST['Id']) && isset($_POST['Nombre']) && isset($_POST['Numero']) && isset($_POST['Email']) && isset($_POST['foto'])){
             $id_user = $_POST['Id'];
@@ -49,7 +44,5 @@ Class Login extends Controller{
             $this->userSession->setCurrentUsuario($id_user);
         }
     }
-
 }
-
 ?>

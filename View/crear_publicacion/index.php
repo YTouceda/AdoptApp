@@ -34,7 +34,6 @@
                 
             <div class="row">
                 
-
                 <div class="col-12 col-sm-6">
                         <div class="titulo-cp col">
                         <h6 class="titulo-cp">Datos  <i class="fas fa-id-card"></i></h6>
@@ -50,10 +49,9 @@
                     <div id="errorTelefono" class="invalid-feedback">Debe ingresar un telefono válido.</div>
                         <div>
                         <select class="form-select select-cp" aria-label="Mascota" id="select-estado" name="estado">
-                            <option <?php if(($_GET['estado'])==0){ echo "selected";} ?> value="1">En Adopción</option>
-                            <option <?php if(($_GET['estado'])==1){ echo "selected";} ?> value="2">Lo encontré</option>
-                            <option <?php if(($_GET['estado'])==2){ echo "selected";} ?> value="3">Está perdido</option>
-
+                            <option <?php if(($_GET['estado'])==1){ echo "selected";} ?> value="1">En Adopción</option>
+                            <option <?php if(($_GET['estado'])==2){ echo "selected";} ?> value="2">Lo encontré</option>
+                            <option <?php if(($_GET['estado'])==3){ echo "selected";} ?> value="3">Está perdido</option>
                             <?php if($_GET['estado']==1)?>
                         </select>
                         </div>
@@ -136,10 +134,7 @@
                             <div id="errorLocalidades" class="invalid-feedback">Debe seleccionar una localidad</div>
                             <input id="xlocalidad" type="hidden">
                         </div>
-
                        
-
-
                 
             </div><!-- COL -->
           
@@ -154,9 +149,7 @@
                     <input required class="form-control cp mb-3 add_photo" type="file" accept="image/*" id="input_add_photo3">
                     <input required class="form-control cp mb-3 add_photo" type="file" accept="image/*" id="input_add_photo4">
                     <input required class="form-control cp mb-3 add_photo" type="file" accept="image/*" id="input_add_photo5"> -->
-
                 </div>
-
                 <label for="input_add_photo1">
                 <div class="img-seleccionada col " id="img_grande"> <img src="Public/media/agregar-foto.png"  class="img-fluid fotos-mascota" ></div></label>
             
@@ -176,13 +169,11 @@
                     
                     <div id="errorFotos" class="invalid-feedback">Debe subir al menos una foto</div>
                 </div>
-
                 <div id="alertaCreacionExitosa"></div>
                 <button type="button" id="enviar" name="publicar" class="btn btn-success">Publicar</button>
             </div> 
             
                 </form> 
-
         </main>
         <footer>
             <?php
@@ -192,8 +183,3 @@
     </body>
     
 </html>
-
-
-
-
-

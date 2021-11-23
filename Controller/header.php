@@ -1,7 +1,5 @@
 <?php
-
 include_once 'Clases/usuario.php';
-
 Class Header extends Controller{
     function __construct(){
         parent::__construct();
@@ -18,7 +16,5 @@ Class Header extends Controller{
             header('Location:' . getenv('HTTP_REFERER'));
         }
     }
-
 }
-
 ?>

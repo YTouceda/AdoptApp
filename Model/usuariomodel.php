@@ -1,17 +1,14 @@
 <?php
-
 include_once 'Clases/usuario.php';
 include_once 'Libs/model.php';
-
 class usuarioModel extends Model{
     public function __construct(){
         parent::__construct();
     }
-
     public function getUsuario($Id){
         try {
-            $query = $this->db->connect()->prepare("SELECT * FROM V_USUARIO WHERE ID_USUARIO = :ID_USUARIO");
-            $query->bindParam(':ID_USUARIO', $Id);
+            $query = $this->db->connect()->prepare("SELECT * FROM V_USUARIO WHERE ID_USUARIO = ".$Id);
+            //$query->bindParam(':ID_USUARIO', $Id);
             $query->execute();
             $row = $query->fetch();
             $item=[
@@ -28,5 +25,4 @@ class usuarioModel extends Model{
         }
     }
 }
-
 ?>

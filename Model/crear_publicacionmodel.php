@@ -1,19 +1,12 @@
 <?php
-
-
 class crear_publicacionModel extends Model{
-
     public function __construct(){
         parent::__construct();
-
     }
-
     public function insert($objPublicacion){
         //insertar datos en la bbdd
-
         try{
             
-
             $Mascota=$objPublicacion->getMascota();
             $query = $this->db->connect();
             $query->beginTransaction();            
@@ -48,31 +41,13 @@ class crear_publicacionModel extends Model{
             ,'".$objPublicacion->getNum_contacto_publicacion()."')");
             $query->commit();
             return true;
-
         
-
         }catch(PDOException $exc) {
-
             $query->rollback();
-            echo "Error: " . $exc->getMessage();
-            echo "<br>";
-            var_dump($Mascota->getId_mascota());
-            return false;
-
+            //echo "<br>";
+            //var_dump($Mascota->getId_mascota());
+            return "Error: " . $exc->getMessage();
         }       
-            
-
-       
- 
     }
-
-    
-
-
 }
-
-
-
 ?>
-
-
