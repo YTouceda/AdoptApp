@@ -113,3 +113,7 @@ div.div_notificacion_opc + label.label_menu_notificacion{
     font-size: 17px;
     font-weight: bold;
 }
+
+label.lbl-rescatista{
+    cursor: pointer;
+}
