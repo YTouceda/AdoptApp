@@ -3,7 +3,7 @@
 CREATE TABLE PERMISOS
        (
        ID_PERMISO BIGINT NOT NULL,                              
-       NOMBRE_PERMISO VARCHAR(30) NOT NULL,                            
+       NOMBRE_PERMISO VARCHAR(30) NOT NULL DEFAULT NULL,                            
        PRIMARY KEY
                (
                ID_PERMISO
@@ -241,7 +241,7 @@ CREATE TABLE PUBLICACION
        ID_MASCOTA BIGINT NOT NULL,
        ID_LOCALIDAD BIGINT NOT NULL,                              
        FECHA_ALTA_PUBLICACION DATETIME NOT NULL,                              
-       FECHA_BAJA_PUBLICACION DATETIME NOT NULL,                              
+       FECHA_BAJA_PUBLICACION DATETIME,                              
        NUM_CONTACTO_PUBLICACION VARCHAR(12) NOT NULL,                              
        PRIMARY KEY
                (
@@ -330,8 +330,7 @@ CREATE TABLE `ESTADO_POSTULACION` (
 CREATE TABLE POSTULACION
        (
        ID_POSTULACION BIGINT NOT NULL AUTO_INCREMENT,                         
-       ID_PUBLICACION BIGINT NOT NULL,                              
-       ESTADO_PUBLICACION BINARY(1) NOT NULL,                              
+       ID_PUBLICACION BIGINT NOT NULL,                                                            
        ID_USUARIO_POSTULADO BIGINT NOT NULL,                              
        FECHA_POSTULACION DATETIME NOT NULL,                              
        ESTADO_POSTULACION BIGINT NOT NULL,                              
