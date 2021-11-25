@@ -18,7 +18,7 @@ Class Login extends Controller{
                 $this->view->usuario->setEmail($_POST['login_email']);
                 $this->view->usuario->setFoto($_POST['login_foto']);
                 $this->view->render('login/index');
-                var_dump ($_POST['login_nombre']);
+                // var_dump ($_POST['login_nombre']);
                 return true;
             }                                  
             header('Location:' . getenv('HTTP_REFERER'));
@@ -30,12 +30,12 @@ Class Login extends Controller{
         if(isset($_POST['Id']) && isset($_POST['Nombre']) && isset($_POST['Numero']) && isset($_POST['Email']) && isset($_POST['foto'])){
             $id_user = $_POST['Id'];
             $this->view->usuario->setId($id_user);
-            $this->view->usuario->setPermisos(1);
+            $this->view->usuario->setRol(1);
             $this->view->usuario->setNombre($_POST['Nombre']);
             $this->view->usuario->setNumero($_POST['Numero']);
             $this->view->usuario->setEmail($_POST['Email']);
             $this->view->usuario->setFoto($_POST['foto']);
-            if($this->model->insertUsuario(['ID_USUARIO' => $id_user, 'ID_PERMISO' => $this->view->usuario->getPermisos(), 'NOMBRE_USUARIO' => $this->view->usuario->getNombre(), 'NUM_CONTACTO_USUARIO' => $this->view->usuario->getNumero() ,'EMAIL_USUARIO' => $this->view->usuario->getEmail(),'FOTO_PERFIL' => $this->view->usuario->getFoto()])){
+            if($this->model->insertUsuario(['ID_USUARIO' => $id_user, 'ID_PERMISO' => $this->view->usuario->getRol(), 'NOMBRE_USUARIO' => $this->view->usuario->getNombre(), 'NUM_CONTACTO_USUARIO' => $this->view->usuario->getNumero() ,'EMAIL_USUARIO' => $this->view->usuario->getEmail(),'FOTO_PERFIL' => $this->view->usuario->getFoto()])){
                 header('Location: '.constant('URL').'perfil');
             }
             else{

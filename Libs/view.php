@@ -5,5 +5,6 @@ class View{
     function render($nombre){
         require 'View/' . $nombre . ".php";
     }
+
 }
 ?>

@@ -24,8 +24,8 @@
             if($aceptado == false){?>
                 <div id="titulo">
                 <h1>Postulaciones</h1>
-              </div>
-              <div id="form_postulados" class="formulario_postulantes">
+            </div>
+            <form id="form_postulados" class="formulario_postulantes">
             <?php foreach($this->postulaciones as $row){
                 if($row['ESTADO_POSTULACION'] != 2){
                     $id_div=0;
@@ -59,7 +59,7 @@
         <?php
             $id_div++;}}
         ?>
-            </div>
+            </form>
         <?php
             }else{?>
                 <div id="titulo">

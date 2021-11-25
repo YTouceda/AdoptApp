@@ -4,13 +4,15 @@ class Crear_Publicacion extends Controller{
     function __construct(){
         parent::__construct();
         date_default_timezone_set('America/Argentina/Buenos_Aires');
+        $this->view->usuario = new Usuario();
         
     }
     function render(){
+        $this->view->usuario->setUsuario($this->userSession->getCurrentUsuario());
         $this->view->render('crear_publicacion/index');
     }
     function registrarMascota(){
-        if(isset($_SESSION['id']) && isset($_POST['sexo']) && isset($_POST['edad']) && isset($_POST['tamanio'])  && isset($_POST['especie'])  && isset($_POST['nombre'])  && isset($_POST['descripcion'])  && isset($_POST['estado']) && isset($_POST['provincia']) && isset($_POST['telefono']) && isset($_POST['localidad'])){
+        if($this->view->usuario->puede('Crear publicacion') && isset($_POST['sexo']) && isset($_POST['edad']) && isset($_POST['tamanio'])  && isset($_POST['especie'])  && isset($_POST['nombre'])  && isset($_POST['descripcion'])  && isset($_POST['estado']) && isset($_POST['provincia']) && isset($_POST['telefono']) && isset($_POST['localidad'])){
             
         
         $check = getimagesize($_FILES["foto"]["tmp_name"]);

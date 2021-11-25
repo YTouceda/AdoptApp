@@ -5,6 +5,9 @@ class Controller{
     
     function __construct(){
         $this->userSession = new UsuarioSession();
+        if(!(isset($_SESSION['id']))){
+            $this->userSession->setCurrentUsuario(0);
+        }
         $this->usuario = new Usuario();
         $this->view = new View();
     }

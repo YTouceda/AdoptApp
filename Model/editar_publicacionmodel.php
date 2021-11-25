@@ -15,7 +15,7 @@ class editar_publicacionModel extends Model{
                 $objMascota->setSexo_mascota ($row['SEXO_MASCOTA']); 
                 $objMascota->setEdad_mascota ($row['EDAD_MASCOTA']); 
                 $objMascota->setTamanio_mascota ($row['TAMANIO_MASCOTA']); 
-                $objMascota->setEspecie_mascota($row['ID_ESPECIE_MASCOTA']);
+                $objMascota->setEspecie_mascota($row['TIPO_ESPECIE_MASCOTA']);
                 $objMascota->setNombre_mascota ($row['NOMBRE_MASCOTA']); 
                 $objMascota->setDescripcion_mascota ($row['DESCRIPCION_MASCOTA']); 
                 $objMascota->setFotos_mascota ($row['FOTO_MASCOTA']);

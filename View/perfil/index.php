@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['id'])){
+if($this->usuario->puede('Ingresar al perfil')){
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,7 +46,7 @@ if(isset($_SESSION['id'])){
                                         <div class="row">
                                             <label for="foto" class="col-form-label">Foto de perfil:</label><br>
                                         </div>
-                                        <input type="image" class="d-inline-block col-form-control h-50 w-25" src="<?php echo $this->user->getFoto()?>" name="Foto" id="Foto">
+                                        <input type="image" class="d-inline-block col-form-control h-50 w-25" src="<?php echo $this->usuario->getFoto()?>" name="Foto" id="Foto">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-12">
@@ -54,15 +54,15 @@ if(isset($_SESSION['id'])){
                                         <tbody>
                                             <tr>
                                                 <th class="nombre" scope="row">Nombre de usuario:</th>
-                                                <td><p id="nombreId"><?php echo $this->user->getNombre();?></p></td>
+                                                <td><p id="nombreId"><?php echo $this->usuario->getNombre();?></p></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Email:</th>
-                                                <td><p id="emailId"><?php echo $this->user->getEmail();?></p></td>
+                                                <td><p id="emailId"><?php echo $this->usuario->getEmail();?></p></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Telefono de contacto:</th>
-                                                <td><p id="telefonoId"><?php echo $this->user->getNumero();?></p></td>
+                                                <td><p id="telefonoId"><?php echo $this->usuario->getNumero();?></p></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -83,6 +83,11 @@ if(isset($_SESSION['id'])){
 </html>
 <?php
 }else{
-    header('Location:adopciones');
+    if($this->usuario->getEstado_bloqueo()!= NULL){
+        header('Location:errores?mensaje=0');
+    }
+    else{
+        header('Location:publicaciones');
+    }
 }
 ?>

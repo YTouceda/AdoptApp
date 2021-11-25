@@ -3,15 +3,16 @@ include_once 'Clases/denuncia.php';
 class abrir_publicacion extends Controller{
     function __construct(){
         parent::__construct();
-        $this->view->user=new Usuario();
         $this->view->publicacion = [];
         $this->view->mascota = [];
         $this->view->postulaciones = [];
+        $this->view->usuario=new Usuario();
         $this->view->estado_boton = "";
     }
     
     
     function Render(){
+        $this->view->usuario->setUsuario($this->userSession->getCurrentUsuario());
         if(!isset($_GET['publicacion'])){
             $this->view->render('errores/index');
         }else{
@@ -52,7 +53,7 @@ class abrir_publicacion extends Controller{
         header('Location:' . constant('URL'));
     }
     function denunciar(){
-        if(isset($_POST['ID_PUBLICACION']) && isset($_POST['DESCRIPCION']) && isset($_POST['ID_TIPO_DENUNCIA']) && isset($_SESSION['id'])){
+        if(isset($_POST['ID_PUBLICACION']) && isset($_POST['DESCRIPCION']) && isset($_POST['ID_TIPO_DENUNCIA']) && $this->view->usuario->puede('Denunciar')){
         $objDenuncia=new Denuncia();
         $objDenuncia->setId_publicacion($_POST['ID_PUBLICACION']);
         $objDenuncia->setDescripcion($_POST['DESCRIPCION']);
@@ -65,7 +66,7 @@ class abrir_publicacion extends Controller{
         header('Location:' . constant('URL'));//const url
     }
     function validar(){
-        if(isset($_GET['publicacion'])&& isset($_SESSION['id'])){
+        if(isset($_GET['publicacion'])&& $_SESSION['id']!=0){
             $objDenuncia=new Denuncia();
             $objDenuncia->setId_publicacion($_GET['publicacion']);
             $objDenuncia->setId_usuario_denunciante($_SESSION['id']);

@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['id'])){
+if($this->usuario->puede('Ingresar al perfil')){
 ?>
 <!DOCTYPE html>
 <html>
@@ -117,6 +117,11 @@ if(isset($_SESSION['id'])){
 </html>
 <?php
 }else{
-    header('Location:adopciones');
+    if($this->usuario->getEstado_bloqueo()!= NULL){
+        header('Location:errores?mensaje=0');
+    }
+    else{
+        header('Location:publicaciones');
+    }
 }
 ?>

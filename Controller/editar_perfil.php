@@ -2,13 +2,11 @@
 Class Editar_perfil extends Controller{
     function __construct(){
         parent::__construct();
-        $this->view->user=new Usuario();
+        $this->view->usuario=new Usuario();
         $this->view->mensaje = "";
     }
     function Render(){
-        if(isset($_SESSION['id'])){
-            $this->view->user->setUsuario($this->userSession->getCurrentUsuario());
-        }
+        $this->view->usuario->setUsuario($this->userSession->getCurrentUsuario());
         $this->view->render('editar_perfil/index');
     }
     

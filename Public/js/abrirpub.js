@@ -97,3 +97,11 @@ $("#fakeEliminar").click(function(){
         //     $("#img-grande").attr("src",aux);
         
         // });
+
+        $("#alert_sesion").click(function(){
+            Swal.fire(
+                'ADVERTENCIA!',
+                'Debes iniciar sesion para postularte',
+                'error'
+            )
+        });

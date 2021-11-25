@@ -40,3 +40,19 @@ function onlogin(){
         }
     })
 }
+
+$("#alert_crear_publicacion").click(function(){
+    Swal.fire(
+        'ERROR!',
+        'Debes iniciar sesion para crear una publicacion',
+        'error'
+    )
+});
+
+$("#alert_crear_publicacion_dw").click(function(){
+    Swal.fire(
+        'ERROR!',
+        'Debes iniciar sesion para crear una publicacion',
+        'error'
+    )
+});

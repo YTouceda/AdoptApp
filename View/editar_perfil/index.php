@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['id'])){
+if($this->usuario->puede('Ingresar al perfil')){
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@ if(isset($_SESSION['id'])){
                                 <div class="row">
                                     <label for="foto" class="col-form-label">Foto de perfil:</label><br>
                                 </div>
-                                <img type="image" class="d-inline-block col-form-control h-50 w-25" src="<?php echo $this->user->getFoto()?>" name="Foto" id="Foto">
+                                <img type="image" class="d-inline-block col-form-control h-50 w-25" src="<?php echo $this->usuario->getFoto()?>" name="Foto" id="Foto">
                             </div>
                             <?php
                             if("mvp" == "producto"){
@@ -51,25 +51,25 @@ if(isset($_SESSION['id'])){
                             ?>
                         </div>
                         <div>
-                            <input type="hidden" name="Id" id="Id" value="<?php echo $this->user->getId()?>" require>
+                            <input type="hidden" name="Id" id="Id" value="<?php echo $this->usuario->getId()?>" require>
                         </div>
                         <div class="mx-1 mx-lg-5 px-0 px-lg-5">
                             <label for="nombre" class="form-label pt-2">Nombre de usuario:</label>
-                            <input id="Nombre" name="Nombre" type="text" class="form form-control col-12" value="<?php echo $this->user->getNombre();?>" require>
+                            <input id="Nombre" name="Nombre" type="text" class="form form-control col-12" value="<?php echo $this->usuario->getNombre();?>" require>
                             <div id="error_nombre" class="invalid-feedback">
                                 No ingresó el nombre de usuario.
                             </div>
                         </div>
                         <div class="mx-1 mx-lg-5 px-0 px-lg-5">
                             <label for="email" class="form-label pt-2">Email:</label>
-                            <input id="Email" name="Email" type="text" class="form form-control col-12" value="<?php echo $this->user->getEmail();?>" require>
+                            <input id="Email" name="Email" type="text" class="form form-control col-12" value="<?php echo $this->usuario->getEmail();?>" require>
                             <div id="error_email" class="invalid-feedback">
                                 Ingrese un email valido.
                             </div>
                         </div>
                         <div class="mx-1 mx-lg-5 px-0 px-lg-5">
                             <label for="numero" class="form-label pt-2">Telefono de contacto</label>
-                            <input id="Numero" name="Numero" type="text" class="form form-control col-12" value="<?php echo $this->user->getNumero();?>" require>
+                            <input id="Numero" name="Numero" type="text" class="form form-control col-12" value="<?php echo $this->usuario->getNumero();?>" require>
                             <div id="error_numero" class="invalid-feedback">
                                 No ingresó un numero de contacto válido.
                             </div>
@@ -91,6 +91,11 @@ if(isset($_SESSION['id'])){
 </html>
 <?php
 }else{
-    header('Location:adopciones');
+    if($this->usuario->getEstado_bloqueo()!= NULL){
+        header('Location:errores?mensaje=0');
+    }
+    else{
+        header('Location:publicaciones');
+    }
 }
 ?>

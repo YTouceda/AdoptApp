@@ -1,3 +1,6 @@
+<?php
+if($this->usuario->puede('Abrir publicacion')){
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,11 +13,13 @@
         <link rel="stylesheet" type="text/css" href="<?php echo constant ('URL'); ?>Public/css/style-abrirPublicacion.css">
         <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/abrirpub.js" defer></script>
         <link rel="stylesheet" type="text/css" href="<?php echo constant('URL'); ?>Public/css/style-header-footer.css">
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/header.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anónimo"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.css">
         <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/notificaciones.js" defer></script>
+        <script type="text/javascript" src="<?php echo constant('URL'); ?>Public/js/postulaciones.js" defer></script>
     </head>
     <body  class="body-adoptapp">
         <header>
@@ -130,25 +135,33 @@
                                 ?>
                                 <?php
                                 if ($_SESSION['id']!=$this->publicacion->getId_usuario()){
-                                    if($this->estado_post){
-                                        ?>
-                                        <div class="col-12 col-sm-6">
-                                            <a href='<?php echo constant('URL'); ?>abrir_publicacion/postularse?publicacion=<?php echo  $this->publicacion->getId_publicacion();?>'><button name="postularse" type="button" class="btn btn-success boton-ap"><?php echo $this->estado_boton; ?></button></a>
-                                        </div>
-                                        <?php
-                                    
+                                    if($this->usuario->puede("Postularse")){
+                                        if($this->estado_post){
+                                            ?>
+                                            <div class="col-12 col-sm-6">
+                                                <a href='<?php echo constant('URL'); ?>abrir_publicacion/postularse?publicacion=<?php echo  $this->publicacion->getId_publicacion();?>'><button name="postularse" type="button" class="btn btn-success boton-ap"><?php echo $this->estado_boton; ?></button></a>
+                                            </div>
+                                            <?php
+                                        
+                                        }else{
+                                            ?>
+                                            <div class="col-12 col-sm-6">
+                                                <a href='<?php echo constant('URL'); ?>abrir_publicacion/cancelarPostulacion'><button name="postularse" type="button" class="btn btn-warning boton-ap">Cancelar postulacion</button></a>
+                                            </div>
+                                            <?php
+                                        }
                                     }else{
-                                        ?>
+                                    ?>
                                         <div class="col-12 col-sm-6">
-                                            <a href='<?php echo constant('URL'); ?>abrir_publicacion/cancelarPostulacion'><button name="postularse" type="button" class="btn btn-warning boton-ap">Cancelar postulacion</button></a>
+                                            <button id="alert_sesion" type="button" class="btn btn-success boton-ap"><?php echo $this->estado_boton; ?></button>
                                         </div>
-                                        <?php
+                                    <?php
                                     }
                                 }
                             }
                                 ?>
                             <?php 
-                            if($_SESSION['id']==$this->publicacion->getId_usuario()){ 
+                            if($_SESSION['id']==$this->publicacion->getId_usuario() && $this->usuario->puede('Eliminar publicacion')){ 
                                 ?>
                                 <div class="col-12 col-sm-6">
                                     <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar publicación</button>
@@ -173,7 +186,7 @@
                                 </div>
                                 <?php 
                             }
-                            if ($_SESSION['id']==$this->publicacion->getId_usuario()){
+                            if ($_SESSION['id']==$this->publicacion->getId_usuario() && $this->usuario->puede('Editar publicacion')){
                                 ?>
                                 <div class="col-12 col-sm-6">
                                     <a href='<?php echo constant('URL'); ?>editar_publicacion?publicacion=<?php echo  $this->publicacion->getId_publicacion();?>'><button id='boton' class='btn btn-secondary'>Editar Publicacion</button></a>
@@ -197,3 +210,13 @@
         </footer>
     </body>
 </html>
+<?php
+}else{
+    if($this->usuario->getEstado_bloqueo()!= NULL){
+        header('Location:errores?mensaje=0');
+    }
+    else{
+        header('Location:publicaciones');
+    }
+}
+?>

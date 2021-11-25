@@ -8,6 +8,9 @@
     <div id="header-sec" class="col-12 col-sm-6 d-none d-xxl-block">
         <div class="text-center secciones-grupo my-4">
             <ul class="nav nav-pills nav-fill">
+                <?php
+                if($this->usuario->puede('Visualizar publicaciones')){
+                ?>
                 <li class="nav-item">
                     <div id="adopciones" class="seccion link-adopciones my-2 py-2">
                         <a href="<?php echo constant('URL').'publicaciones'; ?>?seccion=En adopción"><label for="adopciones" id="lbl-adopciones" class="lbl-seccion">Quiero Adoptar</label></a>
@@ -18,16 +21,32 @@
                         <a href="<?php echo constant('URL').'publicaciones'; ?>?seccion=Perdido"><label for="perdidos" id="lbl-perdidos" class="lbl-seccion">Perdidos / Encontrados</label></a>
                     </div>
                 </li>
+                <?php
+                }else{
+                ?>
+                <li class="nav-item">
+                    <div id="adopciones" class="seccion link-adopciones my-2 py-2">
+                        <label for="adopciones" id="lbl-adopciones" class="lbl-seccion">Quiero Adoptar</label>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div id="perdidos" class="seccion link-perdidos my-2 py-2">
+                        <label for="perdidos" id="lbl-perdidos" class="lbl-seccion">Perdidos / Encontrados</label>
+                    </div>
+                </li>
+                <?php
+                }
+                ?>
                 <li class="nav-item">
                     <div id="crear" class="seccion link-crear my-2 py-2">
-                        <label for="crear" id="lbl-crear-publicacion" class="lbl-seccion" data-bs-toggle="modal" data-bs-target="#modal_crear_publicacion">Crear Publicacion</label>
+                        <label for="crear" <?php if($this->usuario->puede('Crear publicacion')){ echo 'id="lbl-crear-publicacion" data-bs-toggle="modal" data-bs-target="#modal_crear_publicacion"';}else{echo 'id="alert_crear_publicacion"';} ?> class="lbl-seccion">Crear Publicacion</label>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
     <?php
-    if(!(isset($_SESSION['id']))){
+    if($this->usuario->puede('Iniciar sesion')){
     ?>
         <div id="seccion_iniciar_sesion" class="col-12 col-md-6 col-xxl-3">
             <div class="row h-100">
@@ -46,7 +65,7 @@
                             </li>
                             <li><hr class='dropdown-divider'></li>
                             <li>
-                                <label for='crear' class='text-decoration-none dropdown-item' data-bs-toggle='modal' data-bs-target='#modal_crear_publicacion'>Crear Publicacion</label>
+                                <label for='crear' class='text-decoration-none dropdown-item' <?php if($this->usuario->puede('Crear publicacion')){ echo 'data-bs-toggle="modal" data-bs-target="#modal_crear_publicacion"';}else{echo 'id="alert_crear_publicacion_dw"';} ?>>Crear Publicacion</label>
                             </li>
                         </ul>
                     </div>
@@ -78,40 +97,44 @@
                             </li>
                             <li><hr class='dropdown-divider'></li>
                             <li>
-                                <label for='crear' class='text-decoration-none dropdown-item' data-bs-toggle='modal' data-bs-target='#modal_crear_publicacion'>Crear Publicacion</label>
+                                <label for='crear' class='text-decoration-none dropdown-item' <?php if($this->usuario->puede('Crear publicacion')){ echo 'data-bs-toggle="modal" data-bs-target="#modal_crear_publicacion"';}else{echo 'id="alert_crear_publicacion_dw"';} ?>>Crear Publicacion</label>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <?php if(!isset($_GET['url']) || $_GET['url'] != "ver_notificaciones"){?>
-                <div class='col col-xxl-2 text-center px-0 mx-0 my-2 my-md-auto'>
-                    <div id="drop_notis" class='dropdown'>
-                        <label id='dropdown-notificaciones' class='lbl-seccion nav-icon-notificaciones' data-bs-auto-close="false" data-bs-toggle='dropdown' aria-expanded='false'>
-                            <div class=''>
-                                <i class='fas fa-bell campana-notificaciones'>
-                                    <span id="alerta_sin_leer" class='position-absolute alerta-notificacion-sin-leer translate-middle badge border border-light rounded-circle bg-danger p-1 invisible'>
-                                    <span class='visually-hidden'>unread messages</span>
-                                    </span>
-                                </i>
-                            </div>
-                        </label>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby='dropdown-notificaciones'>
-                            <div id='notificacion_list'>
-                            </div>
-                            <div class="text-center my-2">
-                                <a href="ver_notificaciones"><h5>Ver todas las notificaciones</h5></a>
+                <?php if((!isset($_GET['url']) || $_GET['url'] != "ver_notificaciones") && $this->usuario->puede('Ver notificaciones')){?>
+                    <div class='col col-xxl-2 text-center px-0 mx-0 my-2 my-md-auto'>
+                        <div id="drop_notis" class='dropdown'>
+                            <label id='dropdown-notificaciones' class='lbl-seccion nav-icon-notificaciones' data-bs-auto-close="false" data-bs-toggle='dropdown' aria-expanded='false'>
+                                <div class=''>
+                                    <i class='fas fa-bell campana-notificaciones'>
+                                        <span id="alerta_sin_leer" class='position-absolute alerta-notificacion-sin-leer translate-middle badge border border-light rounded-circle bg-danger p-1 invisible'>
+                                        <span class='visually-hidden'>unread messages</span>
+                                        </span>
+                                    </i>
+                                </div>
+                            </label>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby='dropdown-notificaciones'>
+                                <div id='notificacion_list'>
+                                </div>
+                                <div class="text-center my-2">
+                                    <a href="ver_notificaciones"><h5>Ver todas las notificaciones</h5></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <?php
+                    <?php
                 }
-                ?>
+                if($this->usuario->puede('Ingresar al perfil')){
+                    ?>
+                    <div class='col col-xxl-2 text-center px-0 mx-0 my-2 my-md-auto'>
+                        <a href='<?php echo constant('URL'); ?>perfil'><label id='icon-perfil' class='lbl-seccion nav-icon-perfil'><i class='fas fa-user'></i></label></a>
+                    </div>
+                    <?php
+                }
+                    ?>
                 <div class='col col-xxl-2 text-center px-0 mx-0 my-2 my-md-auto'>
-                    <a href='<?php echo constant('URL'); ?>perfil'><label id='icon-perfil' class='lbl-seccion nav-icon-perfil'><i class='fas fa-user'></i></label></a>
-                </div>
-                <div class='col col-xxl-2 text-center px-0 mx-0 my-2 my-md-auto'>
-                    <a href="<?php echo constant('URL'); ?>logout" id='cerrar_sesion' class='lbl-seccion nav-icon-logout'><i class='fas fa-sign-in-alt'></i></a>
+                    <a href="<?php echo constant('URL'); ?>logout<?php if($this->usuario->getEstado_bloqueo() != NULL)echo '?estadoBloqueo=1';?>" id='cerrar_sesion' class='lbl-seccion nav-icon-logout'><i class='fas fa-sign-in-alt'></i></a>
                 </div>
             </div>
         </div>
@@ -126,9 +149,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <?php
-                if(isset($_SESSION['id'])){
-                ?>
                     <div id="moda-opciones-crear-publicacion">
                         <ul class="nav nav-pills nav-fill">
                             <li class="nav-item">
@@ -148,15 +168,6 @@
                             </li>
                         </ul>
                     </div>
-                <?php
-                }else{
-                ?>
-                    <div class="alert alert-danger" role="alert">
-                        Inicie Sesión para crear una nueva publicación!
-                    </div>
-                    <?php
-                }
-                ?>
                 </div>
             </div>
         </div>

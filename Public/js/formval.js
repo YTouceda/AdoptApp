@@ -14,7 +14,7 @@ function validarTamImagenes(tam) {
     return true;
 }
 function redireccionar(){
-    window.location.href = "adopciones";
+    window.location.href = "publicaciones";
   }
    
  

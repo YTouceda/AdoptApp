@@ -1,3 +1,6 @@
+<?php
+if($this->usuario->puede('Editar publicacion')){
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -167,4 +170,13 @@
     </body>
     
 </html>
-
+<?php
+}else{
+    if($this->usuario->getEstado_bloqueo()!= NULL){
+        header('Location:errores?mensaje=0');
+    }
+    else{
+        header('Location:publicaciones');
+    }
+}
+?>

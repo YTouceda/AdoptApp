@@ -2,11 +2,12 @@
 Class editar_publicacion extends Controller{
     function __construct(){
         parent::__construct();
-        $this->view->user=new Usuario();
+        $this->view->usuario=new Usuario();
         $this->view->mensaje = "";
         $this->view->mascota = [];
     }
     function Render(){
+        $this->view->usuario->setUsuario($this->userSession->getCurrentUsuario());
         if(!isset($_GET['publicacion'])){
             $this->view->render('errores/index');
         }else{
@@ -24,7 +25,7 @@ Class editar_publicacion extends Controller{
     
     function editarMascota(){
        
-        //if(isset($_SESSION['id']) && isset($_POST['sexo']) && isset($_POST['edad']) && isset($_POST['tamanio'])  && isset($_POST['especie'])  && isset($_POST['nombre'])  && isset($_POST['descripcion'])  && isset($_POST['estado']) && isset($_POST['provincia']) && isset($_POST['telefono']) && isset($_POST['localidad'])){
+        //if($_SESSION['id']!=0 && isset($_POST['sexo']) && isset($_POST['edad']) && isset($_POST['tamanio'])  && isset($_POST['especie'])  && isset($_POST['nombre'])  && isset($_POST['descripcion'])  && isset($_POST['estado']) && isset($_POST['provincia']) && isset($_POST['telefono']) && isset($_POST['localidad'])){
             
             
             if(!($_FILES["foto"]['tmp_name'])==""){

@@ -2,5 +2,9 @@
     include_once 'Libs/user_session.php';
     $userSession = new UsuarioSession();
     $userSession->closeSession();
-    header('Location:' . getenv('HTTP_REFERER'))
+    if(isset($_GET['estadoBloqueo'])){
+        header('Location:publicaciones');
+    }else{
+        header('Location:' . getenv('HTTP_REFERER'));
+    }
 ?>

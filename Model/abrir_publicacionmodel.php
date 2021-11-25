@@ -8,7 +8,7 @@ class abrir_publicacionModel extends Model{
     function eliminar($id_Publicacion){
         $dataTime = date("Y-m-d H:i:s");
         try{
-        $query = $this->db->connect()->prepare("UPDATE `PUBLICACION` SET `FECHA_BAJA_PUBLICACION`= '".$dataTime."' WHERE `ID_PUBLICACION` = :ID_PUBLICACION ");
+        $query = $this->db->connect()->prepare("UPDATE `PUBLICACION` SET `FECHA_BAJA_PUBLICACION`= '".$dataTime."',`ID_ESTADO`=7 WHERE `ID_PUBLICACION` = :ID_PUBLICACION ");
         $query->execute(['ID_PUBLICACION' => $id_Publicacion]);
         } catch (PDOException $exc) {
             echo "Error: " . $exc->getMessage();
@@ -41,7 +41,7 @@ class abrir_publicacionModel extends Model{
     function updatePublicaciones($fecha,$usuario,$estado){
         
         try{
-        $query = $this->db->connect()->prepare("UPDATE `publicacion` SET `ID_ESTADO`='".$estado."',`FECHA_BAJA_PUBLICACION`='".$fecha."' WHERE `ID_USUARIO` = :`ID_USUARIO` ");
+        $query = $this->db->connect()->prepare("UPDATE `PUBLICACION` SET `ID_ESTADO`='".$estado."',`FECHA_BAJA_PUBLICACION`='".$fecha."' WHERE `ID_USUARIO` = :ID_USUARIO ");
         $query->execute(['ID_USUARIO' => $usuario]);
         } catch (PDOException $exc) {
             echo "Error: " . $exc->getMessage();
@@ -49,28 +49,31 @@ class abrir_publicacionModel extends Model{
         }
     }
     function suspenderUsuario($usuario){
-        $dataTime = date("Y-m-d H:i:s");
+        $fecha = date("Y-m-d H:i:s");
+        
         try{
-        date_add($dataTime, date_interval_create_from_date_string("1 month"));
-        $query = $this->db->connect()->prepare("UPDATE `usuario` SET `ESTADO_BLOQUEO` = '".$dataTime."' WHERE `ID_USUARIO` = :ID_USUARIO ");
+        $dataTime = date("Y-m-d H:i:s", strtotime($fecha."+1 month"));
+        $query = $this->db->connect()->prepare("UPDATE `USUARIO` SET `ESTADO_BLOQUEO` = '".$dataTime."' WHERE `ID_USUARIO` = :ID_USUARIO ");
         $query->execute(['ID_USUARIO' => $usuario]);
         } catch (PDOException $exc) {
             echo "Error: " . $exc->getMessage();
             return false;
         }
-        $estado="Suspendida";
+        $estado=6;
         $this->updatePublicaciones($dataTime,$usuario,$estado);
     }
     function banearUsuario($usuario){
-        $dataTime = date_create("3000-01-01");
+        //$dataTime = date_create("3000-01-01");
+        $dataTime = date("3000-01-01 00:00:00");
+        
         try{
-        $query = $this->db->connect()->prepare("UPDATE `usuario` SET `ESTADO_BLOQUEO` = '".$dataTime."' WHERE `ID_USUARIO` = :ID_USUARIO ");
+        $query = $this->db->connect()->prepare("UPDATE `USUARIO` SET `ESTADO_BLOQUEO` = '".$dataTime."' WHERE `ID_USUARIO` = :ID_USUARIO ");
         $query->execute(['ID_USUARIO' => $usuario]);
         } catch (PDOException $exc) {
             echo "Error: " . $exc->getMessage();
             return false;
         }
-        $estado="Eliminada";
+        $estado=7;
         $this->updatePublicaciones($dataTime,$usuario,$estado);
     }
     function contarDenuncias($publicacion){
@@ -79,13 +82,13 @@ class abrir_publicacionModel extends Model{
             $query->execute();
             $num_filas = $query->rowCount();
             // var_dump($num_filas);
-            if($num_filas>=3){
+            if($num_filas>=6){
                 $this->eliminar($publicacion);
             }
             $row=$query->fetch();
             $usuario_denunciado=$row['USUARIO_DENUNCIADO'];
             
-            $query = $this->db->connect()->prepare("SELECT * FROM `v_denuncia` WHERE `ESTADO_PUBLICACION` = 'Eliminada' AND `USUARIO_DENUNCIADO` =  ".$usuario_denunciado."");
+            $query = $this->db->connect()->prepare("SELECT * FROM `V_DENUNCIA` WHERE `ESTADO_PUBLICACION` = 'Eliminada' AND `USUARIO_DENUNCIADO` =  ".$usuario_denunciado."");
             $query->execute();
             $num_filas = $query->rowCount();
             if($num_filas>=6){
